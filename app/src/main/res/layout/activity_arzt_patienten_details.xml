@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ArztPatientenDetailsActivity">
+
+    <TextView
+        android:id="@+id/DocPatientName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        android:layout_marginHorizontal="20sp"
+        android:textSize="25sp"
+        android:text="*NameAusDatenbank*"
+        />
+    <TextView
+        android:layout_below="@id/DocPatientName"
+        android:id="@+id/DocPatientDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20sp"
+        android:textSize="20sp"
+        android:text="*DateAusDatenbank*"
+        />
+    <TextView
+        android:layout_below="@id/DocPatientDetails"
+        android:id="@+id/Recycler"
+        android:layout_width="match_parent"
+        android:layout_height="300sp"
+        android:layout_marginHorizontal="20sp"
+        android:textSize="20sp"
+        android:text="*Recycler*"
+        />
+    <EditText
+        android:layout_below="@id/Recycler"
+        android:id="@+id/Notes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20sp"
+        />
+
+    <RadioButton
+        android:id="@+id/RadioButtonMRT"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Notes"
+        android:layout_marginHorizontal="20sp"
+        android:text="MRT" />
+    <RadioButton
+        android:layout_below="@id/RadioButtonMRT"
+        android:id="@+id/RadioButtonBlutErgebnis"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20sp"
+        android:text="Blutergebnisse"
+        />
+    <Button
+        android:layout_below="@id/RadioButtonBlutErgebnis"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20sp"
+        android:text="senden"
+        />
+</RelativeLayout>
