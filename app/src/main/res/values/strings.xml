@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">KIS</string>
+
+    <string-array name="patient_data">
+        <item>Patient1</item>
+        <item>Patient2</item>
+        <item>Patient3</item>
+        <item>Patient4</item>
+        <item>Patient4</item>
+    </string-array>
 </resources>

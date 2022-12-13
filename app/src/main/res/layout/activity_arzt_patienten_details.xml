@@ -4,19 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ArztPatientenDetailsActivity">
+    tools:context=".Activities.ArztPatientDetailsActivity">
 
     <TextView
-        android:id="@+id/DocPatientName"
+        android:id="@+id/PatientName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20sp"
+        android:layout_marginTop="50sp"
         android:layout_marginHorizontal="20sp"
         android:textSize="25sp"
         android:text="*NameAusDatenbank*"
         />
     <TextView
-        android:layout_below="@id/DocPatientName"
+        android:layout_below="@id/PatientName"
         android:id="@+id/DocPatientDetails"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,22 +24,22 @@
         android:textSize="20sp"
         android:text="*DateAusDatenbank*"
         />
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_below="@id/DocPatientDetails"
         android:id="@+id/Recycler"
         android:layout_width="match_parent"
         android:layout_height="300sp"
         android:layout_marginHorizontal="20sp"
         android:textSize="20sp"
-        android:text="*Recycler*"
         />
+
     <EditText
-        android:layout_below="@id/Recycler"
         android:id="@+id/Notes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/Recycler"
         android:layout_marginHorizontal="20sp"
-        />
+        android:minHeight="48dp" />
 
     <RadioButton
         android:id="@+id/RadioButtonMRT"
@@ -56,11 +56,12 @@
         android:layout_marginHorizontal="20sp"
         android:text="Blutergebnisse"
         />
+
     <Button
+        android:layout_width="368dp"
+        android:layout_height="59dp"
         android:layout_below="@id/RadioButtonBlutErgebnis"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_marginHorizontal="20sp"
-        android:text="senden"
-        />
+        android:layout_marginTop="150sp"
+        android:text="senden" />
 </RelativeLayout>
