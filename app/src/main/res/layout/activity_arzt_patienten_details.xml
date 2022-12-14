@@ -17,24 +17,23 @@
         />
 
     <TextView
-        android:layout_below="@id/PatientName"
         android:id="@+id/DocPatientDetails"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="391dp"
+        android:layout_height="125dp"
+        android:layout_below="@id/PatientName"
         android:layout_marginHorizontal="20sp"
         android:layout_marginBottom="10dp"
-        android:textSize="20sp"
-        android:text="*DateAusDatenbank*"
-        />
+        android:text="*PatientenDaten + Lagerung*"
+        android:textSize="20sp" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_below="@id/DocPatientDetails"
         android:id="@+id/Recycler"
-        android:layout_width="match_parent"
-        android:layout_height="300sp"
+        android:layout_width="391dp"
+        android:layout_height="182dp"
+        android:layout_below="@id/DocPatientDetails"
         android:layout_marginHorizontal="20sp"
-        android:textSize="20sp"
-        />
+        android:layout_marginTop="10dp"
+        android:textSize="10sp" />
 
     <EditText
         android:id="@+id/Notes"
@@ -45,7 +44,7 @@
         android:layout_marginTop="10dp"
         android:minHeight="48dp" />
 
-    <RadioButton
+    <CheckBox
         android:id="@+id/RadioButtonMRT"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -54,7 +53,7 @@
         android:layout_marginTop="10dp"
         android:text="MRT" />
 
-    <RadioButton
+    <CheckBox
         android:layout_below="@id/RadioButtonMRT"
         android:id="@+id/RadioButtonBlutErgebnis"
         android:layout_width="match_parent"
@@ -68,6 +67,6 @@
         android:layout_height="59dp"
         android:layout_below="@id/RadioButtonBlutErgebnis"
         android:layout_marginHorizontal="20sp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="25dp"
         android:text="senden" />
 </RelativeLayout>
