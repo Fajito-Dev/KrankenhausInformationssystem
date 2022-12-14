@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.LaborPatientDetailsActivity">
+
+    <TextView
+        android:id="@+id/PatientName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40sp"
+        android:layout_marginHorizontal="20sp"
+        android:textSize="25sp"
+        android:text="*NameAusDatenbank*"
+        />
+
+    <TextView
+        android:layout_below="@id/PatientName"
+        android:id="@+id/LaborPatientDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20sp"
+        android:layout_marginBottom="10dp"
+        android:textSize="20sp"
+        android:text="*DateAusDatenbank*"
+        />
+
+    <ImageSwitcher
+        android:layout_below="@id/LaborPatientDetails"
+        android:id="@+id/MRTpreview"
+        android:layout_width="match_parent"
+        android:layout_height="300sp"
+        android:layout_marginHorizontal="20sp"
+        android:textSize="20sp"
+        />
+
+    <Button
+        android:id="@+id/selectFileButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/MRTpreview"
+        android:layout_marginHorizontal="20sp"
+        android:layout_marginTop="20dp"
+        android:text="File auswählen"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/MRTpreview"
+        android:layout_marginHorizontal="20sp"
+        android:layout_marginTop="100dp"
+        android:text="senden" />
+</RelativeLayout>
