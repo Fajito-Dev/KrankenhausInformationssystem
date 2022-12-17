@@ -1,5 +1,7 @@
 package com.example.kis.Models;
 
+import androidx.annotation.NonNull;
+
 public class PatientModel {
     private int patientId;
     private String preName;
@@ -15,6 +17,7 @@ public class PatientModel {
     public PatientModel() {
     }
     //toString prints all
+    @NonNull
     @Override
     public String toString() {
         return "PatientModel{" +
