@@ -12,7 +12,7 @@ import com.example.kis.Models.EntryModel;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-
+//neu
 public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String PATIENT_TABLE = "PATIENT_TABLE";
     public static final String COLUMN_PATIENT_PATIENTID = "PATIENT_PATIENTID";
