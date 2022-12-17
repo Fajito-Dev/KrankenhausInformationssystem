@@ -1,6 +1,85 @@
 <resources>
     <string name="app_name">KIS</string>
 
+    <!--====================== Login View ======================-->
+    <string name="DE_TEXT_Login_Input_Personal_Number">Personal Nummer</string>
+    <string name="DE_TEXT_Login_Input_Password">Password</string>
+    <string name="DE_BUTTON_Login">Login</string>
+
+    <!--====================== Top Bar Fragment ======================-->
+    <string name="DE_TEXT_App_Name">KIS</string>
+
+    <!--====================== Details View ======================-->
+    <string name="DE_TEXT_PersonalDataKrankenkasse">ID</string>
+    <string name="DE_TEXT_PersonalDataName">Name</string>
+    <string name="DE_TEXT_Personal_Data_2">Vorname</string>
+    <string name="DE_TEXT_PersonalDataAge">Alter</string>
+    <string name="DE_TEXT_Personal_Data_4">Adresse</string>
+    <string name="DE_TEXT_Personal_Data_5">Station</string>
+    <string name="DE_TEXT_Personal_Data_6">Zimmer</string>
+    <string name="DE_TEXT_PersonalDataBett">Bett</string>
+    <string name="DE_TEXT_Personal_Data_8">KrankenkassenNr.</string>
+    <string name="DE_TEXT_Personal_Data_9">Notfall-Kontakt Name</string>
+    <string name="DE_TEXT_Personal_Data_10">Notfall-Kontakt Nummer</string>
+
+    <!-- Button -->
+
+    <!--====================== Details Pop-Up ======================-->
+    <string name="DE_TEXT_State">Zustand</string>
+    <string name="DE_TEXT_Drug_Name">Schmerzmittel</string>
+    <string name="DE_TEXT_Drug_Dose">Dosierung</string>
+    <string name="DE_TEXT_Drug_Pain_Scala">Schmerzensgrad</string>
+    <string name="DE_TEXT_Notes">Notizen</string>
+
+    <!--====================== Patient Card ======================-->
+    <string name="DE_TEXT_No_Entry">Kein Eintrag</string>
+
+    <!-- Details IMG BUTTON -->
+    <string name="DE_BUTTON_Show_Details">Details</string>
+
+    <!--====================== Home View ======================-->
+    <string name="DE_TEXT_CheckList_Visite">Checkliste Visite</string>
+    <string name="DE_TEXT_Patient_Entry">Patientenaufnahme</string>
+    <string name="DE_TEXT_Search_Bar">Suche</string>
+
+    <!--====================== Burger Menu View ======================-->
+    <string name="DE_BUTTON_Patient_Database">Patienten Datenbank</string>
+    <string name="DE_BUTTON_Medicine_Database">Medizin Datenbank</string>
+
+    <!--====================== DE Strings Buttons ======================-->
+    <string name="DE_BUTTON_Add_Patient">Patient Hinzufuegen</string>
+    <string name="DE_BUTTON_Delete_Patient">Patient Entlassen</string>
+
+    <!-- Names for Doctor DataBase -->
+    <string-array name="DB_CREATE_Doctor_Data">
+        <item>ID</item>
+        <item>PreName</item>
+        <item>LastName</item>
+        <item>Specialization</item>
+        <item>StationNumber</item>
+        <item>StationName</item>
+    </string-array>
+
+    <!--- Names for Patient DataBase -->
+    <string-array name="DB_CREATE_Patient_Data">
+        <item>ID</item>
+        <item>PreName</item>
+        <item>LastName</item>
+        <item>BirthDate</item>
+        <item>Address</item>
+        <item>HealthInsuranceNumber</item>
+        <item>StationNumber</item>
+        <item>BedNumber</item>
+        <item>Injury</item>
+        <item>Drug</item>
+        <item>Dose</item>
+        <item>PainScala</item>
+    </string-array>
+
+
+    <string name="marginleft">20</string>
+
+
     <string-array name="patient_data">
         <item>Patient1</item>
         <item>Patient2</item>

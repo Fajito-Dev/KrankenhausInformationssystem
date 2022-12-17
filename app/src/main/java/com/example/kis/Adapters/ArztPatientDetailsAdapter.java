@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -72,7 +71,7 @@ public class ArztPatientDetailsAdapter extends RecyclerView.Adapter<ArztPatientD
         @Override
         public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             LayoutInflater inflater = LayoutInflater.from(context);
-           View view = inflater.inflate(R.layout.my_row, parent, false);
+           View view = inflater.inflate(R.layout.arzt_patient_row, parent, false);
             return new MyViewHolder(view);
         }
 
@@ -93,12 +92,11 @@ public class ArztPatientDetailsAdapter extends RecyclerView.Adapter<ArztPatientD
         public class MyViewHolder extends RecyclerView.ViewHolder {
 
             TextView myText1, myText2;
-            ImageView myImage;
 
             public MyViewHolder(@NonNull View itemView) {
                  super(itemView);
-                 myText1 = itemView.findViewById(R.id.name_text);
-                 myText2 = itemView.findViewById(R.id.date_text);
+                 myText1 = itemView.findViewById(R.id.text1);
+                 myText2 = itemView.findViewById(R.id.text2);
                // myImage = itemView.findViewById(R.id.face_image);
 
 
