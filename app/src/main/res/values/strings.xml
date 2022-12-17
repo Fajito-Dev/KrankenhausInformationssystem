@@ -94,6 +94,11 @@
         <item>Patient3</item>
         <item>Patient4</item>
         <item>Patient4</item>
+        <item>Patient1</item>
+        <item>Patient2</item>
+        <item>Patient3</item>
+        <item>Patient4</item>
+        <item>Patient4</item>
     </string-array>
     <string-array name="patientBirthDates">
         <item>12.12.1988</item>
@@ -101,8 +106,18 @@
         <item>22.01.1948</item>
         <item>22.01.1948</item>
         <item>22.01.1948</item>
+        <item>12.12.1988</item>
+        <item>22.01.1948</item>
+        <item>22.01.1948</item>
+        <item>22.01.1948</item>
+        <item>22.01.1948</item>
     </string-array>
     <string-array name="patientDiagnose">
+        <item>k.A</item>
+        <item>rechtes Bein</item>
+        <item>Pimmel</item>
+        <item>Kopf</item>
+        <item>Nase</item>
         <item>k.A</item>
         <item>rechtes Bein</item>
         <item>Pimmel</item>
@@ -116,9 +131,19 @@
         <item>02.06.2010</item>
         <item>13.09.2020</item>
         <item>01.11.2022</item>
+        <item>12.04.2001</item>
+        <item>14.09.2000</item>
+        <item>02.06.2010</item>
+        <item>13.09.2020</item>
+        <item>01.11.2022</item>
     </string-array>
 
     <string-array name="notes">
+        <item>leichtes Fieber,</item>
+        <item>eitrige Wunde,</item>
+        <item>Hämatom linkes Bein</item>
+        <item>Schwindel</item>
+        <item>Reizhusten</item>
         <item>leichtes Fieber,</item>
         <item>eitrige Wunde,</item>
         <item>Hämatom linkes Bein</item>
@@ -132,6 +157,11 @@
         <item>Schmerz (1–10): 7</item>
         <item>Schmerz (1–10): 2</item>
         <item>Schmerz (1–10): 5</item>
+        <item>Schmerz (1–10): 4</item>
+        <item>Schmerz (1–10): 7</item>
+        <item>Schmerz (1–10): 7</item>
+        <item>Schmerz (1–10): 2</item>
+        <item>Schmerz (1–10): 5</item>
     </string-array>
 
     <string-array name="zustand">
@@ -140,9 +170,19 @@
         <item>Kritisch</item>
         <item>Medium</item>
         <item>Medium</item>
+        <item>OK</item>
+        <item>Kritisch</item>
+        <item>Kritisch</item>
+        <item>Medium</item>
+        <item>Medium</item>
     </string-array>
 
     <string-array name="LaborAnfrage">
+        <item>k.A.</item>
+        <item>MRT + Blutbild</item>
+        <item>MRT</item>
+        <item>k.A.</item>
+        <item>k.A.</item>
         <item>k.A.</item>
         <item>MRT + Blutbild</item>
         <item>MRT</item>
