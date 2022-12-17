@@ -26,7 +26,7 @@ public class ArztHomeAdapter extends RecyclerView.Adapter<ArztHomeAdapter.ArztHo
     @Override
     public ArztHomeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.my_row, parent, false);
+        View view = inflater.inflate(R.layout.arzt_patient_row, parent, false);
         return new ArztHomeViewHolder(view);
     }
 
@@ -49,8 +49,8 @@ public class ArztHomeAdapter extends RecyclerView.Adapter<ArztHomeAdapter.ArztHo
 
         public ArztHomeViewHolder(@NonNull View itemView) {
              super(itemView);
-             myText1 = itemView.findViewById(R.id.name_text);
-             myText2 = itemView.findViewById(R.id.date_text);
+             myText1 = itemView.findViewById(R.id.ArztPatientCardBirthDate);
+             myText2 = itemView.findViewById(R.id.ArztPatientCardBirthDate);
         }
     }
 }
