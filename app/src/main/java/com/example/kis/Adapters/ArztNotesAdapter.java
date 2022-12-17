@@ -11,96 +11,53 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kis.R;
 
-public class ArztNotesAdapter extends RecyclerView.Adapter<ArztNotesAdapter.ArztPatientDetailsViewHolder> {
+public class ArztNotesAdapter extends RecyclerView.Adapter<ArztNotesAdapter.ArztNotesViewHolder> {
 
-    String[] patientArr;
+    String[] dates, notes, states, painscala, documents;
     Context context;
 
-    public ArztNotesAdapter(Context cn, String[] pArr){
+    public ArztNotesAdapter(Context cn, String[] d, String[] n, String[] s, String[] ps,String[] doc) {
         context = cn;
-        patientArr = pArr;
+        dates = d;
+        notes = n;
+        states = s;
+        painscala = ps;
+        documents = doc;
     }
 
     @NonNull
     @Override
-    public ArztPatientDetailsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ArztNotesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.arzt_patient_details_row, parent, false);
-        return new ArztPatientDetailsViewHolder(view);
+        View view = inflater.inflate(R.layout.arzt_notes_row, parent, false);
+        return new ArztNotesViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ArztPatientDetailsViewHolder holder, int position) {
-        holder.text1.setText(patientArr[position]);
+    public void onBindViewHolder(@NonNull ArztNotesViewHolder holder, int position) {
+        holder.date.setText(dates[position]);
+        holder.note.setText(notes[position]);
+        holder.painscale.setText(painscala[position]);
+        holder.state.setText(states[position]);
+        holder.documents.setText(documents[position]);
     }
 
     @Override
     public int getItemCount() {
-        return patientArr.length;
+        return dates.length;
     }
 
-    public static class ArztPatientDetailsViewHolder extends RecyclerView.ViewHolder{
-        TextView text1, text2;
+    public static class ArztNotesViewHolder extends RecyclerView.ViewHolder{
+        TextView date, note, painscale, state, documents;
 
-        public ArztPatientDetailsViewHolder(@NonNull View itemView) {
+        public ArztNotesViewHolder(@NonNull View itemView) {
             super(itemView);
-            text1 = itemView.findViewById(R.id.text1);
-            text2 = itemView.findViewById(R.id.text2);
-        }
-    }
+            date = itemView.findViewById(R.id.ArztNotesCardDatum);
+            note = itemView.findViewById(R.id.ArztNotesCardNote);
+            painscale = itemView.findViewById(R.id.ArztNotesCardSchmerzensgrad);
+            state = itemView.findViewById(R.id.ArztNotesCardZustand);
+            documents = itemView.findViewById(R.id.ArztNotesCardRequestedDocuments);
 
-    public static class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
-
-        String data1[], data2[];
-        //int images[];
-        Context context;
-
-        public  MyAdapter(Context ct,String s1[], String s2[]){
-            context = ct;
-            data1 = s1;
-            data2 = s2;
-         //   images = img;
-            }
-
-            /*public void setstringsList(String ArrayOfString[]){
-            this.data1 = ArrayOfString;
-            notifyDataSetChanged();
-            }*/
-
-        @NonNull
-        @Override
-        public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            LayoutInflater inflater = LayoutInflater.from(context);
-           View view = inflater.inflate(R.layout.arzt_patient_row, parent, false);
-            return new MyViewHolder(view);
-        }
-
-        @Override
-        public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-
-            holder.myText1.setText(data1[position]);
-            holder.myText2.setText(data2[position]);
-           // holder.myImage.setImageResource(images[position]);
-        }
-
-        @Override
-        public int getItemCount() {
-
-            return data1.length;
-        }
-
-        public static class MyViewHolder extends RecyclerView.ViewHolder {
-
-            TextView myText1, myText2;
-
-            public MyViewHolder(@NonNull View itemView) {
-                 super(itemView);
-                 myText1 = itemView.findViewById(R.id.text1);
-                 myText2 = itemView.findViewById(R.id.text2);
-               // myImage = itemView.findViewById(R.id.face_image);
-
-
-            }
         }
     }
 }

@@ -24,7 +24,7 @@ public class ArztVisiteActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_arzt_home);
+        setContentView(R.layout.activity_arzt_visite);
 
         recyclerView = findViewById(R.id.recyclerView);
         patientArr = getResources().getStringArray(R.array.patientNames);

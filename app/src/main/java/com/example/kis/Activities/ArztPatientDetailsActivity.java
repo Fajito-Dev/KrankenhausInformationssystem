@@ -9,17 +9,21 @@ import com.example.kis.R;
 
 public class ArztPatientDetailsActivity extends AppCompatActivity {
     RecyclerView recyclerView;
-    String[] patientArr;
+    String[] dates, notes, painscala, states, docs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_arzt_patienten_details);
+        setContentView(R.layout.activity_arzt_patient_details);
         recyclerView = findViewById(R.id.Recycler);
-        patientArr = getResources().getStringArray(R.array.patientNames);
+        dates = getResources().getStringArray(R.array.notesDate);
+        notes = getResources().getStringArray(R.array.notes);
+        painscala = getResources().getStringArray(R.array.painscala);
+        states = getResources().getStringArray(R.array.zustand);
+        docs = getResources().getStringArray(R.array.LaborAnfrage);
 
-        ArztNotesAdapter Adapter = new ArztNotesAdapter(this, patientArr);
+        ArztNotesAdapter Adapter = new ArztNotesAdapter(this, dates, notes, painscala, states, docs);
         recyclerView.setAdapter(Adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
