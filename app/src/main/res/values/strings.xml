@@ -21,6 +21,7 @@
     <string name="DE_TEXT_Personal_Data_8">KrankenkassenNr.</string>
     <string name="DE_TEXT_Personal_Data_9">Notfall-Kontakt Name</string>
     <string name="DE_TEXT_Personal_Data_10">Notfall-Kontakt Nummer</string>
+    <string name="DE_TEXT_PersonalDiagnose">Diagnose</string>
 
     <!-- Button -->
 
@@ -80,12 +81,26 @@
     <string name="marginleft">20</string>
 
 
-    <string-array name="patient_data">
+    <string-array name="patientNames">
         <item>Patient1</item>
         <item>Patient2</item>
         <item>Patient3</item>
         <item>Patient4</item>
         <item>Patient4</item>
+    </string-array>
+    <string-array name="patientBirthDates">
+        <item>12.12.1988</item>
+        <item>22.01.1948</item>
+        <item>22.01.1948</item>
+        <item>22.01.1948</item>
+        <item>22.01.1948</item>
+    </string-array>
+    <string-array name="patientDiagnose">
+        <item>k.A</item>
+        <item>rechtes Bein</item>
+        <item>Pimmel</item>
+        <item>Kopf</item>
+        <item>Nase</item>
     </string-array>
 
 </resources>

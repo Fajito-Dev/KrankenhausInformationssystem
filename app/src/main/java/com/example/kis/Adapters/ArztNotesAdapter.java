@@ -11,12 +11,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kis.R;
 
-public class ArztPatientDetailsAdapter extends RecyclerView.Adapter<ArztPatientDetailsAdapter.ArztPatientDetailsViewHolder> {
+public class ArztNotesAdapter extends RecyclerView.Adapter<ArztNotesAdapter.ArztPatientDetailsViewHolder> {
 
     String[] patientArr;
     Context context;
 
-    public ArztPatientDetailsAdapter(Context cn, String[] pArr){
+    public ArztNotesAdapter(Context cn, String[] pArr){
         context = cn;
         patientArr = pArr;
     }
@@ -89,7 +89,7 @@ public class ArztPatientDetailsAdapter extends RecyclerView.Adapter<ArztPatientD
             return data1.length;
         }
 
-        public class MyViewHolder extends RecyclerView.ViewHolder {
+        public static class MyViewHolder extends RecyclerView.ViewHolder {
 
             TextView myText1, myText2;
 
