@@ -26,8 +26,9 @@
             android:name=".Activities.StartActivity"
             android:exported="true" />
         <activity
-            android:name=".Activities.ArztHomeActivity"
+            android:name=".Activities.ArztVisiteActivity"
             android:exported="true" />
+
     </application>
 
 </manifest>

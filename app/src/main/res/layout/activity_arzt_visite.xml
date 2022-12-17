@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".Activities.ArztVisiteActivity">
+
+    <SearchView
+        android:id="@+id/search_bar"
+        android:layout_width="292dp"
+        android:layout_height="36dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="90dp"
+        android:background="@color/white"
+        android:hint="Patient suchen ..."
+        android:textColorHint="#757575" />
+
+    <ImageButton
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="89dp"
+        android:layout_marginEnd="23dp"
+        android:adjustViewBounds="true"
+        android:padding="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/img" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="370dp"
+        android:layout_height="478dp"
+        android:layout_below="@id/search_bar"
+        android:layout_marginHorizontal="20sp"
+        android:layout_marginTop="20dp" />
+
+    <Button
+        android:id="@+id/ButtonLogout"
+        android:layout_width="368dp"
+        android:layout_height="59dp"
+        android:layout_below="@id/recyclerView"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="18dp"
+        android:text="*Logout*" />
+
+
+</RelativeLayout>

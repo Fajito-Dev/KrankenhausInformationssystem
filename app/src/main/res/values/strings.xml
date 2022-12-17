@@ -12,6 +12,7 @@
     <!--====================== Details View ======================-->
     <string name="DE_TEXT_PersonalDataKrankenkasse">ID</string>
     <string name="DE_TEXT_PersonalDataName">Name</string>
+    <string name="DE_TEXT_PersonalData">Name, BettNR., Diagnose</string>
     <string name="DE_TEXT_Personal_Data_2">Vorname</string>
     <string name="DE_TEXT_PersonalDataAge">Alter</string>
     <string name="DE_TEXT_Personal_Data_4">Adresse</string>
@@ -21,6 +22,13 @@
     <string name="DE_TEXT_Personal_Data_8">KrankenkassenNr.</string>
     <string name="DE_TEXT_Personal_Data_9">Notfall-Kontakt Name</string>
     <string name="DE_TEXT_Personal_Data_10">Notfall-Kontakt Nummer</string>
+    <string name="DE_TEXT_PersonalDiagnose">Diagnose</string>
+    <string name="DE_TEXT_Zustand">Zustand</string>
+    <string name="DE_TEXT_Notiz">Notitz</string>
+    <string name="DE_TEXT_Datum">Datum</string>
+    <string name="DE_TEXT_RequestedDocuments">Dokumente</string>
+
+
 
     <!-- Button -->
 
@@ -80,12 +88,66 @@
     <string name="marginleft">20</string>
 
 
-    <string-array name="patient_data">
+    <string-array name="patientNames">
         <item>Patient1</item>
         <item>Patient2</item>
         <item>Patient3</item>
         <item>Patient4</item>
         <item>Patient4</item>
+    </string-array>
+    <string-array name="patientBirthDates">
+        <item>12.12.1988</item>
+        <item>22.01.1948</item>
+        <item>22.01.1948</item>
+        <item>22.01.1948</item>
+        <item>22.01.1948</item>
+    </string-array>
+    <string-array name="patientDiagnose">
+        <item>k.A</item>
+        <item>rechtes Bein</item>
+        <item>Pimmel</item>
+        <item>Kopf</item>
+        <item>Nase</item>
+    </string-array>
+
+    <string-array name="notesDate">
+        <item>12.04.2001</item>
+        <item>14.09.2000</item>
+        <item>02.06.2010</item>
+        <item>13.09.2020</item>
+        <item>01.11.2022</item>
+    </string-array>
+
+    <string-array name="notes">
+        <item>leichtes Fieber,</item>
+        <item>eitrige Wunde,</item>
+        <item>Hämatom linkes Bein</item>
+        <item>Schwindel</item>
+        <item>Reizhusten</item>
+    </string-array>
+
+    <string-array name="painscala">
+        <item>Schmerz (1–10): 4</item>
+        <item>Schmerz (1–10): 7</item>
+        <item>Schmerz (1–10): 7</item>
+        <item>Schmerz (1–10): 2</item>
+        <item>Schmerz (1–10): 5</item>
+    </string-array>
+
+    <string-array name="zustand">
+        <item>OK</item>
+        <item>Kritisch</item>
+        <item>Kritisch</item>
+        <item>Medium</item>
+        <item>Medium</item>
+    </string-array>
+
+    <string-array name="LaborAnfrage">
+        <item>k.A.</item>
+        <item>MRT + Blutbild</item>
+        <item>MRT</item>
+        <item>k.A.</item>
+        <item>k.A.</item>
     </string-array>
 
 </resources>
