@@ -13,6 +13,13 @@
         android:theme="@style/Theme.KIS"
         tools:targetApi="31">
         <activity
+            android:name=".AdministrationAddPatient"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".Activities.LaborPatientDetailsActivity"
             android:exported="false">
             <meta-data
@@ -28,7 +35,6 @@
         <activity
             android:name=".Activities.ArztVisiteActivity"
             android:exported="true" />
-
     </application>
 
 </manifest>

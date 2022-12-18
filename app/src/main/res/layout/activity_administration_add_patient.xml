@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.AdministrationAddPatientActivity">
+
+    <TextView
+        android:id="@+id/AdministrationAddPatientTitel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="@string/DE_BUTTON_Add_Patient"
+        android:textSize="20sp"
+        />
+
+    <TextView
+        android:id="@+id/AdministrationAddPatientInsuranceNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/AdministrationAddPatientTitel"
+        android:layout_marginHorizontal="20dp"
+        android:text="VersichertenNummer"
+        />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/AdministrationAddPatientInsuranceNumberInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/AdministrationAddPatientInsuranceNumber"
+        android:layout_marginHorizontal="20dp"
+        android:inputType="text" />
+
+    <TextView
+        android:id="@+id/AdministrationAddPatientVorname"
+        android:layout_below="@id/AdministrationAddPatientInsuranceNumberInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:text="Vorname"
+        />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/AdministrationAddPatientVornameInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/AdministrationAddPatientVorname"
+        android:layout_marginHorizontal="20dp"
+        android:inputType="text" />
+
+    <TextView
+        android:id="@+id/AdministrationAddPatientName"
+        android:layout_below="@id/AdministrationAddPatientVornameInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:text="Name"
+        />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/AdministrationAddPatientNameInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/AdministrationAddPatientName"
+        android:layout_marginHorizontal="20dp"
+        android:inputType="text" />
+
+    <TextView
+        android:id="@+id/AdministrationAddPatientGeburtstag"
+        android:layout_below="@id/AdministrationAddPatientNameInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:text="Geburtstag"
+        />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/AdministrationAddPatientGeburtstaginput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/AdministrationAddPatientGeburtstag"
+        android:layout_marginHorizontal="20dp"
+        android:inputType="text" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/AdministrationAddPatientGeburtstaginput"
+        android:text="Speichern"
+        android:layout_margin="20dp"
+        />
+
+</RelativeLayout>
