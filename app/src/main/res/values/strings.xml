@@ -5,6 +5,8 @@
     <string name="DE_TEXT_Login_Input_Personal_Number">Personal Nummer</string>
     <string name="DE_TEXT_Login_Input_Password">Password</string>
     <string name="DE_BUTTON_Login">Login</string>
+    <string name="DE_BUTTON_Logout">Logout</string>
+
 
     <!--====================== Top Bar Fragment ======================-->
     <string name="DE_TEXT_App_Name">KIS</string>

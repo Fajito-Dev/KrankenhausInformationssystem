@@ -21,8 +21,8 @@
 
             <TextView
                 android:id="@+id/ArztPatientCardName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="150dp"
+                android:layout_height="19dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="4dp"
                 android:text="@string/DE_TEXT_PersonalDataName"
@@ -32,7 +32,7 @@
 
             <TextView
                 android:id="@+id/ArztPatientCardBirthDate"
-                android:layout_width="wrap_content"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/ArztPatientCardName"
                 android:layout_marginStart="10dp"
@@ -43,7 +43,20 @@
 
             <TextView
                 android:id="@+id/ArztPatientCardDiagnose"
-                android:layout_width="wrap_content"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="@string/DE_TEXT_PersonalDataBett"
+                android:textSize="13sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/ArztPatientCardDetailsIcon"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/ArztPatientCardName"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.119" />
+
+            <TextView
+                android:id="@+id/ArztPatientCardBettNummer"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/ArztPatientCardBirthDate"
                 android:layout_marginStart="10dp"
