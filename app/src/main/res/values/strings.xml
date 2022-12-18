@@ -29,6 +29,10 @@
     <string name="DE_TEXT_RequestedDocuments">Dokumente</string>
 
 
+    <string name="DE_TEXT_ArztViteTitel1">Visite</string>
+    <string name="DE_TEXT_ArztViteTitel2">Checkliste</string>
+    <string name="DE_TEXT_ArztViteCounter">Status</string> <!-- Anzeige wie viele Patienten noch offen sind fuür den Tag-->
+
 
     <!-- Button -->
 
@@ -85,8 +89,7 @@
     </string-array>
 
 
-    <string name="marginleft">20</string>
-
+    <!-- TestDataArrays -->
 
     <string-array name="patientNames">
         <item>Patient1</item>
