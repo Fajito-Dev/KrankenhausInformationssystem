@@ -22,12 +22,13 @@ public class ArztPatientAdapter extends RecyclerView.Adapter<ArztPatientAdapter.
 
     Context context;
     ArrayList<PatientModel> patientModelList;
-    ArrayList<EntryModel> entryModeList;
+    ArrayList<EntryModel> entryModelList;
 
 
-    public ArztPatientAdapter(Context cn, ArrayList<PatientModel> patientModelList ){
-        context = cn;
+    public ArztPatientAdapter(Context context, ArrayList<PatientModel> patientModelList,ArrayList<EntryModel> entryModelList){
+        this.context = context;
         this.patientModelList = patientModelList;
+        this.entryModelList = entryModelList;
     }
 
     @NonNull
@@ -42,16 +43,22 @@ public class ArztPatientAdapter extends RecyclerView.Adapter<ArztPatientAdapter.
     public void onBindViewHolder(@NonNull ArztPatientViewHolder holder, int position) {
         int bedNr = 0;
         String bedNrS ="";
-        for(int i = 0;i<entryModeList.size();i++){
-            if(entryModeList.get(i).getPatientIde()==patientModelList.get(position).getPatientId()){
-                bedNr = entryModeList.get(i).getBedNr();
+        /*
+        for(int i = 0;i<entryModelList.size();i++){
+            if(entryModelList.get(i).getPatientIde()==patientModelList.get(position).getPatientId()){
+                bedNr = entryModelList.get(i).getBedNr();
                 bedNrS = Integer.toString(bedNr);
+                return;
             }
         }
 
-        holder.text1.setText(patientModelList.get(position).getPreName()+","+patientModelList.get(position).getName());
+         */
+
+        holder.text1.setText(patientModelList.get(position).getPreName()+" "+patientModelList.get(position).getName());
         holder.text2.setText(patientModelList.get(position).getBirthDateS()+" (Alter)");
-        holder.text3.setText("BettNr " + bedNrS);
+        holder.text3.setText("X");
+        holder.text4.setText("BettNr");
+
         holder.icon.setImageResource(R.drawable.img);
         holder.icon.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,7 +75,7 @@ public class ArztPatientAdapter extends RecyclerView.Adapter<ArztPatientAdapter.
     }
 
     public static class ArztPatientViewHolder extends RecyclerView.ViewHolder{
-        TextView text1, text2, text3;
+        TextView text1, text2, text3, text4;
         ImageButton icon;
 
         public ArztPatientViewHolder(@NonNull View itemView) {
@@ -76,6 +83,7 @@ public class ArztPatientAdapter extends RecyclerView.Adapter<ArztPatientAdapter.
             text1 = itemView.findViewById(R.id.ArztPatientCardName);
             text2 = itemView.findViewById(R.id.ArztPatientCardBirthDate);
             text3 = itemView.findViewById(R.id.ArztPatientCardDiagnose);
+            text4 = itemView.findViewById(R.id.ArztPatientCardBettNummer);
             icon = itemView.findViewById(R.id.ArztPatientCardDetailsIcon);
         }
     }

@@ -18,7 +18,7 @@ import com.example.kis.R;
 
 public class ArztVisiteActivity extends AppCompatActivity {
     DatabaseHelper dataBaseHelper;
-    RecyclerView recyclerView;
+    RecyclerView recyclerViewA;
     Button buttonLogout;
     ImageButton buttonPatientDetails;
 
@@ -27,12 +27,13 @@ public class ArztVisiteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_arzt_visite);
-        recyclerView = findViewById(R.id.recyclerView);
+        recyclerViewA = findViewById(R.id.recyclerView);
+        buttonLogout = findViewById(R.id.ArztVisiteButtonLogout);
 
         dataBaseHelper = new DatabaseHelper(ArztVisiteActivity.this);
-        ArztPatientAdapter adapter = new ArztPatientAdapter(this,dataBaseHelper.getEveryPatient());
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        ArztPatientAdapter adapter = new ArztPatientAdapter(this,dataBaseHelper.getEveryPatient(),dataBaseHelper.getEveryEntry());
+        recyclerViewA.setAdapter(adapter);
+        recyclerViewA.setLayoutManager(new LinearLayoutManager(this));
 
         buttonLogout.setOnClickListener(new View.OnClickListener() {
             @Override
