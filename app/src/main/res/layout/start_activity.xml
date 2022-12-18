@@ -7,23 +7,36 @@
     android:background="@color/background"
     tools:context=".Activities.StartActivity">
 
+    <TextView
+        android:id="@+id/LoginTitel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="50dp"
+        android:textAlignment="center"
+        android:textSize="30dp"
+        android:text="Login"
+        />
+    
     <Button
         android:id="@+id/ButtonArztHome"
-        android:layout_width="134dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/LoginTitel"
         android:layout_marginHorizontal="100dp"
+        android:layout_marginTop="150dp"
         android:text="Arzt" />
 
     <Button
         android:id="@+id/ButtonLabor"
-        android:layout_width="135dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/ButtonArztHome"
         android:layout_marginHorizontal="100dp"
         android:text="Labor" />
     <Button
         android:id="@+id/ButtonVerwaltung"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="100dp"
         android:text="Verwaltung"
