@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/foregroundelementbackground"
+    tools:context=".Activities.ArztPatientDetailsActivity">
+
+    <TextView
+        android:id="@+id/ArztNotesPatientData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20sp"
+        android:layout_marginTop="20sp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/DE_TEXT_PersonalData"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <SearchView
+        android:id="@+id/search_bar"
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ArztNotesPatientData"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="85dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="42dp"
+        android:layout_toStartOf="@+id/ArztNotesFilterButton"
+        android:background="@color/white"
+        android:hint="@string/DE_TEXT_Search_Bar"
+        android:textColorHint="#757575">
+
+    </SearchView>
+
+    <ImageButton
+        android:id="@+id/ArztNotesFilterButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_below="@+id/ArztNotesPatientData"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="98dp"
+        android:padding="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/img"
+        tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+
+    <EditText
+        android:id="@+id/Notes"
+        android:layout_width="187dp"
+        android:layout_height="151dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginHorizontal="20sp"
+        android:layout_marginEnd="92dp"
+        android:layout_marginBottom="80dp"
+        android:autofillHints="Kein Eintrag"
+        android:background="@color/white"
+        android:inputType="textLongMessage"
+        android:minHeight="48dp"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <CheckBox
+        android:id="@+id/ArztNotesCheckBoxMRT"
+        android:layout_width="163dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginStart="83dp"
+        android:layout_marginRight="55dp"
+        android:layout_marginBottom="85dp"
+        android:text="MRT"
+        android:textColor="#455A64"
+        tools:ignore="TextContrastCheck" />
+
+    <CheckBox
+        android:id="@+id/ArztNotesCheckBoxBlutErgebnis"
+        android:layout_width="157dp"
+        android:layout_height="64dp"
+        android:layout_above="@+id/ArztNotesCheckBoxMRT"
+        android:layout_alignParentStart="true"
+        android:layout_marginHorizontal="20sp"
+        android:layout_marginStart="91dp"
+        android:layout_marginBottom="31dp"
+        android:text="Blutergebnisse" />
+
+    <Button
+        android:id="@+id/ArztNotesSaveButton"
+        android:layout_width="177dp"
+        android:layout_height="72dp"
+        android:layout_above="@+id/ArztNotesAbortDeleteButton"
+        android:layout_marginHorizontal="20sp"
+        android:layout_marginStart="27dp"
+        android:layout_marginEnd="-57dp"
+        android:layout_marginBottom="18dp"
+        android:layout_toStartOf="@+id/Notes"
+        android:layout_toEndOf="@+id/ArztNotesCheckBoxBlutErgebnis"
+        android:backgroundTint="@color/save_button"
+        android:text="Speichern"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/ArztNotesAbortDeleteButton"
+        android:layout_width="173dp"
+        android:layout_height="59dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginHorizontal="20sp"
+        android:layout_marginStart="33dp"
+        android:layout_marginBottom="82dp"
+        android:layout_toEndOf="@+id/ArztNotesCheckBoxMRT"
+        android:backgroundTint="@color/abort_delete_logout_button"
+        android:text="Verwerfen"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/Recycler"
+        android:layout_width="590dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ArztNotesSaveButton"
+        android:layout_below="@+id/search_bar"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginHorizontal="20sp"
+        android:layout_marginStart="82dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="96dp"
+        android:layout_marginBottom="26dp"
+        android:textSize="13sp" />
+</RelativeLayout>
