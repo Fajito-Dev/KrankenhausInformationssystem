@@ -12,20 +12,22 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kis.Activities.ArztPatientDetailsActivity;
+import com.example.kis.Models.PatientModel;
+import com.example.kis.Models.EntryModel;
 import com.example.kis.R;
+
+import java.util.ArrayList;
 
 public class ArztPatientAdapter extends RecyclerView.Adapter<ArztPatientAdapter.ArztPatientViewHolder> {
 
-    String[] patientNames, patientBirthDates, patientDiagnoses;
     Context context;
+    ArrayList<PatientModel> patientModelList;
+    ArrayList<EntryModel> entryModeList;
 
 
-
-    public ArztPatientAdapter(Context cn, String[] pArr,String[] pBD, String[] pD ){
+    public ArztPatientAdapter(Context cn, ArrayList<PatientModel> patientModelList ){
         context = cn;
-        patientNames = pArr;
-        patientBirthDates = pBD;
-        patientDiagnoses = pD;
+        this.patientModelList = patientModelList;
     }
 
     @NonNull
@@ -38,9 +40,18 @@ public class ArztPatientAdapter extends RecyclerView.Adapter<ArztPatientAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull ArztPatientViewHolder holder, int position) {
-        holder.text1.setText(patientNames[position]);
-        holder.text2.setText(patientBirthDates[position]);
-        holder.text3.setText(patientDiagnoses[position]);
+        int bedNr = 0;
+        String bedNrS ="";
+        for(int i = 0;i<entryModeList.size();i++){
+            if(entryModeList.get(i).getPatientIde()==patientModelList.get(position).getPatientId()){
+                bedNr = entryModeList.get(i).getBedNr();
+                bedNrS = Integer.toString(bedNr);
+            }
+        }
+
+        holder.text1.setText(patientModelList.get(position).getPreName()+","+patientModelList.get(position).getName());
+        holder.text2.setText(patientModelList.get(position).getBirthDateS()+" (Alter)");
+        holder.text3.setText("BettNr " + bedNrS);
         holder.icon.setImageResource(R.drawable.img);
         holder.icon.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,7 +64,7 @@ public class ArztPatientAdapter extends RecyclerView.Adapter<ArztPatientAdapter.
 
     @Override
     public int getItemCount() {
-        return patientNames.length;
+        return patientModelList.size();
     }
 
     public static class ArztPatientViewHolder extends RecyclerView.ViewHolder{
