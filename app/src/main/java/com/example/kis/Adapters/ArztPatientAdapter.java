@@ -42,22 +42,19 @@ public class ArztPatientAdapter extends RecyclerView.Adapter<ArztPatientAdapter.
     @Override
     public void onBindViewHolder(@NonNull ArztPatientViewHolder holder, int position) {
         int bedNr = 0;
-        String bedNrS ="";
-        /*
+        String bedNrS = "";
+
         for(int i = 0;i<entryModelList.size();i++){
             if(entryModelList.get(i).getPatientIde()==patientModelList.get(position).getPatientId()){
                 bedNr = entryModelList.get(i).getBedNr();
                 bedNrS = Integer.toString(bedNr);
-                return;
             }
         }
-
-         */
 
         holder.text1.setText(patientModelList.get(position).getPreName()+" "+patientModelList.get(position).getName());
         holder.text2.setText(patientModelList.get(position).getBirthDateS()+" (Alter)");
         holder.text3.setText("X");
-        holder.text4.setText("BettNr");
+        holder.text4.setText("BettNr " + bedNrS);
 
         holder.icon.setImageResource(R.drawable.img);
         holder.icon.setOnClickListener(new View.OnClickListener() {
