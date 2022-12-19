@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.ArztNotesDetailsActivity">
+
+    <ImageButton
+        android:id="@+id/ArztNotesDetailsButtonBack"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginHorizontal="20dp"
+        />
+
+    <TextView
+        android:id="@+id/ArztNotesDetailsDate"
+        android:layout_width="91dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="20dp"
+        android:layout_toStartOf="@+id/ArztNotesDetailsEntryID"
+        android:layout_toEndOf="@+id/ArztNotesDetailsButtonBack"
+        android:text="@string/DE_TEXT_Datum"
+        android:textSize="20sp"
+        />
+
+    <TextView
+        android:id="@+id/ArztNotesDetailsEntryID"
+        android:layout_width="151dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="20dp"
+        android:textSize="20sp"
+        android:text="EintragsID"
+        />
+
+    <TextView
+        android:id="@+id/ArztNotesDetailNotesLongText"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/ArztNotesDetailsLymphoLeukoRatioTitel"
+        android:layout_below="@id/ArztNotesDetailsDate"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="30dp"
+        android:hint="@string/DE_TEXT_No_Entry"
+        android:textSize="13sp" />
+
+
+    <TextView
+        android:id="@+id/ArztNotesDetailsLymphoLeukoRatioTitel"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_above="@id/ArztNotesDetailsLymphoAbsolutTitel"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="10dp"
+        android:textSize="13sp"
+        android:text="@string/DE_TEXT_LeukoLymphoRatioTitel" />
+
+    <TextView
+        android:id="@+id/ArztNotesDetailsLymphoAbsolutTitel"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/ArztNotesDetailsLeukoTitel"
+        android:layout_alignParentStart="true"
+        android:layout_marginHorizontal="20sp"
+        android:layout_marginStart="20dp"
+        android:textSize="13sp"
+        android:text="@string/DE_TEXT_LeukoLymphoAbsolutTitel" />
+
+    <TextView
+        android:id="@+id/ArztNotesDetailsLymphoAbsolutValue"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/ArztNotesDetailsLeukoTitel"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="20dp"
+        android:text="@string/DE_TEXT_LeukoLymphoAbsolutValue"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/ArztNotesDetailsLymphoValue"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ArztNotesDetailsLymphoAbsolutTitel"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/DE_TEXT_LeukoLymphoAbsolutValue"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/ArztNotesDetailsLeukoTitel"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/ArztNotesDetailsImageViewMRT"
+        android:layout_alignParentStart="true"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/DE_TEXT_LeukoTitel"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/ArztNotesDetailsLeukoValue"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/ArztNotesDetailsImageViewMRT"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="10dp"
+        android:textSize="13sp"
+        android:text="@string/DE_TEXT_LeukoValue" />
+
+
+    <ImageView
+        android:id="@+id/ArztNotesDetailsImageViewMRT"
+        android:layout_width="391dp"
+        android:layout_height="252dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginHorizontal="20sp"
+        android:layout_marginBottom="150dp" />
+
+
+</RelativeLayout>

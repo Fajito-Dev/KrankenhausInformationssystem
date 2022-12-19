@@ -71,7 +71,7 @@
                 android:id="@+id/ArztPatientCardDetailsIcon"
                 android:layout_width="59dp"
                 android:layout_height="55dp"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginEnd="20dp"
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/DE_BUTTON_Show_Details"
