@@ -9,20 +9,22 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.kis.Models.EntryModel;
+import com.example.kis.Models.PatientModel;
 import com.example.kis.R;
+
+import java.util.ArrayList;
 
 public class ArztNotesAdapter extends RecyclerView.Adapter<ArztNotesAdapter.ArztNotesViewHolder> {
 
-    String[] dates, notes, states, painscala, documents;
     Context context;
+    ArrayList<PatientModel> patientModelList;
+    ArrayList<EntryModel> entryModelList;
 
-    public ArztNotesAdapter(Context cn, String[] d, String[] n, String[] s, String[] ps,String[] doc) {
-        context = cn;
-        dates = d;
-        notes = n;
-        states = s;
-        painscala = ps;
-        documents = doc;
+    public ArztNotesAdapter(Context context, ArrayList<PatientModel> patientModelList,ArrayList<EntryModel> entryModelList) {
+        this.context = context;
+        this.patientModelList = patientModelList;
+        this.entryModelList = entryModelList;
     }
 
     @NonNull
@@ -35,16 +37,20 @@ public class ArztNotesAdapter extends RecyclerView.Adapter<ArztNotesAdapter.Arzt
 
     @Override
     public void onBindViewHolder(@NonNull ArztNotesViewHolder holder, int position) {
-        holder.date.setText(dates[position]);
-        holder.note.setText(notes[position]);
-        holder.painscale.setText(painscala[position]);
-        holder.state.setText(states[position]);
-        holder.documents.setText(documents[position]);
+       // holder.date.setText(entryModelList.get(position).getDate());
+        holder.date.setText("22022022");
+        holder.note.setText(entryModelList.get(position).getNote());
+        holder.state.setText(entryModelList.get(position).getCondition());
+
+        holder.painscale.setText("TEST 1");
+        holder.state.setText("TEST 2");
+        holder.documents.setText("TEST 3");
+
     }
 
     @Override
     public int getItemCount() {
-        return dates.length;
+        return entryModelList.size();
     }
 
     public static class ArztNotesViewHolder extends RecyclerView.ViewHolder{
