@@ -2,6 +2,9 @@ package com.example.kis.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.CheckBox;
+import android.widget.Spinner;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,6 +15,8 @@ import com.example.kis.R;
 
 public class ArztPatientDetailsActivity extends AppCompatActivity {
     RecyclerView recyclerView;
+    Spinner spinner;
+    CheckBox mrt, erledigt, bluttest;
     DatabaseHelper databaseHelper;
 
     @Override
