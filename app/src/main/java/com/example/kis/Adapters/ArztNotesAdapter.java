@@ -16,7 +16,6 @@ import com.example.kis.R;
 import java.util.ArrayList;
 
 public class ArztNotesAdapter extends RecyclerView.Adapter<ArztNotesAdapter.ArztNotesViewHolder> {
-
     Context context;
     ArrayList<PatientModel> patientModelList;
     ArrayList<EntryModel> entryModelList;
