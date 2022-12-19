@@ -19,7 +19,7 @@ import com.example.kis.R;
 import java.util.ArrayList;
 
 public class ArztPatientAdapter extends RecyclerView.Adapter<ArztPatientAdapter.ArztPatientViewHolder> {
-
+    public static final String EXTRA_NUMBER = "com.example.kis.Adapters.EXTRA_NUMBER";
     Context context;
     ArrayList<PatientModel> patientModelList;
     ArrayList<EntryModel> entryModelList;
@@ -60,7 +60,9 @@ public class ArztPatientAdapter extends RecyclerView.Adapter<ArztPatientAdapter.
         holder.icon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int patientIdDetails = patientModelList.get(position).getPatientId();
                 Intent intent = new Intent(v.getContext(), ArztPatientDetailsActivity.class);
+                intent.putExtra(EXTRA_NUMBER,patientIdDetails);
                 holder.icon.getContext().startActivity(intent);
             }
         });

@@ -1,30 +1,30 @@
 package com.example.kis.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.kis.Adapters.ArztNotesAdapter;
+import com.example.kis.Adapters.ArztPatientAdapter;
+import com.example.kis.Database.DatabaseHelper;
 import com.example.kis.R;
 
 public class ArztPatientDetailsActivity extends AppCompatActivity {
     RecyclerView recyclerView;
-    String[] dates, notes, painscala, states, docs;
+    DatabaseHelper databaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_arzt_patient_details);
         recyclerView = findViewById(R.id.Recycler);
-        dates = getResources().getStringArray(R.array.notesDate);
-        notes = getResources().getStringArray(R.array.notes);
-        painscala = getResources().getStringArray(R.array.painscala);
-        states = getResources().getStringArray(R.array.zustand);
-        docs = getResources().getStringArray(R.array.LaborAnfrage);
+        Intent intent = getIntent();
+        int patientIdDetails = intent.getIntExtra(ArztPatientAdapter.EXTRA_NUMBER,0);
 
-        ArztNotesAdapter Adapter = new ArztNotesAdapter(this, dates, notes, painscala, states, docs);
-        recyclerView.setAdapter(Adapter);
+        databaseHelper = new DatabaseHelper(this);
+        ArztNotesAdapter adapter = new ArztNotesAdapter(this,databaseHelper.getSpecificPatient(patientIdDetails),databaseHelper.getPatientEntry(patientIdDetails));
+        recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 }
