@@ -1,7 +1,9 @@
 package com.example.kis.Activities;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
@@ -10,29 +12,35 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kis.Adapters.ArztPatientAdapter;
+import com.example.kis.Database.DatabaseHelper;
 import com.example.kis.R;
 
 
 public class ArztVisiteActivity extends AppCompatActivity {
-
-    RecyclerView recyclerView;
+    DatabaseHelper dataBaseHelper;
+    RecyclerView recyclerViewA;
     Button buttonLogout;
     ImageButton buttonPatientDetails;
-    String[] patientArr, patientBirthDates, patientDiagnoses;
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_arzt_visite);
+        recyclerViewA = findViewById(R.id.recyclerView);
+        buttonLogout = findViewById(R.id.ArztVisiteButtonLogout);
 
-        recyclerView = findViewById(R.id.recyclerView);
-        patientArr = getResources().getStringArray(R.array.patientNames);
-        patientBirthDates = getResources().getStringArray(R.array.patientBirthDates);
-        patientDiagnoses = getResources().getStringArray(R.array.patientDiagnose);
+        dataBaseHelper = new DatabaseHelper(ArztVisiteActivity.this);
+        ArztPatientAdapter adapter = new ArztPatientAdapter(this,dataBaseHelper.getEveryPatient(),dataBaseHelper.getEveryEntry());
+        recyclerViewA.setAdapter(adapter);
+        recyclerViewA.setLayoutManager(new LinearLayoutManager(this));
 
-        ArztPatientAdapter arztPatientAdapter = new ArztPatientAdapter(this,patientArr, patientBirthDates, patientDiagnoses);
-        recyclerView.setAdapter(arztPatientAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        buttonLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), StartActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

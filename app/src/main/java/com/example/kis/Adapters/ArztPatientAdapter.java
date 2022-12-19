@@ -12,20 +12,23 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kis.Activities.ArztPatientDetailsActivity;
+import com.example.kis.Models.PatientModel;
+import com.example.kis.Models.EntryModel;
 import com.example.kis.R;
 
+import java.util.ArrayList;
+
 public class ArztPatientAdapter extends RecyclerView.Adapter<ArztPatientAdapter.ArztPatientViewHolder> {
-
-    String[] patientNames, patientBirthDates, patientDiagnoses;
+    public static final String EXTRA_NUMBER = "com.example.kis.Adapters.EXTRA_NUMBER";
     Context context;
+    ArrayList<PatientModel> patientModelList;
+    ArrayList<EntryModel> entryModelList;
 
 
-
-    public ArztPatientAdapter(Context cn, String[] pArr,String[] pBD, String[] pD ){
-        context = cn;
-        patientNames = pArr;
-        patientBirthDates = pBD;
-        patientDiagnoses = pD;
+    public ArztPatientAdapter(Context context, ArrayList<PatientModel> patientModelList,ArrayList<EntryModel> entryModelList){
+        this.context = context;
+        this.patientModelList = patientModelList;
+        this.entryModelList = entryModelList;
     }
 
     @NonNull
@@ -38,14 +41,28 @@ public class ArztPatientAdapter extends RecyclerView.Adapter<ArztPatientAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull ArztPatientViewHolder holder, int position) {
-        holder.text1.setText(patientNames[position]);
-        holder.text2.setText(patientBirthDates[position]);
-        holder.text3.setText(patientDiagnoses[position]);
+        int bedNr = 0;
+        String bedNrS = "";
+
+        for(int i = 0;i<entryModelList.size();i++){
+            if(entryModelList.get(i).getPatientIde()==patientModelList.get(position).getPatientId()){
+                bedNr = entryModelList.get(i).getBedNr();
+                bedNrS = Integer.toString(bedNr);
+            }
+        }
+
+        holder.text1.setText(patientModelList.get(position).getPreName()+" "+patientModelList.get(position).getName());
+        holder.text2.setText(patientModelList.get(position).getBirthDateS()+" (Alter)");
+        holder.text3.setText("X");
+        holder.text4.setText("BettNr " + bedNrS);
+
         holder.icon.setImageResource(R.drawable.img);
         holder.icon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int patientIdDetails = patientModelList.get(position).getPatientId();
                 Intent intent = new Intent(v.getContext(), ArztPatientDetailsActivity.class);
+                intent.putExtra(EXTRA_NUMBER,patientIdDetails);
                 holder.icon.getContext().startActivity(intent);
             }
         });
@@ -53,11 +70,11 @@ public class ArztPatientAdapter extends RecyclerView.Adapter<ArztPatientAdapter.
 
     @Override
     public int getItemCount() {
-        return patientNames.length;
+        return patientModelList.size();
     }
 
     public static class ArztPatientViewHolder extends RecyclerView.ViewHolder{
-        TextView text1, text2, text3;
+        TextView text1, text2, text3, text4;
         ImageButton icon;
 
         public ArztPatientViewHolder(@NonNull View itemView) {
@@ -65,6 +82,7 @@ public class ArztPatientAdapter extends RecyclerView.Adapter<ArztPatientAdapter.
             text1 = itemView.findViewById(R.id.ArztPatientCardName);
             text2 = itemView.findViewById(R.id.ArztPatientCardBirthDate);
             text3 = itemView.findViewById(R.id.ArztPatientCardDiagnose);
+            text4 = itemView.findViewById(R.id.ArztPatientCardBettNummer);
             icon = itemView.findViewById(R.id.ArztPatientCardDetailsIcon);
         }
     }

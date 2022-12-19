@@ -12,7 +12,7 @@ import com.example.kis.Models.EntryModel;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-
+//neu
 public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String PATIENT_TABLE = "PATIENT_TABLE";
     public static final String COLUMN_PATIENT_PATIENTID = "PATIENT_PATIENTID";
@@ -94,6 +94,35 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return returnList;
     }
+    //gitb Liste mit bestimmten Patient aus
+    public ArrayList<PatientModel> getSpecificPatient(int patientIdDetails){
+        ArrayList<PatientModel> returnList = new ArrayList<>();
+        //get data from the database
+        String queryString = "SELECT * FROM "+ PATIENT_TABLE;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(queryString,null);
+
+        if(cursor.moveToFirst()){
+            //loop thru the cursor(result set) and creat a new customer object put them in the return List
+            do{
+                int patientID = cursor.getInt(0);
+                String patientPreName = cursor.getString(1);
+                String patientName = cursor.getString(2);
+                int patientBirthdate = cursor.getInt(3);
+
+                if(patientID==patientIdDetails) {
+                    PatientModel newPatient = new PatientModel(patientID, patientPreName, patientName, patientBirthdate);
+                    returnList.add(newPatient);
+                }
+            }while(cursor.moveToNext());
+        }else{
+            //failure do not add anything to the List
+        }
+        //close both cursor and database
+        cursor.close();
+        db.close();
+        return returnList;
+    }
 
     public boolean addEntry(EntryModel entryModel){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -144,6 +173,43 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
                 EntryModel newEntry = new EntryModel(eintragId,patientIDE,date,bedNr,visited,condition,mrt,bloodtest,note,leukoNl,lymphoProzent,lymphoAbsolut);
                 returnList2.add(newEntry);
+            }while(cursor.moveToNext());
+        }else{
+            //failure do not add anything to the List
+        }
+        //close both cursor and database
+        cursor.close();
+        db.close();
+        return returnList2;
+    }
+    //gibt Liste mit allen Einträgen von bestimmten Patienten aus
+    public ArrayList<EntryModel> getPatientEntry(int patientIdDetails){
+        ArrayList<EntryModel> returnList2 = new ArrayList<>();
+        //get data from the database
+        String queryString = "SELECT * FROM "+ ENTRY_TABLE;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(queryString,null);
+
+        if(cursor.moveToFirst()){
+            //loop thru the cursor(result set) and creat a new customer object put them in the return List
+            do{
+                int eintragId = cursor.getInt(0);
+                int patientIDE = cursor.getInt(1);
+                int date = cursor.getInt(2);
+                int bedNr = cursor.getInt(3);
+                boolean visited = cursor.getInt(4) == 1 ? true: false;
+                String condition = cursor.getString(5);
+                boolean mrt = cursor.getInt(6) == 1 ? true: false;
+                boolean bloodtest = cursor.getInt(7) == 1 ? true: false;
+                String note = cursor.getString(8);
+                float leukoNl = cursor.getFloat(9);
+                float lymphoProzent = cursor.getFloat(10);
+                float lymphoAbsolut = cursor.getFloat(11);
+
+                if(patientIDE==patientIdDetails) {
+                    EntryModel newEntry = new EntryModel(eintragId, patientIDE, date, bedNr, visited, condition, mrt, bloodtest, note, leukoNl, lymphoProzent, lymphoAbsolut);
+                    returnList2.add(newEntry);
+                }
             }while(cursor.moveToNext());
         }else{
             //failure do not add anything to the List
