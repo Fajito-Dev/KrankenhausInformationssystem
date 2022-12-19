@@ -38,7 +38,7 @@ public class AdministrationAddPatientActivity extends AppCompatActivity {
                 //BettNr,Datum,eintragsId Autoincrement noch richtig machen
                 try {
                     patientModel = new PatientModel(Integer.parseInt(edtPatientenId.getText().toString()), edtPrename.getText().toString(), edtName.getText().toString(), Integer.parseInt(edtBirthdate.getText().toString()));
-                    entryModel = new EntryModel(0,Integer.parseInt(edtPatientenId.getText().toString()),0,1,false,"ohneBefund",false, false,"Patient eingewiesen",0,0,0);
+                    entryModel = new EntryModel(0,Integer.parseInt(edtPatientenId.getText().toString()),0,dataBaseHelper.getFreeBed(),false,"ohneBefund",false, false,"Patient eingewiesen",0,0,0);
                     Toast.makeText(AdministrationAddPatientActivity.this, patientModel.toString(), Toast.LENGTH_SHORT).show();
                 } catch (Exception e) { //dat is schwachsinn :O
                     Toast.makeText(AdministrationAddPatientActivity.this, "error creating customer", Toast.LENGTH_SHORT).show();

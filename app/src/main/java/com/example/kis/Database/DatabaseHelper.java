@@ -219,5 +219,41 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return returnList2;
     }
+
+
+    //gibt Liste mit allen Einträgen von bestimmten Patienten aus
+    public int getFreeBed(){
+        int freeBed = 0;
+        //get data from the database
+        String queryString = "SELECT * FROM "+ ENTRY_TABLE;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(queryString,null);
+
+        for(int i=1;i<=100;i++) {
+            int test = 0;
+            if (cursor.moveToFirst()) {
+                //loop thru the cursor(result set) and creat a new customer object put them in the return List
+                do {
+                    int bedNr = cursor.getInt(3);
+
+                    if(i==bedNr){
+                    test = 1;
+                    }
+                } while (cursor.moveToNext());
+            } else {
+                //failure do not add anything to the List
+            }
+            if(test==0){
+                //close both cursor and database
+                freeBed = i;
+                cursor.close();
+                db.close();
+                return freeBed;
+            }
+        }
+        cursor.close();
+        db.close();
+        return freeBed;
+    }
 }
 
