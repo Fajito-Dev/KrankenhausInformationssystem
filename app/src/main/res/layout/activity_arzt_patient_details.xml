@@ -8,102 +8,130 @@
     tools:context=".Activities.ArztPatientDetailsActivity">
 
     <TextView
-        android:id="@+id/ArztNotesPatientData"
+        android:id="@+id/ArztNotesPatientName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="35sp"
         android:layout_marginHorizontal="20sp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="10dp"
+        android:textColor="@color/black"
         android:textSize="30sp"
-        android:textAlignment="center"
         android:textStyle="bold"
         android:text="@string/DE_TEXT_PersonalData"
         />
 
-    <SearchView
-        android:id="@+id/search_bar"
-        android:layout_width="315dp"
-        android:layout_height="48dp"
-        android:layout_below="@id/ArztNotesPatientData"
-        android:layout_marginStart="20dp"
-        android:layout_toStartOf="@+id/ArztNotesFilterButton"
-        android:background="@color/white"
-        android:hint="@string/DE_TEXT_Search_Bar"
-        android:textColorHint="#757575" />
+    <TextView
+        android:id="@+id/ArztNotesGeburtstag"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ArztNotesPatientName"
+        android:layout_marginHorizontal="20dp"
+        android:text="@string/DE_TEXT_PersonalDataAge"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
 
-    <ImageButton
-        android:id="@+id/ArztNotesFilterButton"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_below="@id/ArztNotesPatientData"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="10dp"
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ArztNotesPatientName"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginStart="35dp"
         android:layout_marginEnd="20dp"
-        android:padding="0dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/img"
-        tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:layout_toEndOf="@+id/ArztNotesGeburtstag"
+        android:text="@string/DE_TEXT_PersonalDataBett" />
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/Recycler"
-        android:layout_width="match_parent"
-        android:layout_height="325dp"
-        android:layout_below="@id/search_bar"
+        android:layout_width="367dp"
+        android:layout_height="303dp"
+        android:layout_above="@+id/Notes"
+        android:layout_below="@+id/ArztNotesGeburtstag"
         android:layout_marginHorizontal="20sp"
         android:layout_marginTop="11dp"
+        android:layout_marginBottom="22dp"
         android:textSize="13sp" />
 
     <EditText
         android:id="@+id/Notes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/Recycler"
+        android:layout_above="@+id/ArztNotesCheckBoxMRT"
         android:layout_marginHorizontal="20sp"
-        android:layout_marginTop="20dp"
+        android:layout_marginBottom="19dp"
+        android:autofillHints="Kein Eintrag"
         android:background="@color/white"
+        android:inputType="textLongMessage"
         android:minHeight="48dp"
-        tools:ignore="SpeakableTextPresentCheck"
-        android:autofillHints="Kein Eintrag" />
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <CheckBox
         android:id="@+id/ArztNotesCheckBoxMRT"
         android:layout_width="160dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/Notes"
+        android:layout_height="48dp"
+        android:layout_above="@+id/ArztNotesCheckBoxBlutErgebnis"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="15dp"
-        android:text="MRT" />
+        android:layout_marginBottom="12dp"
+        android:text="MRT"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
+    <CheckBox
+        android:id="@+id/ArztNotesCheckBoxVisiteDone"
+        android:layout_width="160dp"
+        android:layout_height="48dp"
+        android:layout_above="@+id/ArztNotesSaveButton"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="16dp"
+        android:text="erledigt"
+        android:textStyle="bold" />
 
     <CheckBox
         android:id="@+id/ArztNotesCheckBoxBlutErgebnis"
         android:layout_width="160dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/Notes"
+        android:layout_above="@+id/ArztNotesCheckBoxVisiteDone"
         android:layout_marginHorizontal="20sp"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="15dp"
-        android:layout_toEndOf="@+id/ArztNotesCheckBoxMRT"
-        android:text="Blutergebnisse" />
+        android:layout_marginBottom="6dp"
+        android:text="Blutergebnisse"
+        android:textStyle="bold" />
+
+    <Spinner
+        android:id="@+id/ArztNotesSpinnerZustand"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/ArztNotesSaveButton"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="20sp"
+        android:layout_marginBottom="128dp"
+        android:layout_toEndOf="@id/ArztNotesCheckBoxMRT"
+        android:contentDescription="@string/DE_TEXT_Zustand"
+        android:minHeight="48dp" />
 
     <Button
         android:id="@+id/ArztNotesSaveButton"
-        android:layout_width="368dp"
-        android:layout_height="59dp"
-        android:layout_below="@id/ArztNotesCheckBoxBlutErgebnis"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_above="@id/ArztNotesButtonVerwerfen"
         android:layout_marginHorizontal="20sp"
-        android:layout_marginTop="20dp"
+        android:layout_marginBottom="13dp"
         android:backgroundTint="@color/save_button"
-        android:textColor="@color/black"
         android:text="Speichern"
-        android:textStyle="bold"
-        android:textSize="15sp"/>
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:textStyle="bold" />
 
     <Button
-        android:layout_width="368dp"
-        android:layout_height="59dp"
-        android:layout_below="@+id/ArztNotesSaveButton"
+        android:id="@+id/ArztNotesButtonVerwerfen"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
         android:layout_marginHorizontal="20sp"
-        android:layout_marginTop="20dp"
+        android:layout_marginBottom="61dp"
         android:backgroundTint="@color/abort_delete_logout_button"
         android:text="Verwerfen"
         android:textColor="@color/black"
