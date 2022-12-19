@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".Activities.LaborChecklistActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/LaborChecklistTitel1"
+        android:text="@string/DE_TEXT_ArztViteTitel1"
+        android:textSize="30sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:layout_marginTop="35dp"
+        android:layout_marginHorizontal="20dp"/>
+
+    <TextView
+        android:id="@+id/LaborChecklistTitel2"
+        android:textColor="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/LaborChecklistTitel1"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="20dp"
+        android:layout="@id/LaborChecklistTitel2"
+        android:text="@string/DE_TEXT_ArztViteTitel2"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <SearchView
+        android:id="@+id/search_bar"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@+id/LaborChecklistTitel2"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="30dp"
+        android:layout_toStartOf="@+id/LaborChecklistFilterButton"
+        android:background="@color/white"
+        android:hint="Patient suchen ..."
+        android:textColorHint="#757575" />
+
+    <ImageButton
+        android:id="@+id/LaborChecklistFilterButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_below="@+id/LaborChecklistTitel2"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="20dp"
+        android:adjustViewBounds="true"
+        android:padding="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/img" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/LaborChecklistrecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/LaborChecklistButtonLogout"
+        android:layout_below="@+id/search_bar"
+        android:layout_marginHorizontal="20sp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="30dp" />
+
+    <Button
+        android:id="@+id/LaborChecklistButtonLogout"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:textColor="@color/black"
+        android:backgroundTint="@color/abort_delete_logout_button"
+        android:layout_alignParentBottom="true"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="40dp"
+        android:text="@string/DE_BUTTON_Logout" />
+
+
+</RelativeLayout>

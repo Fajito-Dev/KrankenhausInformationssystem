@@ -17,7 +17,7 @@ public class StartActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.start_activity);
 
         buttonDoctor = findViewById(R.id.ButtonArztHome);
         buttonLaboratory = findViewById(R.id.ButtonLabor);
@@ -33,7 +33,7 @@ public class StartActivity extends AppCompatActivity {
         buttonLaboratory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), LaborPatientDetailsActivity.class);
+                Intent intent = new Intent(getApplicationContext(), LaborChecklistActivity.class);
                 startActivity(intent);
             }
         });
