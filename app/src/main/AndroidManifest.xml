@@ -13,6 +13,13 @@
         android:theme="@style/Theme.KIS"
         tools:targetApi="31">
         <activity
+            android:name=".ArztNotesDetailsActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".Activities.AdministrationAddPatientActivity"
             android:exported="false">
             <meta-data

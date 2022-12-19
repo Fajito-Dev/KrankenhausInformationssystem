@@ -1,14 +1,17 @@
 package com.example.kis.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.kis.Activities.ArztNotesDetailsActivity;
 import com.example.kis.Models.EntryModel;
 import com.example.kis.Models.PatientModel;
 import com.example.kis.R;
@@ -41,11 +44,16 @@ public class ArztNotesAdapter extends RecyclerView.Adapter<ArztNotesAdapter.Arzt
         holder.date.setText("22022022");
         holder.note.setText(entryModelList.get(position).getNote());
         holder.state.setText(entryModelList.get(position).getCondition());
-
-        holder.painscale.setText("TEST 1");
         holder.state.setText("TEST 2");
         holder.documents.setText("TEST 3");
-
+        holder.imageButton.setImageResource(R.drawable.img);
+        holder.imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), ArztNotesDetailsActivity.class);
+                holder.imageButton.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -54,16 +62,16 @@ public class ArztNotesAdapter extends RecyclerView.Adapter<ArztNotesAdapter.Arzt
     }
 
     public static class ArztNotesViewHolder extends RecyclerView.ViewHolder{
-        TextView date, note, painscale, state, documents;
+        TextView date, note, state, documents;
+        ImageButton imageButton;
 
         public ArztNotesViewHolder(@NonNull View itemView) {
             super(itemView);
             date = itemView.findViewById(R.id.ArztNotesCardDatum);
             note = itemView.findViewById(R.id.ArztNotesCardNote);
-            painscale = itemView.findViewById(R.id.ArztNotesCardSchmerzensgrad);
             state = itemView.findViewById(R.id.ArztNotesCardZustand);
             documents = itemView.findViewById(R.id.ArztNotesCardRequestedDocuments);
-
+            imageButton = itemView.findViewById(R.id.ArztNotesCardDetailsIcon);
         }
     }
 }

@@ -29,8 +29,12 @@
     <string name="DE_TEXT_Notiz">Notitz</string>
     <string name="DE_TEXT_Datum">Datum</string>
     <string name="DE_TEXT_RequestedDocuments">Dokumente</string>
-
-
+    <string name="DE_TEXT_LeukoTitel">Leukozyten/nl</string>
+    <string name="DE_TEXT_LeukoValue">Wert</string>
+    <string name="DE_TEXT_LeukoLymphoRatioTitel">Lymphozyten (% der Leuko)</string>
+    <string name="DE_TEXT_LeukoLyphoRatioValue">Wert</string>
+    <string name="DE_TEXT_LeukoLymphoAbsolutTitel">Lymphozyten absolut in 100/nl</string>
+    <string name="DE_TEXT_LeukoLymphoAbsolutValue">Wert</string>
     <string name="DE_TEXT_ArztViteTitel1">Visite</string>
     <string name="DE_TEXT_ArztViteTitel2">Checkliste</string>
     <string name="DE_TEXT_ArztViteCounter">Status</string> <!-- Anzeige wie viele Patienten noch offen sind fuür den Tag-->
