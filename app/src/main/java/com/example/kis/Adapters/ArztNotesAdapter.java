@@ -19,6 +19,7 @@ import com.example.kis.R;
 import java.util.ArrayList;
 
 public class ArztNotesAdapter extends RecyclerView.Adapter<ArztNotesAdapter.ArztNotesViewHolder> {
+    public static final String EXTRA_NUMBER2 = "com.example.kis.Adapters.EXTRA_NUMBER2";
     Context context;
     ArrayList<PatientModel> patientModelList;
     ArrayList<EntryModel> entryModelList;
@@ -44,24 +45,26 @@ public class ArztNotesAdapter extends RecyclerView.Adapter<ArztNotesAdapter.Arzt
         //abfrage zu MRT/Blutergebnisse
         String documentEntry = "kein Dokument";
         if(entryModelList.get(position).isMrt()==true& entryModelList.get(position).isBloodtest()==true){
-            documentEntry = "MRT und Blutwerte";
+            documentEntry = "MRT & Blutwerte";
         }else if(entryModelList.get(position).isMrt()==true){
             documentEntry = "MRT";
         }else if(entryModelList.get(position).isBloodtest()==true){
             documentEntry = "Blutwerte";
         }
 
+        String entryId = Integer.toString(entryModelList.get(position).getEintragId());
 
-        holder.date.setText("22022022");
+        holder.date.setText("22022022  #" + entryId);
         holder.note.setText(entryModelList.get(position).getNote());
         holder.state.setText(entryModelList.get(position).getCondition());
-        holder.state.setText("TEST 2");
-        holder.documents.setText("TEST 3");
+        holder.documents.setText(documentEntry);
         holder.imageButton.setImageResource(R.drawable.img);
         holder.imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int entryIdDetails = entryModelList.get(position).getEintragId();
                 Intent intent = new Intent(v.getContext(), ArztNotesDetailsActivity.class);
+                intent.putExtra(EXTRA_NUMBER2,entryIdDetails);
                 holder.imageButton.getContext().startActivity(intent);
             }
         });
