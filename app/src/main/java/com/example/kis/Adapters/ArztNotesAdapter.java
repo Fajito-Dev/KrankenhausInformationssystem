@@ -35,7 +35,7 @@ public class ArztNotesAdapter extends RecyclerView.Adapter<ArztNotesAdapter.Arzt
     @Override
     public ArztNotesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.arzt_notes_row, parent, false);
+        View view = inflater.inflate(R.layout.arzt_notes_card, parent, false);
         return new ArztNotesViewHolder(view);
     }
 
