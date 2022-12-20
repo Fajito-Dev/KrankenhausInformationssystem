@@ -34,7 +34,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/AdministrationPatientCardName" />
 
             <TextView
-                android:id="@+id/AdministrationPatientCardBedNr."
+                android:id="@+id/AdministrationPatientCardBedNr"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/AdministrationPatientCardBirthDate"
@@ -65,10 +65,10 @@
                 android:id="@+id/AdministrationPatientCardInsuranceNumber"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/AdministrationPatientCardBedNr."
+                android:layout_toEndOf="@id/AdministrationPatientCardBedNr"
                 android:text="@string/DE_TEXT_PersonalDataKrankenkasse"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/AdministrationPatientCardBedNr."
+                app:layout_constraintStart_toEndOf="@+id/AdministrationPatientCardBedNr"
                 tools:ignore="MissingConstraints" />
 
 
