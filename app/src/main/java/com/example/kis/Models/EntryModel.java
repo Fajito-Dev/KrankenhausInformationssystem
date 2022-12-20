@@ -14,7 +14,6 @@ public class EntryModel {
     private float lymphoProzent;
     private float lymphoAbsolut;
 
-
     public EntryModel(int patientIde, int date, int bedNr, boolean visited, String condition, boolean mrt, boolean bloodtest, String note, float leukoNl, float lymphoProzent, float lymphoAbsolut) {
         this.patientIde = patientIde;
         this.date = date;

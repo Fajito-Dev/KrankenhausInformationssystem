@@ -8,50 +8,192 @@
     tools:context=".Activities.LaborPatientDetailsActivity">
 
     <TextView
-        android:id="@+id/PatientName"
+        android:id="@+id/LaborPatientDetailsName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40sp"
         android:layout_marginHorizontal="20sp"
         android:textSize="25sp"
-        android:text="*NameAusDatenbank*"
+        android:text="@string/DE_TEXT_PersonalData"
         />
 
     <TextView
-        android:layout_below="@id/PatientName"
+        android:id="@+id/LaborPatientDetailsAge"
+        android:layout_width="178dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/LaborPatientDetailsName"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="0dp"
+        android:text="@string/DE_TEXT_PersonalDataAge"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/laborPatientDetailsAge"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/LaborPatientDetails"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="20dp"
+        android:text="EntryID"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/LaborPatientDetailsDate"
+        android:layout_width="178dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/LaborPatientDetailsName"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="28dp"
+        android:text="@string/DE_TEXT_Datum"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/LaborPatientDetailsRequestedDocuments"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/LaborPatientDetailsDate"
+        android:layout_alignParentStart="true"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="0dp"
+        android:text="@string/DE_TEXT_RequestedDocuments"
+        android:textSize="20sp" />
+
+    <TextView
         android:id="@+id/LaborPatientDetails"
-        android:layout_width="match_parent"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
+        android:layout_below="@id/LaborPatientDetailsName"
+        android:layout_alignParentEnd="true"
         android:layout_marginHorizontal="20sp"
-        android:layout_marginBottom="10dp"
-        android:textSize="20sp"
-        android:text="*DateAusDatenbank*"
-        />
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="20dp"
+        android:text="@string/DE_TEXT_PersonalDataBett"
+        android:textSize="20sp" />
 
-    <ImageSwitcher
-        android:layout_below="@id/LaborPatientDetails"
-        android:id="@+id/MRTpreview"
+    <TextView
+        android:id="@+id/LaborPatientDetailsNotes"
+        android:background="@color/white"
         android:layout_width="match_parent"
-        android:layout_height="300sp"
+        android:layout_height="65dp"
+        android:layout_below="@id/LaborPatientDetailsRequestedDocuments"
         android:layout_marginHorizontal="20sp"
-        android:textSize="20sp"
-        />
+        android:layout_marginTop="11dp"
+        android:hint="@string/DE_TEXT_Notes"
+        android:textSize="20sp" />
 
-    <Button
-        android:id="@+id/selectFileButton"
+    <Spinner
+        android:id="@+id/LaborPatientDetailsSpinnerMRT"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/MRTpreview"
+        android:background="@color/white"
+        android:layout_height="48dp"
+        android:layout_below="@+id/LaborPatientDetailsNotes"
+        android:layout_marginHorizontal="20sp"
+        android:layout_marginTop="18dp"
+        android:textSize="20sp" />
+
+    <ImageView
+
+        android:id="@+id/LaborPatientDetailsMRTPreview"
+        android:layout_width="match_parent"
+        android:layout_height="212dp"
+        android:layout_above="@+id/laborPatientDetailsLymphoLeukoRatioValue"
+        android:layout_below="@+id/LaborPatientDetailsSpinnerMRT"
         android:layout_marginHorizontal="20sp"
         android:layout_marginTop="20dp"
-        android:text="File auswählen"
-        />
+        android:layout_marginBottom="25dp"
+        android:background="@color/white"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/LaborPatientDetailsLymphoLeukoRatio"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/LaborPatientDetailsLymphoAbsolutTitel"
+        android:layout_marginHorizontal="20sp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/DE_TEXT_LeukoLymphoRatioTitel"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/LaborPatientDetailsLymphoAbsolutTitel"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/LaborPatientDetailsLeukoTitel"
+        android:layout_marginHorizontal="20sp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/DE_TEXT_LeukoLymphoRatioTitel"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/LaborPatientDetailsLeukoTitel"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/LaborPatientDetailsButtonSubmit"
+        android:layout_marginHorizontal="20sp"
+        android:layout_marginBottom="25dp"
+        android:text="@string/DE_TEXT_LeukoTitel"
+        android:textSize="13sp" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/laborPatientDetailsLeukoValue"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+
+        android:layout_above="@+id/LaborPatientDetailsButtonSubmit"
+        android:layout_marginHorizontal="20sp"
+        android:layout_marginStart="0dp"
+        android:layout_marginBottom="13dp"
+        android:layout_toEndOf="@+id/LaborPatientDetailsLeukoTitel"
+        android:text="@string/DE_TEXT_LeukoValue"
+        android:textSize="13sp" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/LaborPatientDetailsLymphoLeukoRatioValue"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_above="@+id/laborPatientDetailsLeukoValue"
+        android:layout_marginHorizontal="20sp"
+        android:layout_toEndOf="@+id/LaborPatientDetailsLeukoTitel"
+        android:text="@string/DE_TEXT_LeukoValue"
+        android:textSize="13sp" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/laborPatientDetailsLymphoLeukoRatioValue"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+
+        android:layout_above="@+id/LaborPatientDetailsLymphoLeukoRatioValue"
+        android:layout_marginHorizontal="20sp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp"
+        android:layout_toEndOf="@+id/LaborPatientDetailsLymphoLeukoRatio"
+        android:text="@string/DE_TEXT_LeukoValue"
+        android:textSize="13sp" />
 
     <Button
+        android:id="@+id/LaborPatientDetailsButtonSubmit"
+        android:backgroundTint="@color/save_button"
+        android:textColor="@color/black"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/MRTpreview"
+        android:layout_above="@+id/LaborPatientDetailsAbort"
         android:layout_marginHorizontal="20sp"
-        android:layout_marginTop="100dp"
-        android:text="senden" />
+        android:layout_marginBottom="30dp"
+        android:text="Senden" />
+
+    <Button
+        android:id="@+id/LaborPatientDetailsAbort"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:backgroundTint="@color/abort_delete_logout_button"
+        android:layout_alignParentBottom="true"
+        android:layout_marginHorizontal="20sp"
+        android:layout_marginBottom="84dp"
+        android:text="Abort"/>
 </RelativeLayout>
