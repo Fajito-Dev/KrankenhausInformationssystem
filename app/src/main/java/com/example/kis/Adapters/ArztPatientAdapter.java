@@ -35,7 +35,7 @@ public class ArztPatientAdapter extends RecyclerView.Adapter<ArztPatientAdapter.
     @Override
     public ArztPatientViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.arzt_patient_row, parent, false);
+        View view = inflater.inflate(R.layout.arzt_patient_card, parent, false);
         return new ArztPatientViewHolder(view);
     }
 

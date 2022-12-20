@@ -12,7 +12,7 @@
     <string name="DE_TEXT_App_Name">KIS</string>
 
     <!--====================== Details View ======================-->
-    <string name="DE_TEXT_PersonalDataKrankenkasse">ID</string>
+    <string name="DE_TEXT_PersonalDataKrankenkasse">KrankankassenNr</string>
     <string name="DE_TEXT_PersonalDataName">Name</string>
     <string name="DE_TEXT_PersonalData">Vorname, Nachname</string>
     <string name="DE_TEXT_Personal_Data_2">Vorname</string>
