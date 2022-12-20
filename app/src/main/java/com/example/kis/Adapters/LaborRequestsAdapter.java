@@ -22,6 +22,7 @@ import com.example.kis.R;
 import java.util.ArrayList;
 
 public class LaborRequestsAdapter extends RecyclerView.Adapter<LaborRequestsAdapter.LaborRequestViewHolder> {
+    public static final String EXTRA_NUMBER3 = "com.example.kis.Adapters.EXTRA_NUMBER3";
     Context context;
     ArrayList<PatientModel> patientModelList;
     ArrayList<EntryModel> entryModelList;
@@ -72,7 +73,9 @@ public class LaborRequestsAdapter extends RecyclerView.Adapter<LaborRequestsAdap
         holder.imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int entryIdDetails = entryModelList.get(position).getEintragId();
                 Intent intent = new Intent(v.getContext(), LaborPatientDetailsActivity.class);
+                intent.putExtra(EXTRA_NUMBER3,entryIdDetails);
                 holder.imageButton.getContext().startActivity(intent);
             }
         });
