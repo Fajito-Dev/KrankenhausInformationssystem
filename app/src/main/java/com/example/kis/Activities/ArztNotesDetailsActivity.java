@@ -10,7 +10,6 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.kis.Adapters.ArztNotesAdapter;
-import com.example.kis.Adapters.ArztPatientAdapter;
 import com.example.kis.Database.DatabaseHelper;
 import com.example.kis.R;
 
@@ -35,6 +34,14 @@ public class ArztNotesDetailsActivity extends AppCompatActivity {
         Intent intent = getIntent();
         int entryId = intent.getIntExtra(ArztNotesAdapter.EXTRA_NUMBER2,0);
 
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
+
         String entryDate = Integer.toString(databaseHelper.getSpecificEntryModelEntryId(entryId).getDate());
         String enryIdTxt = Integer.toString(databaseHelper.getSpecificEntryModelEntryId(entryId).getEintragId());
 
@@ -48,17 +55,5 @@ public class ArztNotesDetailsActivity extends AppCompatActivity {
         tvEntryLeukoNl.setText(entryLeukoNl);
         tvEntryLymphoPercent.setText(entryLypmhoPercent);
         tvEntryLymphoAbsolut.setText(entryLymphoAbsolut);
-
-        /*
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), ArztPatientDetailsActivity.class);
-                startActivity(intent);
-            }
-        });
-        */
-
-
     }
 }

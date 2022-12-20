@@ -81,8 +81,8 @@ public class ArztPatientAdapter extends RecyclerView.Adapter<ArztPatientAdapter.
             super(itemView);
             text1 = itemView.findViewById(R.id.ArztPatientCardName);
             text2 = itemView.findViewById(R.id.ArztPatientCardBirthDate);
-            text3 = itemView.findViewById(R.id.ArztPatientCardDiagnose);
             text4 = itemView.findViewById(R.id.ArztPatientCardBettNummer);
+            text3 = itemView.findViewById(R.id.ArztPatientCardRequestedDocuments);
             icon = itemView.findViewById(R.id.ArztPatientCardDetailsIcon);
         }
     }
