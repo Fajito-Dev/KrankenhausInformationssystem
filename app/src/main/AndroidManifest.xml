@@ -13,7 +13,7 @@
         android:theme="@style/Theme.KIS"
         tools:targetApi="31">
         <activity
-            android:name=".AdministrationHomeActivity"
+            android:name=".Activities.AdministrationHomeActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

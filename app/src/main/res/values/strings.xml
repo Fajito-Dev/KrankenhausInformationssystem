@@ -38,6 +38,7 @@
     <string name="DE_TEXT_ArztViteTitel1">Visite</string>
     <string name="DE_TEXT_ArztViteTitel2">Checkliste</string>
     <string name="DE_TEXT_ArztViteCounter">Status</string> <!-- Anzeige wie viele Patienten noch offen sind fuür den Tag-->
+    <string name="DE_TEXT_AdministrationTitel">Administration</string>
 
 
     <!-- Button -->
