@@ -3,6 +3,8 @@ package com.example.kis.Activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -20,7 +22,7 @@ import com.example.kis.Database.DatabaseHelper;
 import com.example.kis.Models.EntryModel;
 import com.example.kis.R;
 
-public class ArztPatientDetailsActivity extends AppCompatActivity {
+public class ArztPatientDetailsActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     RecyclerView recyclerView;
     Spinner condition;
     CheckBox mrt, blodtest, visit;
@@ -28,6 +30,7 @@ public class ArztPatientDetailsActivity extends AppCompatActivity {
     DatabaseHelper databaseHelper;
     EditText note;
     Button btnSafe,btnBack;
+    String textSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +47,11 @@ public class ArztPatientDetailsActivity extends AppCompatActivity {
         note = findViewById(R.id.Notes);
         btnSafe = findViewById(R.id.ArztNotesSaveButton);
         btnBack = findViewById(R.id.ArztNotesButtonVerwerfen);
+
+        ArrayAdapter<CharSequence> adapterB = ArrayAdapter.createFromResource(this, R.array.zustand, android.R.layout.simple_spinner_item);
+        adapterB.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        condition.setAdapter(adapterB);
+        condition.setOnItemSelectedListener(this);
 
         Intent intent = getIntent();
         int patientIdDetails = intent.getIntExtra(ArztPatientAdapter.EXTRA_NUMBER,0);
@@ -70,7 +78,7 @@ public class ArztPatientDetailsActivity extends AppCompatActivity {
                     if(visit.isChecked()==true){
                         visitNr = 1;
                     }
-                    entryModel = new EntryModel(0,patientIdDetails,0,bedNr,visitNr,"kein Zustand",mrt.isChecked(), blodtest.isChecked(),note.getText().toString(),0,0,0);
+                    entryModel = new EntryModel(0,patientIdDetails,0,bedNr,visitNr,textSpinner,mrt.isChecked(), blodtest.isChecked(),note.getText().toString(),0,0,0);
                     Toast.makeText(ArztPatientDetailsActivity.this, entryModel.toString(), Toast.LENGTH_SHORT).show();
                 } catch (Exception e) { //dat is schwachsinn :O
                     Toast.makeText(ArztPatientDetailsActivity.this, "error creating customer", Toast.LENGTH_SHORT).show();
@@ -89,6 +97,16 @@ public class ArztPatientDetailsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+         textSpinner = parent.getItemAtPosition(position).toString();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
 
     }
 }
