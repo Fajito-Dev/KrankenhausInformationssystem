@@ -5,7 +5,7 @@ public class EntryModel {
     private int patientIde;
     private int date;
     private int bedNr;
-    private boolean visited;
+    private int visited;
     private String condition;
     private boolean mrt;
     private boolean bloodtest;
@@ -15,20 +15,8 @@ public class EntryModel {
     private float lymphoAbsolut;
 
 
-    public EntryModel(int patientIde, int date, int bedNr, boolean visited, String condition, boolean mrt, boolean bloodtest, String note, float leukoNl, float lymphoProzent, float lymphoAbsolut) {
-        this.patientIde = patientIde;
-        this.date = date;
-        this.bedNr = bedNr;
-        this.visited = visited;
-        this.condition = condition;
-        this.mrt = mrt;
-        this.bloodtest = bloodtest;
-        this.note = note;
-        this.leukoNl = leukoNl;
-        this.lymphoProzent = lymphoProzent;
-        this.lymphoAbsolut = lymphoAbsolut;
-    }
-    public EntryModel(int eintragId, int patientIde, int date, int bedNr, boolean visited, String condition, boolean mrt, boolean bloodtest, String note, float leukoNl, float lymphoProzent, float lymphoAbsolut) {
+
+    public EntryModel(int eintragId, int patientIde, int date, int bedNr, int visited, String condition, boolean mrt, boolean bloodtest, String note, float leukoNl, float lymphoProzent, float lymphoAbsolut) {
         this.eintragId = eintragId;
         this.patientIde = patientIde;
         this.date = date;
@@ -70,9 +58,9 @@ public class EntryModel {
 
     public void setBedNr(int bedNr) {this.bedNr = bedNr;}
 
-    public boolean isVisited() {return visited;}
+    public int getVisited() {return visited;}
 
-    public void setVisited(boolean visited) {this.visited = visited;}
+    public void setVisited(int visited) {this.visited = visited;}
 
     public String getCondition() {return condition;}
 
