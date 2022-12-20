@@ -64,10 +64,10 @@ public class LaborPatientDetailsActivity extends AppCompatActivity {
 
         // kann jetzt ueberarbeitet werden wegen entry und patientModel
         tvName.setText(databaseHelper.getSpecificPatientModel(databaseHelper.getSpecificEntryModelEntryId(entryId).getPatientIde()).getPreName() + " " + databaseHelper.getSpecificPatientModel(databaseHelper.getSpecificEntryModelEntryId(entryId).getPatientIde()).getName());
-        tvAge.setText(strAge);
-        tvBed.setText(strBed);
-        tvDate.setText(strDate);
-        tvEntryId.setText(strEntryId);
+        tvAge.setText("Alter:" + strAge);
+        tvBed.setText("Bett " + strBed);
+        tvDate.setText("Datum " + strDate);
+        tvEntryId.setText("#" + strEntryId);
         tvNote.setText(databaseHelper.getSpecificEntryModelEntryId(entryId).getNote());
         tvDocument.setText(documentEntry);
 

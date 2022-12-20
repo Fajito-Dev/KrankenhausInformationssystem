@@ -41,10 +41,9 @@ public class ArztNotesAdapter extends RecyclerView.Adapter<ArztNotesAdapter.Arzt
 
     @Override
     public void onBindViewHolder(@NonNull ArztNotesViewHolder holder, @SuppressLint("RecyclerView") int position) {
-       // holder.date.setText(entryModelList.get(position).getDate());
-
-        //abfrage zu MRT/Blutergebnisse
+        String strDate = Integer.toString(entryModelList.get(position).getDate());
         String documentEntry = "kein Dokument";
+
         if(entryModelList.get(position).isMrt()==true& entryModelList.get(position).isBloodtest()==true){
             documentEntry = "MRT & Blutwerte";
         }else if(entryModelList.get(position).isMrt()==true){
@@ -53,21 +52,18 @@ public class ArztNotesAdapter extends RecyclerView.Adapter<ArztNotesAdapter.Arzt
             documentEntry = "Blutwerte";
         }
 
-        String entryId = Integer.toString(entryModelList.get(position).getEintragId());
-        String visitId = Integer.toString(entryModelList.get(position).getVisited());
-
-        holder.date.setText("22022022  #" + entryId+"v=" + visitId);
+        holder.date.setText("Datum  " + strDate);
         holder.note.setText(entryModelList.get(position).getNote());
         holder.state.setText(entryModelList.get(position).getCondition());
         holder.documents.setText(documentEntry);
-        holder.imageButton.setImageResource(R.drawable.img);
-        holder.imageButton.setOnClickListener(new View.OnClickListener() {
+        holder.imgbtnIcon.setImageResource(R.drawable.img);
+        holder.imgbtnIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int entryIdDetails = entryModelList.get(position).getEintragId();
                 Intent intent = new Intent(v.getContext(), ArztNotesDetailsActivity.class);
                 intent.putExtra(EXTRA_NUMBER2,entryIdDetails);
-                holder.imageButton.getContext().startActivity(intent);
+                holder.imgbtnIcon.getContext().startActivity(intent);
             }
         });
     }
@@ -79,7 +75,7 @@ public class ArztNotesAdapter extends RecyclerView.Adapter<ArztNotesAdapter.Arzt
 
     public static class ArztNotesViewHolder extends RecyclerView.ViewHolder{
         TextView date, note, state, documents;
-        ImageButton imageButton;
+        ImageButton imgbtnIcon;
 
         public ArztNotesViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -87,7 +83,7 @@ public class ArztNotesAdapter extends RecyclerView.Adapter<ArztNotesAdapter.Arzt
             note = itemView.findViewById(R.id.ArztNotesCardNote);
             state = itemView.findViewById(R.id.ArztNotesCardZustand);
             documents = itemView.findViewById(R.id.ArztNotesCardRequestedDocuments);
-            imageButton = itemView.findViewById(R.id.ArztNotesCardDetailsIcon);
+            imgbtnIcon = itemView.findViewById(R.id.ArztNotesCardDetailsIcon);
         }
     }
 }
