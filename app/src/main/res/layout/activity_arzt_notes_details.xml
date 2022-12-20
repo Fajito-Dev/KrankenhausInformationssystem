@@ -10,9 +10,9 @@
         android:id="@+id/ArztNotesDetailsButtonBack"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_marginTop="35dp"
         android:layout_marginHorizontal="20dp"
-        />
+        android:layout_marginTop="35dp"
+        tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/ArztNotesDetailsDate"
@@ -125,7 +125,8 @@
         android:layout_height="252dp"
         android:layout_alignParentBottom="true"
         android:layout_marginHorizontal="20sp"
-        android:layout_marginBottom="150dp" />
+        android:layout_marginBottom="150dp"
+        tools:srcCompat="@tools:sample/avatars[3]" />
 
 
 </RelativeLayout>

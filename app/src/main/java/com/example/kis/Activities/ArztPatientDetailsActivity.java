@@ -13,11 +13,11 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.kis.Adapters.ArztNotesAdapter;
 import com.example.kis.Adapters.ArztPatientAdapter;
 import com.example.kis.Database.DatabaseHelper;
 import com.example.kis.Models.EntryModel;
-import com.example.kis.Models.PatientModel;
 import com.example.kis.R;
 
 public class ArztPatientDetailsActivity extends AppCompatActivity {
@@ -78,9 +78,7 @@ public class ArztPatientDetailsActivity extends AppCompatActivity {
                 DatabaseHelper dataBaseHelper = new DatabaseHelper(ArztPatientDetailsActivity.this);
                 boolean success = dataBaseHelper.addEntry(entryModel);
                 Toast.makeText(ArztPatientDetailsActivity.this, "Success=" + success, Toast.LENGTH_SHORT).show();
-
-                Intent intent = new Intent(getApplicationContext(), ArztVisiteActivity.class);
-                startActivity(intent);
+                finish();
             }
         });
 

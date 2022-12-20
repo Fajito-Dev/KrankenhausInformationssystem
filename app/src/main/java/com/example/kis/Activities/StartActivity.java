@@ -40,7 +40,7 @@ public class StartActivity extends AppCompatActivity {
         buttonAdministration.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), AdministrationAddPatientActivity.class);
+                Intent intent = new Intent(getApplicationContext(), AdministrationHomeActivity.class);
                 startActivity(intent);
             }
         });
