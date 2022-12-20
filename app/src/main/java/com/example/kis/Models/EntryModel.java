@@ -14,20 +14,8 @@ public class EntryModel {
     private float lymphoProzent;
     private float lymphoAbsolut;
 
-    public EntryModel(int patientIde, int date, int bedNr, boolean visited, String condition, boolean mrt, boolean bloodtest, String note, float leukoNl, float lymphoProzent, float lymphoAbsolut) {
-        this.patientIde = patientIde;
-        this.date = date;
-        this.bedNr = bedNr;
-        this.visited = visited;
-        this.condition = condition;
-        this.mrt = mrt;
-        this.bloodtest = bloodtest;
-        this.note = note;
-        this.leukoNl = leukoNl;
-        this.lymphoProzent = lymphoProzent;
-        this.lymphoAbsolut = lymphoAbsolut;
-    }
-    public EntryModel(int eintragId, int patientIde, int date, int bedNr, boolean visited, String condition, boolean mrt, boolean bloodtest, String note, float leukoNl, float lymphoProzent, float lymphoAbsolut) {
+
+    public EntryModel(int eintragId, int patientIde, int date, int bedNr, int visited, String condition, boolean mrt, boolean bloodtest, String note, float leukoNl, float lymphoProzent, float lymphoAbsolut) {
         this.eintragId = eintragId;
         this.patientIde = patientIde;
         this.date = date;
