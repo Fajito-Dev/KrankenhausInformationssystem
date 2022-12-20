@@ -141,7 +141,6 @@
         android:id="@+id/laborPatientDetailsLeukoValue"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-
         android:layout_above="@+id/LaborPatientDetailsButtonSubmit"
         android:layout_marginHorizontal="20sp"
         android:layout_marginStart="0dp"
