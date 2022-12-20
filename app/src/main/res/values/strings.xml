@@ -175,16 +175,10 @@
     </string-array>
 
     <string-array name="zustand">
-        <item>OK</item>
-        <item>Kritisch</item>
-        <item>Kritisch</item>
-        <item>Medium</item>
-        <item>Medium</item>
-        <item>OK</item>
-        <item>Kritisch</item>
-        <item>Kritisch</item>
-        <item>Medium</item>
-        <item>Medium</item>
+        <item>k.A</item>
+        <item>gesund</item>
+        <item>stabil</item>
+        <item>kritisch</item>
     </string-array>
 
     <string-array name="LaborAnfrage">
