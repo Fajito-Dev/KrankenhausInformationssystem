@@ -392,7 +392,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 float lymphoProzent = cursor.getFloat(10);
                 float lymphoAbsolut = cursor.getFloat(11);
 
-                if(visited!=2 && mrt==true||bloodtest==true){
+                if(visited!=2 && mrt||bloodtest){
                     EntryModel newEntry = new EntryModel(eintragId, patientIDE, date, bedNr, visited, condition, mrt, bloodtest, note, leukoNl, lymphoProzent, lymphoAbsolut);
                     returnList2.add(newEntry);
                 }
