@@ -44,6 +44,8 @@ public class LaborRequestsAdapter extends RecyclerView.Adapter<LaborRequestsAdap
 
     @Override
     public void onBindViewHolder(@NonNull LaborRequestsAdapter.LaborRequestViewHolder holder, @SuppressLint("RecyclerView") int position) {
+        String bedNr = Integer.toString(entryModelList.get(position).getBedNr());
+        String documentEntry = "kein Dokument";
         int posNr = 0;
         for(int i = 0;i<patientModelList.size();i++){
             if(patientModelList.get(i).getPatientId()==entryModelList.get(position).getPatientIde()){
@@ -51,9 +53,6 @@ public class LaborRequestsAdapter extends RecyclerView.Adapter<LaborRequestsAdap
             }
         }
 
-
-        //abfrage zu MRT/Blutergebnisse
-        String documentEntry = "kein Dokument";
         if(entryModelList.get(position).isMrt()==true& entryModelList.get(position).isBloodtest()==true){
             documentEntry = "MRT & Blutwerte";
         }else if(entryModelList.get(position).isMrt()==true){
@@ -62,13 +61,10 @@ public class LaborRequestsAdapter extends RecyclerView.Adapter<LaborRequestsAdap
             documentEntry = "Blutwerte";
         }
 
-        String bedNr = Integer.toString(entryModelList.get(position).getBedNr());
-
         holder.tvName.setText(patientModelList.get(posNr).getPreName() + " " + patientModelList.get(posNr).getName());
         holder.tvNote.setText(entryModelList.get(position).getNote());
         holder.tvBedNr.setText("Bett " + bedNr);
         holder.tvDocuments.setText(documentEntry);
-
         holder.imageButton.setImageResource(R.drawable.img);
         holder.imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,7 +86,6 @@ public class LaborRequestsAdapter extends RecyclerView.Adapter<LaborRequestsAdap
         TextView tvName, tvNote, tvBedNr, tvDocuments;
         ImageButton imageButton;
         public LaborRequestViewHolder(@NonNull View itemView) {
-
             super(itemView);
             tvName = itemView.findViewById(R.id.LaborPatientCardName);
             tvNote = itemView.findViewById(R.id.LaborPatientCardNotes);
@@ -99,5 +94,4 @@ public class LaborRequestsAdapter extends RecyclerView.Adapter<LaborRequestsAdap
             imageButton = itemView.findViewById(R.id.LaborPatientCardDetailsIcon);
         }
     }
-
 }

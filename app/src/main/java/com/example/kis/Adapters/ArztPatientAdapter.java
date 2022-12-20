@@ -25,7 +25,6 @@ public class ArztPatientAdapter extends RecyclerView.Adapter<ArztPatientAdapter.
     ArrayList<PatientModel> patientModelList;
     ArrayList<EntryModel> entryModelList;
 
-
     public ArztPatientAdapter(Context context, ArrayList<PatientModel> patientModelList,ArrayList<EntryModel> entryModelList){
         this.context = context;
         this.patientModelList = patientModelList;
@@ -56,15 +55,14 @@ public class ArztPatientAdapter extends RecyclerView.Adapter<ArztPatientAdapter.
         holder.text2.setText(patientModelList.get(position).getBirthDateS()+" (Alter)");
         holder.text3.setText("X");
         holder.text4.setText("BettNr " + bedNrS);
-
-        holder.icon.setImageResource(R.drawable.img);
-        holder.icon.setOnClickListener(new View.OnClickListener() {
+        holder.imgbtnIcon.setImageResource(R.drawable.img);
+        holder.imgbtnIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int patientIdDetails = patientModelList.get(position).getPatientId();
                 Intent intent = new Intent(v.getContext(), ArztPatientDetailsActivity.class);
                 intent.putExtra(EXTRA_NUMBER,patientIdDetails);
-                holder.icon.getContext().startActivity(intent);
+                holder.imgbtnIcon.getContext().startActivity(intent);
             }
         });
     }
@@ -76,7 +74,7 @@ public class ArztPatientAdapter extends RecyclerView.Adapter<ArztPatientAdapter.
 
     public static class ArztPatientViewHolder extends RecyclerView.ViewHolder{
         TextView text1, text2, text3, text4;
-        ImageButton icon;
+        ImageButton imgbtnIcon;
 
         public ArztPatientViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -84,7 +82,7 @@ public class ArztPatientAdapter extends RecyclerView.Adapter<ArztPatientAdapter.
             text2 = itemView.findViewById(R.id.ArztPatientCardBirthDate);
             text4 = itemView.findViewById(R.id.ArztPatientCardBettNummer);
             text3 = itemView.findViewById(R.id.ArztPatientCardRequestedDocuments);
-            icon = itemView.findViewById(R.id.ArztPatientCardDetailsIcon);
+            imgbtnIcon = itemView.findViewById(R.id.ArztPatientCardDetailsIcon);
         }
     }
 }
