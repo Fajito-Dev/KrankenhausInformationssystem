@@ -328,5 +328,45 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return newEntry;
     }
+    //gibt Liste mit allen Einträgen von bestimmten Patienten aus
+    //hier müsste man eigentlich immer den aktuellsten Eintrag abfragen
+    public EntryModel getSpecificEntryModelEntryId(int entryIdDetails){
+        EntryModel newEntry = null;
+        //get data from the database
+        String queryString = "SELECT * FROM "+ ENTRY_TABLE;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(queryString,null);
+
+        if(cursor.moveToFirst()){
+            //loop thru the cursor(result set) and creat a new customer object put them in the return List
+            do{
+                int eintragId = cursor.getInt(0);
+                int patientIDE = cursor.getInt(1);
+                int date = cursor.getInt(2);
+                int bedNr = cursor.getInt(3);
+                boolean visited = cursor.getInt(4) == 1 ? true: false;
+                String condition = cursor.getString(5);
+                boolean mrt = cursor.getInt(6) == 1 ? true: false;
+                boolean bloodtest = cursor.getInt(7) == 1 ? true: false;
+                String note = cursor.getString(8);
+                float leukoNl = cursor.getFloat(9);
+                float lymphoProzent = cursor.getFloat(10);
+                float lymphoAbsolut = cursor.getFloat(11);
+
+                if(eintragId==entryIdDetails) {
+                    newEntry = new EntryModel(eintragId, patientIDE, date, bedNr, visited, condition, mrt, bloodtest, note, leukoNl, lymphoProzent, lymphoAbsolut);
+                    cursor.close();
+                    db.close();
+                    return newEntry;
+                }
+            }while(cursor.moveToNext());
+        }else{
+            //failure do not add anything to the List
+        }
+        //close both cursor and database
+        cursor.close();
+        db.close();
+        return newEntry;
+    }
 }
 
