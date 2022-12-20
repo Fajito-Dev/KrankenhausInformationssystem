@@ -1,5 +1,6 @@
 package com.example.kis.Adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -39,7 +40,7 @@ public class ArztNotesAdapter extends RecyclerView.Adapter<ArztNotesAdapter.Arzt
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ArztNotesViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ArztNotesViewHolder holder, @SuppressLint("RecyclerView") int position) {
        // holder.date.setText(entryModelList.get(position).getDate());
 
         //abfrage zu MRT/Blutergebnisse
@@ -53,8 +54,9 @@ public class ArztNotesAdapter extends RecyclerView.Adapter<ArztNotesAdapter.Arzt
         }
 
         String entryId = Integer.toString(entryModelList.get(position).getEintragId());
+        String visitId = Integer.toString(entryModelList.get(position).getVisited());
 
-        holder.date.setText("22022022  #" + entryId);
+        holder.date.setText("22022022  #" + entryId+"v=" + visitId);
         holder.note.setText(entryModelList.get(position).getNote());
         holder.state.setText(entryModelList.get(position).getCondition());
         holder.documents.setText(documentEntry);

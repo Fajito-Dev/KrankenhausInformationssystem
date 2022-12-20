@@ -5,7 +5,7 @@ public class EntryModel {
     private int patientIde;
     private int date;
     private int bedNr;
-    private boolean visited;
+    private int visited;
     private String condition;
     private boolean mrt;
     private boolean bloodtest;
@@ -69,9 +69,9 @@ public class EntryModel {
 
     public void setBedNr(int bedNr) {this.bedNr = bedNr;}
 
-    public boolean isVisited() {return visited;}
+    public int getVisited() {return visited;}
 
-    public void setVisited(boolean visited) {this.visited = visited;}
+    public void setVisited(int visited) {this.visited = visited;}
 
     public String getCondition() {return condition;}
 

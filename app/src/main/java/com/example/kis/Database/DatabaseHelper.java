@@ -40,7 +40,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String createTableStatement1 = "CREATE TABLE " + PATIENT_TABLE + " (" + COLUMN_PATIENT_PATIENTID + " INTEGER PRIMARY KEY, " + COLUMN_PATIENT_PRENAME + " TEXT, " + COLUMN_PATIENT_NAME + " TEXT, " + COLUMN_PATIENT_BIRTHDATE + " INT)";
-        String createTableStatement2 = "CREATE TABLE " + ENTRY_TABLE + " (" + COLUMN_ENTRY_EINTRAGID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_ENTRY_PATIENTIDE + " INT, " + COLUMN_ENTRY_DATE + " INT, " + COLUMN_ENTRY_BEDNR + " INT, " + COLUMN_ENTRY_VISITED + " BOOL, " + COLUMN_ENTRY_CONDITION + " TEXT, " + COLUMN_ENTRY_MRT + " BOOL, " + COLUMN_ENTRY_BLOODTEST + " BOOL, " + COLUMN_ENTRY_NOTE + " TEXT, " + COLUMN_ENTRY_LEUKONL + " FLOAT, " + COLUMN_ENTRY_LYMPHOPROZENT + " FLOAT, " + COLUMN_ENTRY_LYMPHOABSOLUT + " FLOAT)";
+        String createTableStatement2 = "CREATE TABLE " + ENTRY_TABLE + " (" + COLUMN_ENTRY_EINTRAGID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_ENTRY_PATIENTIDE + " INT, " + COLUMN_ENTRY_DATE + " INT, " + COLUMN_ENTRY_BEDNR + " INT, " + COLUMN_ENTRY_VISITED + " INT, " + COLUMN_ENTRY_CONDITION + " TEXT, " + COLUMN_ENTRY_MRT + " BOOL, " + COLUMN_ENTRY_BLOODTEST + " BOOL, " + COLUMN_ENTRY_NOTE + " TEXT, " + COLUMN_ENTRY_LEUKONL + " FLOAT, " + COLUMN_ENTRY_LYMPHOPROZENT + " FLOAT, " + COLUMN_ENTRY_LYMPHOABSOLUT + " FLOAT)";
 
         db.execSQL(createTableStatement1);
         db.execSQL(createTableStatement2);
@@ -131,7 +131,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cv.put(COLUMN_ENTRY_PATIENTIDE, entryModel.getPatientIde());
         cv.put(COLUMN_ENTRY_DATE, entryModel.getDate());
         cv.put(COLUMN_ENTRY_BEDNR, entryModel.getBedNr());
-        cv.put(COLUMN_ENTRY_VISITED, entryModel.isVisited());
+        cv.put(COLUMN_ENTRY_VISITED, entryModel.getVisited());
         cv.put(COLUMN_ENTRY_CONDITION, entryModel.getCondition());
         cv.put(COLUMN_ENTRY_MRT, entryModel.isMrt());
         cv.put(COLUMN_ENTRY_BLOODTEST, entryModel.isBloodtest());
@@ -163,7 +163,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 int patientIDE = cursor.getInt(1);
                 int date = cursor.getInt(2);
                 int bedNr = cursor.getInt(3);
-                boolean visited = cursor.getInt(4) == 1 ? true: false;
+                int visited = cursor.getInt(4);
                 String condition = cursor.getString(5);
                 boolean mrt = cursor.getInt(6) == 1 ? true: false;
                 boolean bloodtest = cursor.getInt(7) == 1 ? true: false;
@@ -198,7 +198,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 int patientIDE = cursor.getInt(1);
                 int date = cursor.getInt(2);
                 int bedNr = cursor.getInt(3);
-                boolean visited = cursor.getInt(4) == 1 ? true: false;
+                int visited = cursor.getInt(4);
                 String condition = cursor.getString(5);
                 boolean mrt = cursor.getInt(6) == 1 ? true: false;
                 boolean bloodtest = cursor.getInt(7) == 1 ? true: false;
@@ -304,7 +304,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 int patientIDE = cursor.getInt(1);
                 int date = cursor.getInt(2);
                 int bedNr = cursor.getInt(3);
-                boolean visited = cursor.getInt(4) == 1 ? true: false;
+                int visited = cursor.getInt(4);
                 String condition = cursor.getString(5);
                 boolean mrt = cursor.getInt(6) == 1 ? true: false;
                 boolean bloodtest = cursor.getInt(7) == 1 ? true: false;
@@ -344,7 +344,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 int patientIDE = cursor.getInt(1);
                 int date = cursor.getInt(2);
                 int bedNr = cursor.getInt(3);
-                boolean visited = cursor.getInt(4) == 1 ? true: false;
+                int visited = cursor.getInt(4);
                 String condition = cursor.getString(5);
                 boolean mrt = cursor.getInt(6) == 1 ? true: false;
                 boolean bloodtest = cursor.getInt(7) == 1 ? true: false;
@@ -367,6 +367,43 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         db.close();
         return newEntry;
+    }
+
+    public ArrayList<EntryModel> getEntryLabor(){
+        ArrayList<EntryModel> returnList2 = new ArrayList<>();
+        //get data from the database
+        String queryString = "SELECT * FROM "+ ENTRY_TABLE;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(queryString,null);
+
+        if(cursor.moveToFirst()){
+            //loop thru the cursor(result set) and creat a new customer object put them in the return List
+            do{
+                int eintragId = cursor.getInt(0);
+                int patientIDE = cursor.getInt(1);
+                int date = cursor.getInt(2);
+                int bedNr = cursor.getInt(3);
+                int visited = cursor.getInt(4);
+                String condition = cursor.getString(5);
+                boolean mrt = cursor.getInt(6) == 1 ? true: false;
+                boolean bloodtest = cursor.getInt(7) == 1 ? true: false;
+                String note = cursor.getString(8);
+                float leukoNl = cursor.getFloat(9);
+                float lymphoProzent = cursor.getFloat(10);
+                float lymphoAbsolut = cursor.getFloat(11);
+
+                if(visited!=2 && mrt==true||bloodtest==true){
+                    EntryModel newEntry = new EntryModel(eintragId, patientIDE, date, bedNr, visited, condition, mrt, bloodtest, note, leukoNl, lymphoProzent, lymphoAbsolut);
+                    returnList2.add(newEntry);
+                }
+            }while(cursor.moveToNext());
+        }else{
+            //failure do not add anything to the List
+        }
+        //close both cursor and database
+        cursor.close();
+        db.close();
+        return returnList2;
     }
 }
 

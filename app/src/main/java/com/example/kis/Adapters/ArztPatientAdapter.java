@@ -1,5 +1,6 @@
 package com.example.kis.Adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -40,7 +41,7 @@ public class ArztPatientAdapter extends RecyclerView.Adapter<ArztPatientAdapter.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ArztPatientViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ArztPatientViewHolder holder, @SuppressLint("RecyclerView") int position) {
         int bedNr = 0;
         String bedNrS = "";
 

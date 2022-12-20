@@ -8,12 +8,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kis.Adapters.LaborRequestsAdapter;
+import com.example.kis.Database.DatabaseHelper;
 import com.example.kis.R;
 
 public class LaborChecklistActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
     Button logoutButton;
+    DatabaseHelper databaseHelper;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -21,7 +23,8 @@ public class LaborChecklistActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_labor_checklist);
 
-        LaborRequestsAdapter laborRequestsAdapter = new LaborRequestsAdapter(this);
+        databaseHelper = new DatabaseHelper(this);
+        LaborRequestsAdapter laborRequestsAdapter = new LaborRequestsAdapter(this,databaseHelper.getEveryPatient(),databaseHelper.getEntryLabor());
 
         recyclerView = findViewById(R.id.LaborChecklistrecyclerView);
         logoutButton = findViewById(R.id.LaborChecklistButtonLogout);

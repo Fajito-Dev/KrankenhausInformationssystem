@@ -66,7 +66,11 @@ public class ArztPatientDetailsActivity extends AppCompatActivity {
                 EntryModel entryModel = null;
                 try {
                     // bei condition kommt condition.toString() rein aber erst wenn Spinner gesetzt ist
-                    entryModel = new EntryModel(0,patientIdDetails,0,bedNr,visit.isChecked(),"kein Zustand",mrt.isChecked(), blodtest.isChecked(),note.getText().toString(),0,0,0);
+                    int visitNr = 0;
+                    if(visit.isChecked()==true){
+                        visitNr = 1;
+                    }
+                    entryModel = new EntryModel(0,patientIdDetails,0,bedNr,visitNr,"kein Zustand",mrt.isChecked(), blodtest.isChecked(),note.getText().toString(),0,0,0);
                     Toast.makeText(ArztPatientDetailsActivity.this, entryModel.toString(), Toast.LENGTH_SHORT).show();
                 } catch (Exception e) { //dat is schwachsinn :O
                     Toast.makeText(ArztPatientDetailsActivity.this, "error creating customer", Toast.LENGTH_SHORT).show();
