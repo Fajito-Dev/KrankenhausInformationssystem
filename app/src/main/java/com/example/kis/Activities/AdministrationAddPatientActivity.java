@@ -68,7 +68,6 @@ public class AdministrationAddPatientActivity extends AppCompatActivity {
                 EntryModel entryModel = null;
                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
                 String date = sdf.format(new Date());
-                //BettNr,Datum,eintragsId Autoincrement noch richtig machen
                 try {
                     patientModel = new PatientModel(Integer.parseInt(edtPatientenId.getText().toString()), edtPrename.getText().toString(), edtName.getText().toString(), tvBday.getText().toString());
                     entryModel = new EntryModel(0, Integer.parseInt(edtPatientenId.getText().toString()),date,dataBaseHelper.getFreeBed(),0,"ohneBefund",false, false,"Patient eingewiesen",0,0,0);
