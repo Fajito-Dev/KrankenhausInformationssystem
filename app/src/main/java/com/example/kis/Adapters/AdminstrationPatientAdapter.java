@@ -50,7 +50,7 @@ public class AdminstrationPatientAdapter extends RecyclerView.Adapter<Adminstrat
             }
         }
         holder.tvName.setText(patientModelList.get(position).getPreName()+" "+patientModelList.get(position).getName());
-        holder.tvBirthday.setText(patientModelList.get(position).getBirthDateS()+" (Alter)");
+        holder.tvBirthday.setText(patientModelList.get(position).getBirthDate()+" (Alter)");
         holder.tvBedNr.setText("Bett " + bedNrS);
         holder.tvInsuranceNr.setText(insuranceNr);
 

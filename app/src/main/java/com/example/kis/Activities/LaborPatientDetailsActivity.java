@@ -17,6 +17,9 @@ import com.example.kis.Models.PatientModel;
 import com.example.kis.R;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class LaborPatientDetailsActivity extends AppCompatActivity {
     TextView tvName,tvAge,tvBed,tvDate,tvEntryId,tvDocument,tvNote;
     TextInputEditText tiedtLeukoNL,tiedtLymphoPercent,tiedtLypmhoAbsolut;
@@ -48,9 +51,7 @@ public class LaborPatientDetailsActivity extends AppCompatActivity {
         PatientModel patientModel = databaseHelper.getSpecificPatientModel(databaseHelper.getSpecificEntryModelEntryId(entryId).getPatientIde());
         EntryModel entryModel = databaseHelper.getSpecificEntryModelEntryId(entryId);
 
-        String strAge = Integer.toString(databaseHelper.getSpecificPatientModel(databaseHelper.getSpecificEntryModelEntryId(entryId).getPatientIde()).getBirthDate());
         String strBed = Integer.toString(databaseHelper.getSpecificEntryModelEntryId(entryId).getBedNr());
-        String strDate = Integer.toString(databaseHelper.getSpecificEntryModelEntryId(entryId).getDate());
         String strEntryId = Integer.toString(entryId);
 
         String documentEntry = "keine Angabe FEHLER";
@@ -61,12 +62,11 @@ public class LaborPatientDetailsActivity extends AppCompatActivity {
         }else if(databaseHelper.getSpecificEntryModelEntryId(entryId).isBloodtest()==true){
             documentEntry = "Auftrag: Blutwerte";
         }
-
         // kann jetzt ueberarbeitet werden wegen entry und patientModel
-        tvName.setText(databaseHelper.getSpecificPatientModel(databaseHelper.getSpecificEntryModelEntryId(entryId).getPatientIde()).getPreName() + " " + databaseHelper.getSpecificPatientModel(databaseHelper.getSpecificEntryModelEntryId(entryId).getPatientIde()).getName());
-        tvAge.setText("Alter:" + strAge);
+        tvName.setText(patientModel.getPreName() + " " + patientModel.getName());
+        tvAge.setText("Alter:" + patientModel.getBirthDate());
         tvBed.setText("Bett " + strBed);
-        tvDate.setText("Datum " + strDate);
+        tvDate.setText("Datum " + databaseHelper.getSpecificEntryModelEntryId(entryId).getDate());
         tvEntryId.setText("#" + strEntryId);
         tvNote.setText(databaseHelper.getSpecificEntryModelEntryId(entryId).getNote());
         tvDocument.setText(documentEntry);
@@ -75,9 +75,11 @@ public class LaborPatientDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 EntryModel entryModel = databaseHelper.getSpecificEntryModelEntryId(entryId);
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                String date = sdf.format(new Date());
                 try {
                     // bei condition kommt condition.toString() rein aber erst wenn Spinner gesetzt ist
-                    entryModel = new EntryModel(0,entryModel.getPatientIde(),0,entryModel.getBedNr(),2,"kein Zustand",false, false,"Auftrag bearbeitet",Integer.parseInt(tiedtLeukoNL.getText().toString()),Integer.parseInt(tiedtLymphoPercent.getText().toString()),Integer.parseInt(tiedtLypmhoAbsolut.getText().toString()));
+                    entryModel = new EntryModel(0,entryModel.getPatientIde(),date,entryModel.getBedNr(),2,"kein Zustand",false, false,"Auftrag bearbeitet",Integer.parseInt(tiedtLeukoNL.getText().toString()),Integer.parseInt(tiedtLymphoPercent.getText().toString()),Integer.parseInt(tiedtLypmhoAbsolut.getText().toString()));
                     Toast.makeText(LaborPatientDetailsActivity.this, entryModel.toString(), Toast.LENGTH_SHORT).show();
                 } catch (Exception e) { //dat is schwachsinn :O
                     Toast.makeText(LaborPatientDetailsActivity.this, "error creating customer", Toast.LENGTH_SHORT).show();

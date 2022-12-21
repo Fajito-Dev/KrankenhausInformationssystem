@@ -6,9 +6,9 @@ public class PatientModel {
     private int patientId;
     private String preName;
     private String name;
-    private int birthDate;
+    private String birthDate;
     //constructor
-    public PatientModel(int patientId, String preName, String name, int birthDate) {
+    public PatientModel(int patientId, String preName, String name, String birthDate) {
         this.patientId = patientId;
         this.preName = preName;
         this.name = name;
@@ -51,13 +51,11 @@ public class PatientModel {
         this.name = name;
     }
 
-    public int getBirthDate() {
+    public String getBirthDate() {
         return birthDate;
     }
 
-    public String getBirthDateS() {return "" + birthDate;}
-
-    public void setBirthDate(int birthDate) {
+    public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
     }
 }

@@ -52,7 +52,7 @@ public class ArztPatientAdapter extends RecyclerView.Adapter<ArztPatientAdapter.
         }
 
         holder.text1.setText(patientModelList.get(position).getPreName()+" "+patientModelList.get(position).getName());
-        holder.text2.setText(patientModelList.get(position).getBirthDateS()+" (Alter)");
+        holder.text2.setText(patientModelList.get(position).getBirthDate()+" (Alter)");
         holder.text3.setText("X");
         holder.text4.setText("BettNr " + bedNrS);
         holder.imgbtnIcon.setImageResource(R.drawable.img);

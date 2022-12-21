@@ -41,7 +41,6 @@ public class ArztNotesAdapter extends RecyclerView.Adapter<ArztNotesAdapter.Arzt
 
     @Override
     public void onBindViewHolder(@NonNull ArztNotesViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        String strDate = Integer.toString(entryModelList.get(position).getDate());
         String documentEntry = "kein Dokument";
 
         if(entryModelList.get(position).isMrt()==true& entryModelList.get(position).isBloodtest()==true){
@@ -52,7 +51,7 @@ public class ArztNotesAdapter extends RecyclerView.Adapter<ArztNotesAdapter.Arzt
             documentEntry = "Blutwerte";
         }
 
-        holder.date.setText("Datum  " + strDate);
+        holder.date.setText(entryModelList.get(position).getDate());
         holder.note.setText(entryModelList.get(position).getNote());
         holder.state.setText(entryModelList.get(position).getCondition());
         holder.documents.setText(documentEntry);

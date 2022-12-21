@@ -22,6 +22,9 @@ import com.example.kis.Database.DatabaseHelper;
 import com.example.kis.Models.EntryModel;
 import com.example.kis.R;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class ArztPatientDetailsActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     RecyclerView recyclerView;
     Spinner condition;
@@ -64,7 +67,7 @@ public class ArztPatientDetailsActivity extends AppCompatActivity implements Ada
         String bedNrS = Integer.toString(bedNr);
 
         name.setText(databaseHelper.getSpecificPatientModel(patientIdDetails).getPreName() + " " + databaseHelper.getSpecificPatientModel(patientIdDetails).getName());
-        age.setText(databaseHelper.getSpecificPatientModel(patientIdDetails).getBirthDateS());
+        age.setText(databaseHelper.getSpecificPatientModel(patientIdDetails).getBirthDate());
         bednr.setText("Bett " + bedNrS);
 
         // Mit Button Safe Eintrag erstellen
@@ -72,13 +75,17 @@ public class ArztPatientDetailsActivity extends AppCompatActivity implements Ada
             @Override
             public void onClick(View view) {
                 EntryModel entryModel = null;
+
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                String date = sdf.format(new Date());
+
                 try {
                     // bei condition kommt condition.toString() rein aber erst wenn Spinner gesetzt ist
                     int visitNr = 0;
                     if(visit.isChecked()==true){
                         visitNr = 1;
                     }
-                    entryModel = new EntryModel(0,patientIdDetails,0,bedNr,visitNr,textSpinner,mrt.isChecked(), blodtest.isChecked(),note.getText().toString(),0,0,0);
+                    entryModel = new EntryModel(0,patientIdDetails,date,bedNr,visitNr,textSpinner,mrt.isChecked(), blodtest.isChecked(),note.getText().toString(),0,0,0);
                     Toast.makeText(ArztPatientDetailsActivity.this, entryModel.toString(), Toast.LENGTH_SHORT).show();
                 } catch (Exception e) { //dat is schwachsinn :O
                     Toast.makeText(ArztPatientDetailsActivity.this, "error creating customer", Toast.LENGTH_SHORT).show();

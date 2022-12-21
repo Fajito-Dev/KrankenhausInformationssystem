@@ -3,7 +3,7 @@ package com.example.kis.Models;
 public class EntryModel {
     private int eintragId;
     private int patientIde;
-    private int date;
+    private String date;
     private int bedNr;
     private int visited;
     private String condition;
@@ -15,7 +15,7 @@ public class EntryModel {
     private float lymphoAbsolut;
 
 
-    public EntryModel(int eintragId, int patientIde, int date, int bedNr, int visited, String condition, boolean mrt, boolean bloodtest, String note, float leukoNl, float lymphoProzent, float lymphoAbsolut) {
+    public EntryModel(int eintragId, int patientIde, String date, int bedNr, int visited, String condition, boolean mrt, boolean bloodtest, String note, float leukoNl, float lymphoProzent, float lymphoAbsolut) {
         this.eintragId = eintragId;
         this.patientIde = patientIde;
         this.date = date;
@@ -77,9 +77,9 @@ public class EntryModel {
 
     public void setNote(String note) {this.note = note;}
 
-    public int getDate() {return date;}
+    public String getDate() {return date;}
 
-    public void setDate(int date) {this.date = date;}
+    public void setDate(String date) {this.date = date;}
 
     public float getLeukoNl() {return leukoNl;}
 

@@ -75,7 +75,7 @@
         android:text="Geburtstag"
         />
 
-    <com.google.android.material.textfield.TextInputEditText
+    <TextView
         android:id="@+id/AdministrationAddPatientGeburtstaginput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

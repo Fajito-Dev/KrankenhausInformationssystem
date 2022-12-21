@@ -39,8 +39,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String createTableStatement1 = "CREATE TABLE " + PATIENT_TABLE + " (" + COLUMN_PATIENT_PATIENTID + " INTEGER PRIMARY KEY, " + COLUMN_PATIENT_PRENAME + " TEXT, " + COLUMN_PATIENT_NAME + " TEXT, " + COLUMN_PATIENT_BIRTHDATE + " INT)";
-        String createTableStatement2 = "CREATE TABLE " + ENTRY_TABLE + " (" + COLUMN_ENTRY_EINTRAGID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_ENTRY_PATIENTIDE + " INT, " + COLUMN_ENTRY_DATE + " INT, " + COLUMN_ENTRY_BEDNR + " INT, " + COLUMN_ENTRY_VISITED + " INT, " + COLUMN_ENTRY_CONDITION + " TEXT, " + COLUMN_ENTRY_MRT + " BOOL, " + COLUMN_ENTRY_BLOODTEST + " BOOL, " + COLUMN_ENTRY_NOTE + " TEXT, " + COLUMN_ENTRY_LEUKONL + " FLOAT, " + COLUMN_ENTRY_LYMPHOPROZENT + " FLOAT, " + COLUMN_ENTRY_LYMPHOABSOLUT + " FLOAT)";
+        String createTableStatement1 = "CREATE TABLE " + PATIENT_TABLE + " (" + COLUMN_PATIENT_PATIENTID + " INTEGER PRIMARY KEY, " + COLUMN_PATIENT_PRENAME + " TEXT, " + COLUMN_PATIENT_NAME + " TEXT, " + COLUMN_PATIENT_BIRTHDATE + " TEXT)";
+        String createTableStatement2 = "CREATE TABLE " + ENTRY_TABLE + " (" + COLUMN_ENTRY_EINTRAGID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_ENTRY_PATIENTIDE + " INT, " + COLUMN_ENTRY_DATE + " TEXT, " + COLUMN_ENTRY_BEDNR + " INT, " + COLUMN_ENTRY_VISITED + " INT, " + COLUMN_ENTRY_CONDITION + " TEXT, " + COLUMN_ENTRY_MRT + " BOOL, " + COLUMN_ENTRY_BLOODTEST + " BOOL, " + COLUMN_ENTRY_NOTE + " TEXT, " + COLUMN_ENTRY_LEUKONL + " FLOAT, " + COLUMN_ENTRY_LYMPHOPROZENT + " FLOAT, " + COLUMN_ENTRY_LYMPHOABSOLUT + " FLOAT)";
 
         db.execSQL(createTableStatement1);
         db.execSQL(createTableStatement2);
@@ -81,7 +81,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 int patientID = cursor.getInt(0);
                 String patientPreName = cursor.getString(1);
                 String patientName = cursor.getString(2);
-                int patientBirthdate = cursor.getInt(3);
+                String patientBirthdate = cursor.getString(3);
 
                 PatientModel newPatient = new PatientModel(patientID,patientPreName,patientName,patientBirthdate);
                 returnList.add(newPatient);
@@ -109,7 +109,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 int patientID = cursor.getInt(0);
                 String patientPreName = cursor.getString(1);
                 String patientName = cursor.getString(2);
-                int patientBirthdate = cursor.getInt(3);
+                String patientBirthdate = cursor.getString(3);
 
                 if(patientID==patientIdDetails) {
                     PatientModel newPatient = new PatientModel(patientID, patientPreName, patientName, patientBirthdate);
@@ -161,7 +161,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             do{
                 int eintragId = cursor.getInt(0);
                 int patientIDE = cursor.getInt(1);
-                int date = cursor.getInt(2);
+                String date = cursor.getString(2);
                 int bedNr = cursor.getInt(3);
                 int visited = cursor.getInt(4);
                 String condition = cursor.getString(5);
@@ -196,7 +196,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             do{
                 int eintragId = cursor.getInt(0);
                 int patientIDE = cursor.getInt(1);
-                int date = cursor.getInt(2);
+                String date = cursor.getString(2);
                 int bedNr = cursor.getInt(3);
                 int visited = cursor.getInt(4);
                 String condition = cursor.getString(5);
@@ -270,7 +270,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 int patientID = cursor.getInt(0);
                 String patientPreName = cursor.getString(1);
                 String patientName = cursor.getString(2);
-                int patientBirthdate = cursor.getInt(3);
+                String patientBirthdate = cursor.getString(3);
 
                 if(patientID==patientIdDetails) {
                     newPatient = new PatientModel(patientID, patientPreName, patientName, patientBirthdate);
@@ -302,7 +302,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             do{
                 int eintragId = cursor.getInt(0);
                 int patientIDE = cursor.getInt(1);
-                int date = cursor.getInt(2);
+                String date = cursor.getString(2);
                 int bedNr = cursor.getInt(3);
                 int visited = cursor.getInt(4);
                 String condition = cursor.getString(5);
@@ -342,7 +342,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             do{
                 int eintragId = cursor.getInt(0);
                 int patientIDE = cursor.getInt(1);
-                int date = cursor.getInt(2);
+                String date = cursor.getString(2);
                 int bedNr = cursor.getInt(3);
                 int visited = cursor.getInt(4);
                 String condition = cursor.getString(5);
@@ -381,7 +381,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             do{
                 int eintragId = cursor.getInt(0);
                 int patientIDE = cursor.getInt(1);
-                int date = cursor.getInt(2);
+                String date = cursor.getString(2);
                 int bedNr = cursor.getInt(3);
                 int visited = cursor.getInt(4);
                 String condition = cursor.getString(5);
@@ -406,4 +406,3 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return returnList2;
     }
 }
-
