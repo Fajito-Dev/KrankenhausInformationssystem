@@ -41,15 +41,13 @@ public class ArztNotesDetailsActivity extends AppCompatActivity {
             }
         });
 
-
-        String entryDate = Integer.toString(databaseHelper.getSpecificEntryModelEntryId(entryId).getDate());
         String enryIdTxt = Integer.toString(databaseHelper.getSpecificEntryModelEntryId(entryId).getEintragId());
 
         String entryLeukoNl = Float.toString(databaseHelper.getSpecificEntryModelEntryId(entryId).getLeukoNl());
         String entryLypmhoPercent = Float.toString(databaseHelper.getSpecificEntryModelEntryId(entryId).getLymphoProzent());
         String entryLymphoAbsolut = Float.toString(databaseHelper.getSpecificEntryModelEntryId(entryId).getLymphoAbsolut());
 
-        tvEntryDate.setText(entryDate);
+        tvEntryDate.setText(databaseHelper.getSpecificEntryModelEntryId(entryId).getDate());
         tvEntryId.setText("#" + enryIdTxt);
         tvEntryNote.setText(databaseHelper.getSpecificEntryModelEntryId(entryId).getNote());
         tvEntryLeukoNl.setText(entryLeukoNl);
