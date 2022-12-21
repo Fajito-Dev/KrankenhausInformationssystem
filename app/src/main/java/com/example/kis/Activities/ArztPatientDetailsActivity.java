@@ -78,14 +78,20 @@ public class ArztPatientDetailsActivity extends AppCompatActivity implements Ada
 
                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
                 String date = sdf.format(new Date());
-
+                String strGesund = "gesund";
+                String strTextSpinner = textSpinner;
                 try {
                     // bei condition kommt condition.toString() rein aber erst wenn Spinner gesetzt ist
                     int visitNr = 0;
                     if(visit.isChecked()==true){
                         visitNr = 1;
                     }
-                    entryModel = new EntryModel(0,patientIdDetails,date,bedNr,visitNr,textSpinner,mrt.isChecked(), blodtest.isChecked(),note.getText().toString(),0,0,0);
+                    if(textSpinner.equals("gesund")){
+                        entryModel = new EntryModel(0,patientIdDetails,date,0,visitNr,textSpinner,mrt.isChecked(), blodtest.isChecked(),note.getText().toString(),0,0,0);
+
+                    }else{
+                        entryModel = new EntryModel(0,patientIdDetails,date,bedNr,visitNr,textSpinner,mrt.isChecked(), blodtest.isChecked(),note.getText().toString(),0,0,0);
+                    }
                     Toast.makeText(ArztPatientDetailsActivity.this, entryModel.toString(), Toast.LENGTH_SHORT).show();
                 } catch (Exception e) { //dat is schwachsinn :O
                     Toast.makeText(ArztPatientDetailsActivity.this, "error creating customer", Toast.LENGTH_SHORT).show();

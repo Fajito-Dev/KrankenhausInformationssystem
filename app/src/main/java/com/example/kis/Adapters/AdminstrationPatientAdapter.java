@@ -8,28 +8,35 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.kis.Activities.AdministrationAddPatientActivity;
+import com.example.kis.Activities.AdministrationHomeActivity;
 import com.example.kis.Activities.ArztPatientDetailsActivity;
 import com.example.kis.Activities.StartActivity;
+import com.example.kis.Database.DatabaseHelper;
 import com.example.kis.Models.EntryModel;
 import com.example.kis.Models.PatientModel;
 import com.example.kis.R;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class AdminstrationPatientAdapter extends RecyclerView.Adapter<AdminstrationPatientAdapter.AdminstrationPatientViewHolder> {
     Context context;
     ArrayList<PatientModel> patientModelList;
     ArrayList<EntryModel> entryModelList;
+    DatabaseHelper databaseHelper;
 
-
-    public AdminstrationPatientAdapter(Context context, ArrayList<PatientModel> patientModelList,ArrayList<EntryModel> entryModelList){
+    public AdminstrationPatientAdapter(Context context, ArrayList<PatientModel> patientModelList,ArrayList<EntryModel> entryModelList,DatabaseHelper databaseHelper){
         this.context = context;
         this.patientModelList = patientModelList;
         this.entryModelList = entryModelList;
+        this.databaseHelper = databaseHelper;
     }
 
     @NonNull
@@ -58,6 +65,14 @@ public class AdminstrationPatientAdapter extends RecyclerView.Adapter<Adminstrat
         holder.imgbtnIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                EntryModel entryModel = null;
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                String date = sdf.format(new Date());
+                try {
+                    entryModel = new EntryModel(0, patientModelList.get(position).getPatientId(),date,databaseHelper.getFreeBed(),0,"k.A",false, false,"Patient eingewiesen",0,0,0);
+                } catch (Exception e) { //dat is schwachsinn :O
+                }
+                databaseHelper.addEntry(entryModel);
                 Intent intent = new Intent(v.getContext(), StartActivity.class);
                 holder.imgbtnIcon.getContext().startActivity(intent);
             }

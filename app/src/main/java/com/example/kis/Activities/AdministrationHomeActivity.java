@@ -26,7 +26,7 @@ public class AdministrationHomeActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.AdministrationHomeRecyclerView);
 
         dataBaseHelper = new DatabaseHelper(AdministrationHomeActivity.this);
-        AdminstrationPatientAdapter adapter = new AdminstrationPatientAdapter(this,dataBaseHelper.getEveryPatient(),dataBaseHelper.getEveryEntry());
+        AdminstrationPatientAdapter adapter = new AdminstrationPatientAdapter(this,dataBaseHelper.getEveryPatient(),dataBaseHelper.getEveryEntry(),dataBaseHelper);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 

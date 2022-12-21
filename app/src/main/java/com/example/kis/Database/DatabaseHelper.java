@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
+
+import com.example.kis.Adapters.AdminstrationPatientAdapter;
 import com.example.kis.Models.PatientModel;
 import com.example.kis.Models.EntryModel;
 
@@ -37,6 +39,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public DatabaseHelper(@Nullable Context context) {
         super(context, "Krankenakten.db", null, 1);
     }
+
+
     @Override
     public void onCreate(SQLiteDatabase db) {
         String createTableStatement1 = "CREATE TABLE " + PATIENT_TABLE + " (" + COLUMN_PATIENT_PATIENTID + " INTEGER PRIMARY KEY, " + COLUMN_PATIENT_PRENAME + " TEXT, " + COLUMN_PATIENT_NAME + " TEXT, " + COLUMN_PATIENT_BIRTHDATE + " TEXT)";
@@ -94,6 +98,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return returnList;
     }
+
     //gitb Liste mit bestimmten Patient aus
     //Kann ich am besten einfach umschreiben indem ich anstatt Array List mit den PatientModel nehme und returnen lasse
     public ArrayList<PatientModel> getSpecificPatient(int patientIdDetails){
@@ -405,4 +410,44 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return returnList2;
     }
+
+    public ArrayList<PatientModel> getEveryPatientBed(ArrayList<EntryModel> entryModelList){
+        ArrayList<PatientModel> returnList = new ArrayList<>();
+        int bedNrW = 0;
+        //get data from the database
+        String queryString = "SELECT * FROM "+ PATIENT_TABLE;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(queryString,null);
+
+        if(cursor.moveToFirst()){
+            //loop thru the cursor(result set) and creat a new customer object put them in the return List
+            do{
+                int patientID = cursor.getInt(0);
+                String patientPreName = cursor.getString(1);
+                String patientName = cursor.getString(2);
+                String patientBirthdate = cursor.getString(3);
+
+                for(int i = 0;i<entryModelList.size();i++){
+                    if(entryModelList.get(i).getPatientIde()==patientID){
+                        if(entryModelList.get(i).getBedNr()!=0){
+                            bedNrW = 1;
+                        }else{
+                            bedNrW = 2;
+                        }
+                    }
+                }
+                    if(bedNrW==1) {
+                        PatientModel newPatient = new PatientModel(patientID, patientPreName, patientName, patientBirthdate);
+                        returnList.add(newPatient);
+                    }
+            }while(cursor.moveToNext());
+        }else{
+            //failure do not add anything to the List
+        }
+        //close both cursor and database
+        cursor.close();
+        db.close();
+        return returnList;
+    }
+
 }

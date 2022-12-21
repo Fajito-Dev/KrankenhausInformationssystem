@@ -31,7 +31,7 @@ public class ArztVisiteActivity extends AppCompatActivity {
         buttonLogout = findViewById(R.id.ArztVisiteButtonLogout);
 
         dataBaseHelper = new DatabaseHelper(ArztVisiteActivity.this);
-        ArztPatientAdapter adapter = new ArztPatientAdapter(this,dataBaseHelper.getEveryPatient(),dataBaseHelper.getEveryEntry());
+        ArztPatientAdapter adapter = new ArztPatientAdapter(this,dataBaseHelper.getEveryPatientBed(dataBaseHelper.getEveryEntry()),dataBaseHelper.getEveryEntry());
         recyclerViewA.setAdapter(adapter);
         recyclerViewA.setLayoutManager(new LinearLayoutManager(this));
 
