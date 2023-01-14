@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,6 +35,7 @@ public class ArztPatientDetailsActivity extends AppCompatActivity implements Ada
     EditText note;
     Button btnSafe,btnBack;
     String textSpinner;
+    ImageButton backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +52,15 @@ public class ArztPatientDetailsActivity extends AppCompatActivity implements Ada
         note = findViewById(R.id.Notes);
         btnSafe = findViewById(R.id.ArztNotesSaveButton);
         btnBack = findViewById(R.id.ArztNotesButtonVerwerfen);
+        backButton = findViewById(R.id.ArztNotesBackButton);
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (getApplicationContext(), ArztVisiteActivity.class);
+                startActivity(intent);
+            }
+        });
 
         ArrayAdapter<CharSequence> adapterB = ArrayAdapter.createFromResource(this, R.array.zustand, android.R.layout.simple_spinner_item);
         adapterB.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -110,7 +121,6 @@ public class ArztPatientDetailsActivity extends AppCompatActivity implements Ada
                 startActivity(intent);
             }
         });
-
     }
 
     @Override

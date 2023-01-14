@@ -4,16 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".Activities.AdministrationAddPatientActivity">
+
+    <ImageButton
+        android:id="@+id/AdministrationAddPatientBackButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:background="@drawable/backarrow" />
 
     <TextView
         android:id="@+id/AdministrationAddPatientTitel"
-        android:layout_width="match_parent"
+        android:layout_width="315dp"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_toEndOf="@id/AdministrationAddPatientBackButton"
         android:text="@string/DE_BUTTON_Add_Patient"
-        android:textSize="20sp"
-        />
+        android:textSize="25sp" />
 
     <TextView
         android:id="@+id/AdministrationAddPatientInsuranceNumber"
@@ -28,6 +41,7 @@
         android:id="@+id/AdministrationAddPatientInsuranceNumberInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="20sp"
         android:layout_below="@id/AdministrationAddPatientInsuranceNumber"
         android:layout_marginHorizontal="20dp"
         android:inputType="text" />
@@ -45,6 +59,7 @@
         android:id="@+id/AdministrationAddPatientVornameInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="20sp"
         android:layout_below="@id/AdministrationAddPatientVorname"
         android:layout_marginHorizontal="20dp"
         android:inputType="text" />
@@ -64,6 +79,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/AdministrationAddPatientName"
         android:layout_marginHorizontal="20dp"
+        android:textSize="20sp"
         android:inputType="text" />
 
     <TextView
@@ -77,10 +93,12 @@
 
     <TextView
         android:id="@+id/AdministrationAddPatientGeburtstaginput"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="368dp"
+        android:layout_height="40dp"
         android:layout_below="@id/AdministrationAddPatientGeburtstag"
         android:layout_marginHorizontal="20dp"
+        android:textSize="20sp"
+        android:hint="TT/MM/JJJ"
         android:inputType="text" />
 
     <Button
@@ -89,9 +107,21 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/AdministrationAddPatientGeburtstaginput"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"
+        android:backgroundTint="@color/save_button"
+        android:textColor="@color/black"
+        android:text="Speichern" />
+    <Button
+        android:id="@+id/AdministrationAddPatientAbort"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/AdministrationAddPatientButton"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
-        android:text="Speichern" />
+        android:backgroundTint="@color/abort_delete_logout_button"
+        android:textColor="@color/black"
+        android:text="Verwerfen" />
 
 </RelativeLayout>

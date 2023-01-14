@@ -61,7 +61,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="5dp"
-                android:layout_marginEnd="32dp"
+                android:layout_marginEnd="16dp"
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/DE_BUTTON_Show_Details"
                 android:padding="0dp"

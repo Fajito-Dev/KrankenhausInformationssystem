@@ -8,10 +8,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.kis.Database.DatabaseHelper;
 import com.example.kis.Models.EntryModel;
 import com.example.kis.Models.PatientModel;
@@ -23,11 +25,12 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class AdministrationAddPatientActivity extends AppCompatActivity {
-    Button btnAddPatient;
+    Button btnAddPatient, buttonAbort;
     DatabaseHelper dataBaseHelper;
     TextInputEditText edtPrename,edtName,edtPatientenId;
     TextView tvBday;
     DatePickerDialog.OnDateSetListener setListener;
+    ImageButton backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +42,26 @@ public class AdministrationAddPatientActivity extends AppCompatActivity {
         tvBday = findViewById(R.id.AdministrationAddPatientGeburtstaginput);
         edtPatientenId = findViewById(R.id.AdministrationAddPatientInsuranceNumberInput);
         dataBaseHelper = new DatabaseHelper(AdministrationAddPatientActivity.this);
+
+        buttonAbort = findViewById(R.id.AdministrationAddPatientAbort);
+        buttonAbort.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (getApplicationContext(), AdministrationHomeActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+        backButton = findViewById(R.id.AdministrationAddPatientBackButton);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (getApplicationContext(), AdministrationHomeActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         tvBday.setOnClickListener(new View.OnClickListener() {
             @Override
