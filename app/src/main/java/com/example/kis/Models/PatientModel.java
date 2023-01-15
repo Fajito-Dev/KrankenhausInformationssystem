@@ -2,6 +2,8 @@ package com.example.kis.Models;
 
 import androidx.annotation.NonNull;
 
+import java.util.jar.Attributes;
+
 public class PatientModel {
     private int patientId;
     private String preName;
@@ -58,4 +60,6 @@ public class PatientModel {
     public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
     }
+
+    public String getFullName(){return preName+ name;}
 }
