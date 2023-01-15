@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -18,17 +20,21 @@ import com.example.kis.Models.EntryModel;
 import com.example.kis.R;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
-public class ArztPatientAdapter extends RecyclerView.Adapter<ArztPatientAdapter.ArztPatientViewHolder> {
+public class ArztPatientAdapter extends RecyclerView.Adapter<ArztPatientAdapter.ArztPatientViewHolder> implements Filterable {
     public static final String EXTRA_NUMBER = "com.example.kis.Adapters.EXTRA_NUMBER";
     Context context;
     ArrayList<PatientModel> patientModelList;
     ArrayList<EntryModel> entryModelList;
+    ArrayList<PatientModel> patientModelListFull;
 
     public ArztPatientAdapter(Context context, ArrayList<PatientModel> patientModelList,ArrayList<EntryModel> entryModelList){
         this.context = context;
         this.patientModelList = patientModelList;
         this.entryModelList = entryModelList;
+        patientModelListFull = new ArrayList<>(patientModelList);
     }
 
     @NonNull
@@ -85,4 +91,34 @@ public class ArztPatientAdapter extends RecyclerView.Adapter<ArztPatientAdapter.
             imgbtnIcon = itemView.findViewById(R.id.ArztPatientCardDetailsIcon);
         }
     }
+    public Filter getFilter(){
+        return nameFilter;
+    }
+    public Filter nameFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            ArrayList<PatientModel> filteredList = new ArrayList<>();
+            if(constraint == null || constraint.length() == 0){
+                filteredList.addAll(patientModelListFull);
+            }else{
+                String filterPattern = constraint.toString().toLowerCase().trim();
+                for(PatientModel pm : patientModelListFull){
+                    if(pm.getFullName().toLowerCase().contains(filterPattern)){
+                        filteredList.add(pm);
+                    }
+                }
+            }
+
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+         patientModelList.clear();
+         patientModelList.addAll((ArrayList) results.values);
+         notifyDataSetChanged();
+        }
+    };
 }

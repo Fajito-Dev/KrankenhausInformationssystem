@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.SearchView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -21,6 +22,7 @@ public class ArztVisiteActivity extends AppCompatActivity {
     RecyclerView recyclerViewA;
     Button buttonLogout;
     ImageButton buttonPatientDetails;
+    SearchView svSearchBar;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -29,11 +31,27 @@ public class ArztVisiteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_arzt_visite);
         recyclerViewA = findViewById(R.id.recyclerView);
         buttonLogout = findViewById(R.id.ArztVisiteButtonLogout);
+        svSearchBar = findViewById(R.id.search_bar);
 
         dataBaseHelper = new DatabaseHelper(ArztVisiteActivity.this);
         ArztPatientAdapter adapter = new ArztPatientAdapter(this,dataBaseHelper.getEveryPatientBed(dataBaseHelper.getEveryEntry()),dataBaseHelper.getEveryEntry());
         recyclerViewA.setAdapter(adapter);
         recyclerViewA.setLayoutManager(new LinearLayoutManager(this));
+
+
+
+        svSearchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                return false;
+            }
+        });
 
         buttonLogout.setOnClickListener(new View.OnClickListener() {
             @Override
