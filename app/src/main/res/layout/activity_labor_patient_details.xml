@@ -95,7 +95,6 @@
         android:textSize="20sp" />
 
     <ImageView
-
         android:id="@+id/LaborPatientDetailsMRTPreview"
         android:layout_width="match_parent"
         android:layout_height="212dp"
@@ -105,7 +104,8 @@
         android:layout_marginTop="20dp"
         android:layout_marginBottom="25dp"
         android:background="@color/white"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        tools:srcCompat="@tools:sample/avatars[3]" />
 
     <TextView
         android:id="@+id/LaborPatientDetailsLymphoLeukoRatio"
@@ -146,7 +146,7 @@
         android:layout_marginStart="0dp"
         android:layout_marginBottom="13dp"
         android:layout_toEndOf="@+id/LaborPatientDetailsLeukoTitel"
-        android:text="@string/DE_TEXT_LeukoValue"
+        android:hint="@string/DE_TEXT_LeukoValue"
         android:textSize="13sp" />
 
     <com.google.android.material.textfield.TextInputEditText
@@ -157,7 +157,7 @@
         android:layout_above="@+id/laborPatientDetailsLeukoValue"
         android:layout_marginHorizontal="20sp"
         android:layout_toEndOf="@+id/LaborPatientDetailsLeukoTitel"
-        android:text="@string/DE_TEXT_LeukoValue"
+        android:hint="@string/DE_TEXT_LeukoValue"
         android:textSize="13sp" />
 
     <com.google.android.material.textfield.TextInputEditText
@@ -171,7 +171,7 @@
         android:layout_marginTop="0dp"
         android:layout_marginBottom="0dp"
         android:layout_toEndOf="@+id/LaborPatientDetailsLymphoLeukoRatio"
-        android:text="@string/DE_TEXT_LeukoValue"
+        android:hint="@string/DE_TEXT_LeukoValue"
         android:textSize="13sp" />
 
     <Button

@@ -7,7 +7,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -22,6 +21,7 @@ import com.example.kis.Adapters.ArztPatientAdapter;
 import com.example.kis.Database.DatabaseHelper;
 import com.example.kis.Models.EntryModel;
 import com.example.kis.R;
+import com.google.android.material.textview.MaterialTextView;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -32,7 +32,7 @@ public class ArztPatientDetailsActivity extends AppCompatActivity implements Ada
     CheckBox mrt, blodtest, visit;
     TextView name,age, bednr;
     DatabaseHelper databaseHelper;
-    EditText note;
+    MaterialTextView note;
     Button btnSafe,btnBack;
     String textSpinner;
     ImageButton backButton;

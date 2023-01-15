@@ -3,13 +3,16 @@ package com.example.kis.Activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.kis.Adapters.ArztNotesAdapter;
 import com.example.kis.Adapters.LaborRequestsAdapter;
 import com.example.kis.Database.DatabaseHelper;
 import com.example.kis.Models.EntryModel;
@@ -25,6 +28,7 @@ public class LaborPatientDetailsActivity extends AppCompatActivity {
     TextInputEditText tiedtLeukoNL,tiedtLymphoPercent,tiedtLypmhoAbsolut;
     DatabaseHelper databaseHelper;
     Button btnSafe,btnBack;
+    String[] images = {"mrt1", "mrt2"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +48,30 @@ public class LaborPatientDetailsActivity extends AppCompatActivity {
         btnBack = findViewById(R.id.LaborPatientDetailsAbort);
 
         databaseHelper = new DatabaseHelper(this);
+
+
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, images);
+        Spinner spinner = findViewById(R.id.LaborPatientDetailsSpinnerMRT);
+        spinner.setAdapter(adapter);
+        final ImageView imageView = findViewById(R.id.LaborPatientDetailsMRTPreview);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // Get the selected image name
+                String imageName = images[position];
+                // Get the resource ID of the image
+                int resId = getResources().getIdentifier(imageName, "drawable", getPackageName());
+                // Set the image on the ImageView
+                imageView.setImageResource(resId);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Do nothing
+            }
+        });
 
         Intent intent = getIntent();
         int entryId = intent.getIntExtra(LaborRequestsAdapter.EXTRA_NUMBER3,0);

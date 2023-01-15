@@ -31,6 +31,12 @@ public class ArztNotesDetailsActivity extends AppCompatActivity {
         btnBack = findViewById(R.id.ArztNotesDetailsButtonBack);
         databaseHelper = new DatabaseHelper(this);
 
+        //imgvEntryMrt.findViewById(R.id.ArztNotesDetailsImageViewMRT);
+
+
+        //TODO: MUSS AUS DATENBANK GEGETTET WERDEN
+        //imgvEntryMrt.setImageResource();
+
         Intent intent = getIntent();
         int entryId = intent.getIntExtra(ArztNotesAdapter.EXTRA_NUMBER2,0);
 
