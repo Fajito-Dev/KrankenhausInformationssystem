@@ -35,6 +35,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_ENTRY_LEUKONL = "ENTRY_LEUKONL";
     public static final String COLUMN_ENTRY_LYMPHOPROZENT = "ENTRY_LYMPHOPROZENT";
     public static final String COLUMN_ENTRY_LYMPHOABSOLUT = "ENTRY_LYMPHOABSOLUT";
+    public static final String COLUMN_ENTRY_IMAGE = "ENTRY_IMAGE";
 
     public DatabaseHelper(@Nullable Context context) {
         super(context, "Krankenakten.db", null, 1);
@@ -44,7 +45,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String createTableStatement1 = "CREATE TABLE " + PATIENT_TABLE + " (" + COLUMN_PATIENT_PATIENTID + " INTEGER PRIMARY KEY, " + COLUMN_PATIENT_PRENAME + " TEXT, " + COLUMN_PATIENT_NAME + " TEXT, " + COLUMN_PATIENT_BIRTHDATE + " TEXT)";
-        String createTableStatement2 = "CREATE TABLE " + ENTRY_TABLE + " (" + COLUMN_ENTRY_EINTRAGID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_ENTRY_PATIENTIDE + " INT, " + COLUMN_ENTRY_DATE + " TEXT, " + COLUMN_ENTRY_BEDNR + " INT, " + COLUMN_ENTRY_VISITED + " INT, " + COLUMN_ENTRY_CONDITION + " TEXT, " + COLUMN_ENTRY_MRT + " BOOL, " + COLUMN_ENTRY_BLOODTEST + " BOOL, " + COLUMN_ENTRY_NOTE + " TEXT, " + COLUMN_ENTRY_LEUKONL + " FLOAT, " + COLUMN_ENTRY_LYMPHOPROZENT + " FLOAT, " + COLUMN_ENTRY_LYMPHOABSOLUT + " FLOAT)";
+        String createTableStatement2 = "CREATE TABLE " + ENTRY_TABLE + " (" + COLUMN_ENTRY_EINTRAGID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_ENTRY_PATIENTIDE + " INT, " + COLUMN_ENTRY_DATE + " TEXT, " + COLUMN_ENTRY_BEDNR + " INT, " + COLUMN_ENTRY_VISITED + " INT, " + COLUMN_ENTRY_CONDITION + " TEXT, " + COLUMN_ENTRY_MRT + " BOOL, " + COLUMN_ENTRY_BLOODTEST + " BOOL, " + COLUMN_ENTRY_NOTE + " TEXT, " + COLUMN_ENTRY_LEUKONL + " FLOAT, " + COLUMN_ENTRY_LYMPHOPROZENT + " FLOAT, " + COLUMN_ENTRY_LYMPHOABSOLUT + " FLOAT, " + COLUMN_ENTRY_IMAGE + " TEXT)";
 
         db.execSQL(createTableStatement1);
         db.execSQL(createTableStatement2);
@@ -144,6 +145,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cv.put(COLUMN_ENTRY_LEUKONL, entryModel.getLeukoNl());
         cv.put(COLUMN_ENTRY_LYMPHOPROZENT, entryModel.getLymphoProzent());
         cv.put(COLUMN_ENTRY_LYMPHOABSOLUT, entryModel.getLymphoAbsolut());
+        cv.put(COLUMN_ENTRY_IMAGE, entryModel.getImage());
 
         long insert = db.insert(ENTRY_TABLE, null, cv);
 
@@ -176,8 +178,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 float leukoNl = cursor.getFloat(9);
                 float lymphoProzent = cursor.getFloat(10);
                 float lymphoAbsolut = cursor.getFloat(11);
+                String image = cursor.getString(12);
 
-                EntryModel newEntry = new EntryModel(eintragId,patientIDE,date,bedNr,visited,condition,mrt,bloodtest,note,leukoNl,lymphoProzent,lymphoAbsolut);
+                EntryModel newEntry = new EntryModel(eintragId,patientIDE,date,bedNr,visited,condition,mrt,bloodtest,note,leukoNl,lymphoProzent,lymphoAbsolut,image);
                 returnList2.add(newEntry);
             }while(cursor.moveToNext());
         }else{
@@ -211,9 +214,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 float leukoNl = cursor.getFloat(9);
                 float lymphoProzent = cursor.getFloat(10);
                 float lymphoAbsolut = cursor.getFloat(11);
+                String image = cursor.getString(12);
 
                 if(patientIDE==patientIdDetails) {
-                    EntryModel newEntry = new EntryModel(eintragId, patientIDE, date, bedNr, visited, condition, mrt, bloodtest, note, leukoNl, lymphoProzent, lymphoAbsolut);
+                    EntryModel newEntry = new EntryModel(eintragId, patientIDE, date, bedNr, visited, condition, mrt, bloodtest, note, leukoNl, lymphoProzent, lymphoAbsolut,image);
                     returnList2.add(newEntry);
                 }
             }while(cursor.moveToNext());
@@ -317,9 +321,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 float leukoNl = cursor.getFloat(9);
                 float lymphoProzent = cursor.getFloat(10);
                 float lymphoAbsolut = cursor.getFloat(11);
+                String image = cursor.getString(12);
 
                 if(patientIDE==patientIdDetails) {
-                    newEntry = new EntryModel(eintragId, patientIDE, date, bedNr, visited, condition, mrt, bloodtest, note, leukoNl, lymphoProzent, lymphoAbsolut);
+                    newEntry = new EntryModel(eintragId, patientIDE, date, bedNr, visited, condition, mrt, bloodtest, note, leukoNl, lymphoProzent, lymphoAbsolut,image);
                     cursor.close();
                     db.close();
                     return newEntry;
@@ -357,9 +362,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 float leukoNl = cursor.getFloat(9);
                 float lymphoProzent = cursor.getFloat(10);
                 float lymphoAbsolut = cursor.getFloat(11);
+                String image = cursor.getString(12);
 
                 if(eintragId==entryIdDetails) {
-                    newEntry = new EntryModel(eintragId, patientIDE, date, bedNr, visited, condition, mrt, bloodtest, note, leukoNl, lymphoProzent, lymphoAbsolut);
+                    newEntry = new EntryModel(eintragId, patientIDE, date, bedNr, visited, condition, mrt, bloodtest, note, leukoNl, lymphoProzent, lymphoAbsolut,image);
                     cursor.close();
                     db.close();
                     return newEntry;
@@ -396,9 +402,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 float leukoNl = cursor.getFloat(9);
                 float lymphoProzent = cursor.getFloat(10);
                 float lymphoAbsolut = cursor.getFloat(11);
+                String image = cursor.getString(12);
 
                 if(visited!=2 && mrt||bloodtest){
-                    EntryModel newEntry = new EntryModel(eintragId, patientIDE, date, bedNr, visited, condition, mrt, bloodtest, note, leukoNl, lymphoProzent, lymphoAbsolut);
+                    EntryModel newEntry = new EntryModel(eintragId, patientIDE, date, bedNr, visited, condition, mrt, bloodtest, note, leukoNl, lymphoProzent, lymphoAbsolut,image);
                     returnList2.add(newEntry);
                 }
             }while(cursor.moveToNext());
