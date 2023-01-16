@@ -31,6 +31,8 @@ public class AdministrationHomeActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         logout.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), StartActivity.class);
+            startActivity(intent);
             finish();
         });
         addPatient.setOnClickListener(v -> {

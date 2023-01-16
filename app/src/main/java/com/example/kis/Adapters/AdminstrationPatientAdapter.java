@@ -8,14 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.kis.Activities.AdministrationAddPatientActivity;
-import com.example.kis.Activities.AdministrationHomeActivity;
-import com.example.kis.Activities.ArztPatientDetailsActivity;
 import com.example.kis.Activities.StartActivity;
 import com.example.kis.Database.DatabaseHelper;
 import com.example.kis.Models.EntryModel;
@@ -47,6 +43,7 @@ public class AdminstrationPatientAdapter extends RecyclerView.Adapter<Adminstrat
         return new AdminstrationPatientAdapter.AdminstrationPatientViewHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull AdminstrationPatientAdapter.AdminstrationPatientViewHolder holder, @SuppressLint("RecyclerView") int position) {
         String insuranceNr = Integer.toString(patientModelList.get(position).getPatientId());

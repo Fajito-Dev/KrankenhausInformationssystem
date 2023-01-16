@@ -43,11 +43,11 @@ public class ArztNotesAdapter extends RecyclerView.Adapter<ArztNotesAdapter.Arzt
     public void onBindViewHolder(@NonNull ArztNotesViewHolder holder, @SuppressLint("RecyclerView") int position) {
         String documentEntry = "kein Dokument";
 
-        if(entryModelList.get(position).isMrt()==true& entryModelList.get(position).isBloodtest()==true){
+        if(entryModelList.get(position).isMrt() & entryModelList.get(position).isBloodtest()==true){
             documentEntry = "MRT & Blutwerte";
-        }else if(entryModelList.get(position).isMrt()==true){
+        }else if(entryModelList.get(position).isMrt()){
             documentEntry = "MRT";
-        }else if(entryModelList.get(position).isBloodtest()==true){
+        }else if(entryModelList.get(position).isBloodtest()){
             documentEntry = "Blutwerte";
         }
 
