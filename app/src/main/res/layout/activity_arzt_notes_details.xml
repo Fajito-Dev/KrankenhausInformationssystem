@@ -25,8 +25,7 @@
         android:layout_toStartOf="@+id/ArztNotesDetailsEntryID"
         android:layout_toEndOf="@+id/ArztNotesDetailsButtonBack"
         android:text="@string/DE_TEXT_Datum"
-        android:textSize="20sp"
-        />
+        android:textSize="20sp"/>
 
     <TextView
         android:id="@+id/ArztNotesDetailsEntryID"
@@ -128,6 +127,4 @@
         android:layout_marginHorizontal="20sp"
         android:layout_marginBottom="150dp"
         tools:srcCompat="@tools:sample/avatars[3]" />
-
-
 </RelativeLayout>
