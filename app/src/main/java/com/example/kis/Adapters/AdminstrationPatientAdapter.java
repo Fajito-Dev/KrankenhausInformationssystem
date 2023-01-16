@@ -69,7 +69,7 @@ public class AdminstrationPatientAdapter extends RecyclerView.Adapter<Adminstrat
                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
                 String date = sdf.format(new Date());
                 try {
-                    entryModel = new EntryModel(0, patientModelList.get(position).getPatientId(),date,databaseHelper.getFreeBed(),0,"k.A",false, false,"Patient eingewiesen",0,0,0);
+                    entryModel = new EntryModel(0, patientModelList.get(position).getPatientId(),date,databaseHelper.getFreeBed(),0,"k.A",false, false,"Patient eingewiesen",0,0,0,"");
                 } catch (Exception e) { //dat is schwachsinn :O
                 }
                 databaseHelper.addEntry(entryModel);

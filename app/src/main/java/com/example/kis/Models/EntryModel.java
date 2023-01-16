@@ -13,9 +13,10 @@ public class EntryModel {
     private float leukoNl;
     private float lymphoProzent;
     private float lymphoAbsolut;
+    private String image;
 
 
-    public EntryModel(int eintragId, int patientIde, String date, int bedNr, int visited, String condition, boolean mrt, boolean bloodtest, String note, float leukoNl, float lymphoProzent, float lymphoAbsolut) {
+    public EntryModel(int eintragId, int patientIde, String date, int bedNr, int visited, String condition, boolean mrt, boolean bloodtest, String note, float leukoNl, float lymphoProzent, float lymphoAbsolut, String image) {
         this.eintragId = eintragId;
         this.patientIde = patientIde;
         this.date = date;
@@ -28,6 +29,7 @@ public class EntryModel {
         this.leukoNl = leukoNl;
         this.lymphoProzent = lymphoProzent;
         this.lymphoAbsolut = lymphoAbsolut;
+        this.image = image;
     }
     public EntryModel(){
 
@@ -92,4 +94,8 @@ public class EntryModel {
     public float getLymphoAbsolut() {return lymphoAbsolut;}
 
     public void setLymphoAbsolut(float lymphoAbsolut) {this.lymphoAbsolut = lymphoAbsolut;}
+
+    public String getImage() {return image;}
+
+    public void setImage(String image) {this.image = image;}
 }

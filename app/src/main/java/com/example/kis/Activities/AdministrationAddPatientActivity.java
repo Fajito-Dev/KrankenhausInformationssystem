@@ -93,7 +93,7 @@ public class AdministrationAddPatientActivity extends AppCompatActivity {
                 String date = sdf.format(new Date());
                 try {
                     patientModel = new PatientModel(Integer.parseInt(edtPatientenId.getText().toString()), edtPrename.getText().toString(), edtName.getText().toString(), tvBday.getText().toString());
-                    entryModel = new EntryModel(0, Integer.parseInt(edtPatientenId.getText().toString()),date,dataBaseHelper.getFreeBed(),0,"ohneBefund",false, false,"Patient eingewiesen",0,0,0);
+                    entryModel = new EntryModel(0, Integer.parseInt(edtPatientenId.getText().toString()),date,dataBaseHelper.getFreeBed(),0,"ohneBefund",false, false,"Patient eingewiesen",0,0,0,"");
                     Toast.makeText(AdministrationAddPatientActivity.this, patientModel.toString(), Toast.LENGTH_SHORT).show();
                 } catch (Exception e) { //dat is schwachsinn :O
                     Toast.makeText(AdministrationAddPatientActivity.this, "error creating customer", Toast.LENGTH_SHORT).show();
