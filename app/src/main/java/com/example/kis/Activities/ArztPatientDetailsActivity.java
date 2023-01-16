@@ -21,7 +21,7 @@ import com.example.kis.Adapters.ArztPatientAdapter;
 import com.example.kis.Database.DatabaseHelper;
 import com.example.kis.Models.EntryModel;
 import com.example.kis.R;
-import com.google.android.material.textview.MaterialTextView;
+import com.google.android.material.textfield.TextInputEditText;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -32,7 +32,7 @@ public class ArztPatientDetailsActivity extends AppCompatActivity implements Ada
     CheckBox mrt, blodtest, visit;
     TextView name,age, bednr;
     DatabaseHelper databaseHelper;
-    MaterialTextView note;
+    TextInputEditText note;
     Button btnSafe,btnBack;
     String textSpinner;
     ImageButton backButton;
