@@ -49,6 +49,7 @@ public class AdministrationAddPatientActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent (getApplicationContext(), AdministrationHomeActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
