@@ -15,13 +15,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kis.Activities.ArztPatientDetailsActivity;
-import com.example.kis.Models.PatientModel;
 import com.example.kis.Models.EntryModel;
+import com.example.kis.Models.PatientModel;
 import com.example.kis.R;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
 
 public class ArztPatientAdapter extends RecyclerView.Adapter<ArztPatientAdapter.ArztPatientViewHolder> implements Filterable {
     public static final String EXTRA_NUMBER = "com.example.kis.Adapters.EXTRA_NUMBER";
@@ -59,7 +57,6 @@ public class ArztPatientAdapter extends RecyclerView.Adapter<ArztPatientAdapter.
 
         holder.text1.setText(patientModelList.get(position).getPreName()+" "+patientModelList.get(position).getName());
         holder.text2.setText(patientModelList.get(position).getBirthDate()+" (Alter)");
-        holder.text3.setText("X");
         holder.text4.setText("BettNr " + bedNrS);
         holder.imgbtnIcon.setImageResource(R.drawable.img);
         holder.imgbtnIcon.setOnClickListener(new View.OnClickListener() {
@@ -79,7 +76,7 @@ public class ArztPatientAdapter extends RecyclerView.Adapter<ArztPatientAdapter.
     }
 
     public static class ArztPatientViewHolder extends RecyclerView.ViewHolder{
-        TextView text1, text2, text3, text4;
+        TextView text1, text2, text4;
         ImageButton imgbtnIcon;
 
         public ArztPatientViewHolder(@NonNull View itemView) {
@@ -87,7 +84,6 @@ public class ArztPatientAdapter extends RecyclerView.Adapter<ArztPatientAdapter.
             text1 = itemView.findViewById(R.id.ArztPatientCardName);
             text2 = itemView.findViewById(R.id.ArztPatientCardBirthDate);
             text4 = itemView.findViewById(R.id.ArztPatientCardBettNummer);
-            text3 = itemView.findViewById(R.id.ArztPatientCardRequestedDocuments);
             imgbtnIcon = itemView.findViewById(R.id.ArztPatientCardDetailsIcon);
         }
     }

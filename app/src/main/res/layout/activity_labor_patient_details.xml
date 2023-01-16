@@ -176,14 +176,14 @@
 
     <Button
         android:id="@+id/LaborPatientDetailsButtonSubmit"
-        android:backgroundTint="@color/save_button"
-        android:textColor="@color/black"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/LaborPatientDetailsAbort"
         android:layout_marginHorizontal="20sp"
-        android:layout_marginBottom="30dp"
-        android:text="Senden" />
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/save_button"
+        android:text="Senden"
+        android:textColor="@color/black" />
 
     <Button
         android:id="@+id/LaborPatientDetailsAbort"
