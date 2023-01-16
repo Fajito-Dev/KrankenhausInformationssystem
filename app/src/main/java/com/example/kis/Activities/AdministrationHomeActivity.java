@@ -3,6 +3,7 @@ package com.example.kis.Activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.SearchView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -16,6 +17,7 @@ public class AdministrationHomeActivity extends AppCompatActivity {
     Button logout, addPatient;
     RecyclerView recyclerView;
     DatabaseHelper dataBaseHelper;
+    SearchView svSearchBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,11 +26,25 @@ public class AdministrationHomeActivity extends AppCompatActivity {
         addPatient = findViewById(R.id.AdministrationHomeButtonAddPatient);
         logout = findViewById(R.id.AdministrationHomeButtonLogout);
         recyclerView = findViewById(R.id.AdministrationHomeRecyclerView);
+        svSearchBar = findViewById(R.id.AdministrationHomeSearchView);
 
         dataBaseHelper = new DatabaseHelper(AdministrationHomeActivity.this);
         AdminstrationPatientAdapter adapter = new AdminstrationPatientAdapter(this,dataBaseHelper.getEveryPatient(),dataBaseHelper.getEveryEntry(),dataBaseHelper);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        svSearchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                return false;
+            }
+        });
 
         logout.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), StartActivity.class);

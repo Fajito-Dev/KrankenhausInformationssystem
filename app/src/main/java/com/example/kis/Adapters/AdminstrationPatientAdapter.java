@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -22,17 +24,19 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class AdminstrationPatientAdapter extends RecyclerView.Adapter<AdminstrationPatientAdapter.AdminstrationPatientViewHolder> {
+public class AdminstrationPatientAdapter extends RecyclerView.Adapter<AdminstrationPatientAdapter.AdminstrationPatientViewHolder> implements Filterable {
     Context context;
     ArrayList<PatientModel> patientModelList;
     ArrayList<EntryModel> entryModelList;
     DatabaseHelper databaseHelper;
+    ArrayList<PatientModel> patientModelListFull;
 
     public AdminstrationPatientAdapter(Context context, ArrayList<PatientModel> patientModelList,ArrayList<EntryModel> entryModelList,DatabaseHelper databaseHelper){
         this.context = context;
         this.patientModelList = patientModelList;
         this.entryModelList = entryModelList;
         this.databaseHelper = databaseHelper;
+        patientModelListFull = new ArrayList<>(patientModelList);
     }
 
     @NonNull
@@ -48,14 +52,20 @@ public class AdminstrationPatientAdapter extends RecyclerView.Adapter<Adminstrat
     public void onBindViewHolder(@NonNull AdminstrationPatientAdapter.AdminstrationPatientViewHolder holder, @SuppressLint("RecyclerView") int position) {
         String insuranceNr = Integer.toString(patientModelList.get(position).getPatientId());
         String bedNrS = "";
+        int bedNRnull = 0;
         for(int i = 0;i<entryModelList.size();i++){
             if(entryModelList.get(i).getPatientIde()==patientModelList.get(position).getPatientId()){
                 bedNrS = Integer.toString(entryModelList.get(i).getBedNr());
+                bedNRnull = entryModelList.get(i).getBedNr();
             }
         }
         holder.tvName.setText(patientModelList.get(position).getPreName()+" "+patientModelList.get(position).getName());
         holder.tvBirthday.setText(patientModelList.get(position).getBirthDate()+" (Alter)");
-        holder.tvBedNr.setText("Bett " + bedNrS);
+        if(bedNRnull == 0){
+            holder.tvBedNr.setText("Patient ausgewiesen");
+        }else {
+            holder.tvBedNr.setText("Bett " + bedNrS);
+        }
         holder.tvInsuranceNr.setText(insuranceNr);
 
         holder.imgbtnIcon.setImageResource(R.drawable.img);
@@ -93,4 +103,35 @@ public class AdminstrationPatientAdapter extends RecyclerView.Adapter<Adminstrat
             imgbtnIcon = itemView.findViewById(R.id.AdministrationPatientCardImageButtonDetails);
         }
     }
+
+    public Filter getFilter(){
+        return nameFilter;
+    }
+    public Filter nameFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            ArrayList<PatientModel> filteredList = new ArrayList<>();
+            if(constraint == null || constraint.length() == 0){
+                filteredList.addAll(patientModelListFull);
+            }else{
+                String filterPattern = constraint.toString().toLowerCase().trim();
+                for(PatientModel pm : patientModelListFull){
+                    if(pm.getFullName().toLowerCase().contains(filterPattern)){
+                        filteredList.add(pm);
+                    }
+                }
+            }
+
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            patientModelList.clear();
+            patientModelList.addAll((ArrayList) results.values);
+            notifyDataSetChanged();
+        }
+    };
 }
