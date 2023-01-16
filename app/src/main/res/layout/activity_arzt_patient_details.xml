@@ -70,7 +70,7 @@
         android:layout_marginBottom="22dp"
         android:textSize="13sp" />
 
-    <com.google.android.material.textview.MaterialTextView
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/Notes"
         android:hint="@string/DE_TEXT_Notiz"
         android:layout_width="match_parent"
