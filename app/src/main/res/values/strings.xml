@@ -5,7 +5,7 @@
     <string name="DE_TEXT_Login_Input_Personal_Number">Personal Nummer</string>
     <string name="DE_TEXT_Login_Input_Password">Password</string>
     <string name="DE_BUTTON_Login">Login</string>
-    <string name="DE_BUTTON_Logout">Logout</string>
+    <string name="DE_BUTTON_Logout">AUSLOGGEN</string>
 
 
     <!--====================== Top Bar Fragment ======================-->
@@ -66,8 +66,8 @@
     <string name="DE_BUTTON_Medicine_Database">Medizin Datenbank</string>
 
     <!--====================== DE Strings Buttons ======================-->
-    <string name="DE_BUTTON_Add_Patient">Patient Hinzufuegen</string>
-    <string name="DE_BUTTON_Delete_Patient">Patient Entlassen</string>
+    <string name="DE_BUTTON_Add_Patient">Patient hinzufuegen</string>
+    <string name="DE_BUTTON_Delete_Patient">Patient entlassen</string>
 
     <!-- Names for Doctor DataBase -->
     <string-array name="DB_CREATE_Doctor_Data">

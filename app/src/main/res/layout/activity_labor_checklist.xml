@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/LaborChecklistTitel1"
-        android:text="@string/DE_TEXT_ArztViteTitel1"
+        android:text="Labor"
         android:textSize="30sp"
         android:textColor="@color/black"
         android:textStyle="bold"
@@ -29,7 +29,7 @@
         android:layout_marginHorizontal="20dp"
         android:layout_marginVertical="20dp"
         android:layout="@id/LaborChecklistTitel2"
-        android:text="@string/DE_TEXT_ArztViteTitel2"
+        android:text="Aufträge"
         android:textSize="20dp"
         android:textStyle="bold" />
 

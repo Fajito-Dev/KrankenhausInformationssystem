@@ -99,7 +99,6 @@ public class ArztPatientDetailsActivity extends AppCompatActivity implements Ada
                     }
                     if(textSpinner.equals("gesund")){
                         entryModel = new EntryModel(0,patientIdDetails,date,0,visitNr,textSpinner,mrt.isChecked(), blodtest.isChecked(),note.getText().toString(),0,0,0,"");
-
                     }else{
                         entryModel = new EntryModel(0,patientIdDetails,date,bedNr,visitNr,textSpinner,mrt.isChecked(), blodtest.isChecked(),note.getText().toString(),0,0,0,"");
                     }
@@ -109,6 +108,11 @@ public class ArztPatientDetailsActivity extends AppCompatActivity implements Ada
                 }
                 DatabaseHelper dataBaseHelper = new DatabaseHelper(ArztPatientDetailsActivity.this);
                 boolean success = dataBaseHelper.addEntry(entryModel);
+                //update recycler
+                ArztPatientAdapter aPadapter = new ArztPatientAdapter(ArztPatientDetailsActivity.this,databaseHelper.getEveryPatientBed(databaseHelper.getEveryEntry()),databaseHelper.getEveryEntry());
+                ArztVisiteActivity.recyclerViewA.setAdapter(aPadapter);
+                ArztVisiteActivity.recyclerViewA.getAdapter().notifyDataSetChanged();
+
                 Toast.makeText(ArztPatientDetailsActivity.this, "Success=" + success, Toast.LENGTH_SHORT).show();
                 finish();
             }

@@ -182,7 +182,7 @@
         android:layout_marginHorizontal="20sp"
         android:layout_marginBottom="20dp"
         android:backgroundTint="@color/save_button"
-        android:text="Senden"
+        android:text="SPEICHERN"
         android:textColor="@color/black" />
 
     <Button
@@ -193,6 +193,6 @@
         android:layout_marginHorizontal="20sp"
         android:layout_marginBottom="33dp"
         android:backgroundTint="@color/abort_delete_logout_button"
-        android:text="Abort"
+        android:text="VERWERFEN"
         android:textColor="@color/black" />
 </RelativeLayout>

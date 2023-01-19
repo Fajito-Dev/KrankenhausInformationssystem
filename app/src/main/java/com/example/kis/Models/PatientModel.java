@@ -61,5 +61,5 @@ public class PatientModel {
         this.birthDate = birthDate;
     }
 
-    public String getFullName(){return preName+ name;}
+    public String getFullName(){return preName+ " " +name;}
 }
