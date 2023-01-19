@@ -14,6 +14,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.kis.Adapters.AdminstrationPatientAdapter;
+import com.example.kis.Adapters.ArztPatientAdapter;
 import com.example.kis.Database.DatabaseHelper;
 import com.example.kis.Models.EntryModel;
 import com.example.kis.Models.PatientModel;
@@ -106,8 +108,12 @@ public class AdministrationAddPatientActivity extends AppCompatActivity {
                 boolean success2 = dataBaseHelper.addEntry(entryModel);
                 Toast.makeText(AdministrationAddPatientActivity.this, "Success=" + success, Toast.LENGTH_SHORT).show();
 
+                AdminstrationPatientAdapter aPadapter = new AdminstrationPatientAdapter(AdministrationAddPatientActivity.this,dataBaseHelper.getEveryPatient(),dataBaseHelper.getEveryEntry(),dataBaseHelper);
+                AdministrationHomeActivity.recyclerViewD.setAdapter(aPadapter);
+                AdministrationHomeActivity.recyclerViewD.getAdapter().notifyDataSetChanged();
+
                 //startet login wieder
-                Intent intent = new Intent(getApplicationContext(), StartActivity.class);
+                Intent intent = new Intent(getApplicationContext(), AdministrationHomeActivity.class);
                 startActivity(intent);
             }
         });

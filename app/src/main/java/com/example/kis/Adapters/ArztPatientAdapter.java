@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kis.Activities.ArztPatientDetailsActivity;
+import com.example.kis.Activities.ArztNotesDetailsActivity;
 import com.example.kis.Models.EntryModel;
 import com.example.kis.Models.PatientModel;
 import com.example.kis.R;

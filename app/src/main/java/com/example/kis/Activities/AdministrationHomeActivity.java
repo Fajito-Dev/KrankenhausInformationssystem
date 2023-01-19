@@ -15,7 +15,7 @@ import com.example.kis.R;
 
 public class AdministrationHomeActivity extends AppCompatActivity {
     Button logout, addPatient;
-    RecyclerView recyclerView;
+    static RecyclerView recyclerViewD;
     DatabaseHelper dataBaseHelper;
     SearchView svSearchBar;
 
@@ -25,13 +25,13 @@ public class AdministrationHomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_administration_home);
         addPatient = findViewById(R.id.AdministrationHomeButtonAddPatient);
         logout = findViewById(R.id.AdministrationHomeButtonLogout);
-        recyclerView = findViewById(R.id.AdministrationHomeRecyclerView);
+         recyclerViewD = findViewById(R.id.AdministrationHomeRecyclerView);
         svSearchBar = findViewById(R.id.AdministrationHomeSearchView);
 
         dataBaseHelper = new DatabaseHelper(AdministrationHomeActivity.this);
         AdminstrationPatientAdapter adapter = new AdminstrationPatientAdapter(this,dataBaseHelper.getEveryPatient(),dataBaseHelper.getEveryEntry(),dataBaseHelper);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerViewD.setAdapter(adapter);
+        recyclerViewD.setLayoutManager(new LinearLayoutManager(this));
 
         svSearchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override

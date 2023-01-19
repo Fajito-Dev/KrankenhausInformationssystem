@@ -19,7 +19,7 @@ import com.example.kis.R;
 
 public class ArztVisiteActivity extends AppCompatActivity {
     DatabaseHelper dataBaseHelper;
-    RecyclerView recyclerViewA;
+    static RecyclerView recyclerViewA;
     Button buttonLogout;
     ImageButton buttonPatientDetails;
     SearchView svSearchBar;

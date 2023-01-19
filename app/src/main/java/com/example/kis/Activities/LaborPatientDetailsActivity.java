@@ -49,8 +49,6 @@ public class LaborPatientDetailsActivity extends AppCompatActivity {
 
         databaseHelper = new DatabaseHelper(this);
 
-
-
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, images);
         Spinner spinner = findViewById(R.id.LaborPatientDetailsSpinnerMRT);
         spinner.setAdapter(adapter);
