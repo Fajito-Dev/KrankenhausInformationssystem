@@ -12,7 +12,9 @@ import com.example.kis.Models.PatientModel;
 import com.example.kis.Models.EntryModel;
 
 import java.lang.reflect.Array;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 //neu
 public class DatabaseHelper extends SQLiteOpenHelper {
@@ -465,5 +467,61 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(COLUMN_ENTRY_VISITED, entryModel.getVisited());
         db.update(ENTRY_TABLE,contentValues,COLUMN_ENTRY_EINTRAGID + " = " + entryModel.getEintragId(),null);
         db.close();
+    }
+
+
+    public ArrayList<PatientModel> getEveryPatientVIsit(ArrayList<EntryModel> entryModelList){
+        ArrayList<PatientModel> returnList = new ArrayList<>();
+        //get data from the database
+        String queryString = "SELECT * FROM "+ PATIENT_TABLE;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(queryString,null);
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        String date = sdf.format(new Date());
+
+        if(cursor.moveToFirst()){
+            //loop thru the cursor(result set) and creat a new customer object put them in the return List
+            do{
+                int bedNrW = 0;
+                int dateNr = 0;
+                int patientID = cursor.getInt(0);
+                String patientPreName = cursor.getString(1);
+                String patientName = cursor.getString(2);
+                String patientBirthdate = cursor.getString(3);
+                String patientAusgewiesen = "Patient eingewiesen";
+                for(int i = 0;i<entryModelList.size();i++){
+                    if(entryModelList.get(i).getPatientIde()==patientID){
+                        String thisDate = entryModelList.get(i).getDate();
+                        if(date.equals(thisDate)) {
+                            dateNr = 1;
+                        }
+                        if(entryModelList.get(i).getNote().equals(patientAusgewiesen)){
+                            if(date.equals(thisDate)) {
+                                dateNr = 0;
+                            }
+                        }
+                        if(entryModelList.get(i).getBedNr()!=0){
+                            bedNrW = 1;
+                        }else{
+                            bedNrW = 2;
+                        }
+                    }
+                }
+               if(dateNr == 0) {
+                   if(bedNrW == 1) {
+                       PatientModel newPatient = new PatientModel(patientID, patientPreName, patientName, patientBirthdate);
+                       returnList.add(newPatient);
+                   }
+               }
+
+            }while(cursor.moveToNext());
+        }else{
+            //failure do not add anything to the List
+        }
+        //close both cursor and database
+        cursor.close();
+        db.close();
+        return returnList;
     }
 }

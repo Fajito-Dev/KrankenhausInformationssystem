@@ -5,8 +5,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.SearchView;
+import android.widget.ToggleButton;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,15 +16,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kis.Adapters.ArztPatientAdapter;
 import com.example.kis.Database.DatabaseHelper;
+import com.example.kis.Models.PatientModel;
 import com.example.kis.R;
+
+import java.util.ArrayList;
 
 
 public class ArztVisiteActivity extends AppCompatActivity {
     DatabaseHelper dataBaseHelper;
     static RecyclerView recyclerViewA;
-    Button buttonLogout;
-    ImageButton buttonPatientDetails,btnFilter;
+    Button buttonLogout,btnFilter;
+    ImageButton buttonPatientDetails;
     SearchView svSearchBar;
+    ToggleButton toggleButton;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -32,7 +38,8 @@ public class ArztVisiteActivity extends AppCompatActivity {
         recyclerViewA = findViewById(R.id.recyclerView);
         buttonLogout = findViewById(R.id.ArztVisiteButtonLogout);
         svSearchBar = findViewById(R.id.search_bar);
-        btnFilter = findViewById(R.id.ArztVisiteFilterButton);
+
+        toggleButton = findViewById(R.id.ArztVisiteFilterButton);
 
         dataBaseHelper = new DatabaseHelper(ArztVisiteActivity.this);
         ArztPatientAdapter adapter = new ArztPatientAdapter(this,dataBaseHelper.getEveryPatientBed(dataBaseHelper.getEveryEntry()),dataBaseHelper.getEveryEntry());
@@ -53,11 +60,23 @@ public class ArztVisiteActivity extends AppCompatActivity {
                 return false;
             }
         });
-        btnFilter.setOnClickListener(new View.OnClickListener() {
+
+        toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View v) {
-
-
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    // Update data and refresh recycler view
+                    ArztPatientAdapter adapter = new ArztPatientAdapter(ArztVisiteActivity.this,dataBaseHelper.getEveryPatientVIsit(dataBaseHelper.getEveryEntry()),dataBaseHelper.getEveryEntry());
+                    adapter.notifyDataSetChanged();
+                    recyclerViewA.setAdapter(adapter);
+                    recyclerViewA.setLayoutManager(new LinearLayoutManager(ArztVisiteActivity.this));
+                } else {
+                    // Update data and refresh recycler view
+                    ArztPatientAdapter adapter = new ArztPatientAdapter(ArztVisiteActivity.this,dataBaseHelper.getEveryPatientBed(dataBaseHelper.getEveryEntry()),dataBaseHelper.getEveryEntry());
+                    adapter.notifyDataSetChanged();
+                    recyclerViewA.setAdapter(adapter);
+                    recyclerViewA.setLayoutManager(new LinearLayoutManager(ArztVisiteActivity.this));
+                }
             }
         });
 
