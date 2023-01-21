@@ -46,7 +46,7 @@
         android:hint="Patient suchen ..."
         android:textColorHint="#757575" />
 
-    <ImageButton
+    <ToggleButton
         android:id="@+id/ArztVisiteFilterButton"
         android:layout_width="48dp"
         android:layout_height="48dp"
