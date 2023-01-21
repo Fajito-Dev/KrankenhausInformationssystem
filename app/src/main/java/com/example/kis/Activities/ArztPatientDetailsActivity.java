@@ -78,7 +78,7 @@ public class ArztPatientDetailsActivity extends AppCompatActivity implements Ada
         String bedNrS = Integer.toString(bedNr);
 
         name.setText(databaseHelper.getSpecificPatientModel(patientIdDetails).getPreName() + " " + databaseHelper.getSpecificPatientModel(patientIdDetails).getName());
-        age.setText(databaseHelper.getSpecificPatientModel(patientIdDetails).getBirthDate());
+        age.setText(databaseHelper.getSpecificPatientModel(patientIdDetails).getBirthDate()+" "+ "("+databaseHelper.getSpecificPatientModel(patientIdDetails).getAge()+")");
         bednr.setText("Bett " + bedNrS);
 
         // Mit Button Safe Eintrag erstellen

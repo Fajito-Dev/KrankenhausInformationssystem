@@ -82,15 +82,15 @@ public class LaborPatientDetailsActivity extends AppCompatActivity {
 
         String documentEntry = "keine Angabe FEHLER";
         if(databaseHelper.getSpecificEntryModelEntryId(entryId).isMrt()==true& databaseHelper.getSpecificEntryModelEntryId(entryId).isBloodtest()==true){
-            documentEntry = "Auftrag: MRT & Blutwerte";
+            documentEntry = "Auftrag MRT & Blutwerte";
         }else if(databaseHelper.getSpecificEntryModelEntryId(entryId).isMrt()==true){
-            documentEntry = "Auftrag: MRT";
+            documentEntry = "Auftrag MRT";
         }else if(databaseHelper.getSpecificEntryModelEntryId(entryId).isBloodtest()==true){
-            documentEntry = "Auftrag: Blutwerte";
+            documentEntry = "Auftrag Blutwerte";
         }
         // kann jetzt ueberarbeitet werden wegen entry und patientModel
         tvName.setText(patientModel.getPreName() + " " + patientModel.getName());
-        tvAge.setText("Alter:" + patientModel.getBirthDate());
+        tvAge.setText("Alter " + patientModel.getBirthDate()+" "+ "("+patientModel.getAge()+")");
         tvBed.setText("Bett " + strBed);
         tvDate.setText("Datum " + databaseHelper.getSpecificEntryModelEntryId(entryId).getDate());
         tvEntryId.setText("#" + strEntryId);
@@ -105,7 +105,7 @@ public class LaborPatientDetailsActivity extends AppCompatActivity {
                 String date = sdf.format(new Date());
                 try {
                     // bei condition kommt condition.toString() rein aber erst wenn Spinner gesetzt ist
-                   entryModel = new EntryModel(0,entryModel.getPatientIde(),date,entryModel.getBedNr(),2,"kein Zustand",false, false,"Auftrag bearbeitet",Integer.parseInt(tiedtLeukoNL.getText().toString()),Integer.parseInt(tiedtLymphoPercent.getText().toString()),Integer.parseInt(tiedtLypmhoAbsolut.getText().toString()), "mrt1§");
+                   entryModel = new EntryModel(0,entryModel.getPatientIde(),date,entryModel.getBedNr(),0,"kein Zustand",false, false,"Auftrag bearbeitet",Integer.parseInt(tiedtLeukoNL.getText().toString()),Integer.parseInt(tiedtLymphoPercent.getText().toString()),Integer.parseInt(tiedtLypmhoAbsolut.getText().toString()), "mrt1§");
                     Toast.makeText(LaborPatientDetailsActivity.this, entryModel.toString(), Toast.LENGTH_SHORT).show();
                 } catch (Exception e) { //dat is schwachsinn :O
                     Toast.makeText(LaborPatientDetailsActivity.this, "error creating customer", Toast.LENGTH_SHORT).show();
@@ -113,6 +113,10 @@ public class LaborPatientDetailsActivity extends AppCompatActivity {
                 DatabaseHelper dataBaseHelper = new DatabaseHelper(LaborPatientDetailsActivity.this);
                 boolean success = dataBaseHelper.addEntry(entryModel);
                 Toast.makeText(LaborPatientDetailsActivity.this, "Success=" + success, Toast.LENGTH_SHORT).show();
+
+                EntryModel entryModel2 = databaseHelper.getSpecificEntryModelEntryId(entryId);
+                entryModel2.setVisited(2);
+                dataBaseHelper.updateEntry(entryModel2);
 
                 Intent intent = new Intent(getApplicationContext(), LaborChecklistActivity.class);
                 startActivity(intent);

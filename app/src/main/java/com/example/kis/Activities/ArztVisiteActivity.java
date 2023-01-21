@@ -21,7 +21,7 @@ public class ArztVisiteActivity extends AppCompatActivity {
     DatabaseHelper dataBaseHelper;
     static RecyclerView recyclerViewA;
     Button buttonLogout;
-    ImageButton buttonPatientDetails;
+    ImageButton buttonPatientDetails,btnFilter;
     SearchView svSearchBar;
 
     @SuppressLint("MissingInflatedId")
@@ -32,6 +32,7 @@ public class ArztVisiteActivity extends AppCompatActivity {
         recyclerViewA = findViewById(R.id.recyclerView);
         buttonLogout = findViewById(R.id.ArztVisiteButtonLogout);
         svSearchBar = findViewById(R.id.search_bar);
+        btnFilter = findViewById(R.id.ArztVisiteFilterButton);
 
         dataBaseHelper = new DatabaseHelper(ArztVisiteActivity.this);
         ArztPatientAdapter adapter = new ArztPatientAdapter(this,dataBaseHelper.getEveryPatientBed(dataBaseHelper.getEveryEntry()),dataBaseHelper.getEveryEntry());
@@ -50,6 +51,13 @@ public class ArztVisiteActivity extends AppCompatActivity {
             public boolean onQueryTextChange(String newText) {
                 adapter.getFilter().filter(newText);
                 return false;
+            }
+        });
+        btnFilter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
             }
         });
 

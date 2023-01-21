@@ -66,7 +66,7 @@ public class AdminstrationPatientAdapter extends RecyclerView.Adapter<Adminstrat
         }else {
             holder.tvBedNr.setText("Bett " + bedNrS);
         }
-        holder.tvInsuranceNr.setText(insuranceNr);
+        holder.tvInsuranceNr.setText("#"+insuranceNr);
 
         holder.imgbtnIcon.setImageResource(R.drawable.img);
         holder.imgbtnIcon.setOnClickListener(new View.OnClickListener() {
