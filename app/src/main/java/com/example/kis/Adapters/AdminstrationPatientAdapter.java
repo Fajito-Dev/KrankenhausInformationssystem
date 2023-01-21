@@ -60,7 +60,7 @@ public class AdminstrationPatientAdapter extends RecyclerView.Adapter<Adminstrat
             }
         }
         holder.tvName.setText(patientModelList.get(position).getPreName()+" "+patientModelList.get(position).getName());
-        holder.tvBirthday.setText(patientModelList.get(position).getBirthDate()+" (Alter)");
+        holder.tvBirthday.setText(patientModelList.get(position).getBirthDate()+" " + patientModelList.get(position).getAge());
         if(bedNRnull == 0){
             holder.tvBedNr.setText("Patient ausgewiesen");
         }else {
@@ -85,6 +85,8 @@ public class AdminstrationPatientAdapter extends RecyclerView.Adapter<Adminstrat
             }
         });
     }
+
+
 
     @Override
     public int getItemCount() {
