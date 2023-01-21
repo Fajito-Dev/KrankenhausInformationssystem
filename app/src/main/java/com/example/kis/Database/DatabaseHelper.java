@@ -404,9 +404,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 float lymphoAbsolut = cursor.getFloat(11);
                 String image = cursor.getString(12);
 
-                if(visited!=2 && mrt||bloodtest){
-                    EntryModel newEntry = new EntryModel(eintragId, patientIDE, date, bedNr, visited, condition, mrt, bloodtest, note, leukoNl, lymphoProzent, lymphoAbsolut,image);
-                    returnList2.add(newEntry);
+                if(visited != 2 == true){
+                    if(mrt||bloodtest == true) {
+                        EntryModel newEntry = new EntryModel(eintragId, patientIDE, date, bedNr, visited, condition, mrt, bloodtest, note, leukoNl, lymphoProzent, lymphoAbsolut, image);
+                        returnList2.add(newEntry);
+                    }
                 }
             }while(cursor.moveToNext());
         }else{
@@ -457,4 +459,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return returnList;
     }
 
+    public void updateEntry(EntryModel entryModel){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COLUMN_ENTRY_VISITED, entryModel.getVisited());
+        db.update(ENTRY_TABLE,contentValues,COLUMN_ENTRY_EINTRAGID + " = " + entryModel.getEintragId(),null);
+        db.close();
+    }
 }
