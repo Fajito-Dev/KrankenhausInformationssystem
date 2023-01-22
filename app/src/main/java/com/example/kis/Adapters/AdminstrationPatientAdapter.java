@@ -14,6 +14,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.kis.Activities.AdministrationAddPatientActivity;
+import com.example.kis.Activities.AdministrationHomeActivity;
 import com.example.kis.Activities.StartActivity;
 import com.example.kis.Database.DatabaseHelper;
 import com.example.kis.Models.EntryModel;
@@ -30,6 +32,7 @@ public class AdminstrationPatientAdapter extends RecyclerView.Adapter<Adminstrat
     ArrayList<EntryModel> entryModelList;
     DatabaseHelper databaseHelper;
     ArrayList<PatientModel> patientModelListFull;
+
 
     public AdminstrationPatientAdapter(Context context, ArrayList<PatientModel> patientModelList,ArrayList<EntryModel> entryModelList,DatabaseHelper databaseHelper){
         this.context = context;
@@ -63,25 +66,30 @@ public class AdminstrationPatientAdapter extends RecyclerView.Adapter<Adminstrat
         holder.tvBirthday.setText(patientModelList.get(position).getBirthDate()+" " + patientModelList.get(position).getAge());
         if(bedNRnull == 0){
             holder.tvBedNr.setText("Patient ausgewiesen");
+            holder.imgbtnIcon.setImageResource(R.drawable.img2);
         }else {
             holder.tvBedNr.setText("Bett " + bedNrS);
+            holder.imgbtnIcon.setImageResource(R.drawable.img);
         }
         holder.tvInsuranceNr.setText("#"+insuranceNr);
 
-        holder.imgbtnIcon.setImageResource(R.drawable.img);
+        int finalBedNRnull = bedNRnull;
         holder.imgbtnIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 EntryModel entryModel = null;
                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
                 String date = sdf.format(new Date());
-                try {
-                    entryModel = new EntryModel(0, patientModelList.get(position).getPatientId(),date,databaseHelper.getFreeBed(),0,"k.A",false, false,"Patient eingewiesen",0,0,0,"");
-                } catch (Exception e) { //dat is schwachsinn :O
+                if(finalBedNRnull == 0) {
+                    try {
+                        entryModel = new EntryModel(0, patientModelList.get(position).getPatientId(), date, databaseHelper.getFreeBed(), 0, "k.A", false, false, "Patient eingewiesen", 0, 0, 0, "");
+                    } catch (Exception e) { //dat is schwachsinn :O
+                    }
+                    databaseHelper.addEntry(entryModel);
+                    holder.imgbtnIcon.setImageResource(R.drawable.img);
+                    entryModelList.add(entryModel);
+                    notifyDataSetChanged();
                 }
-                databaseHelper.addEntry(entryModel);
-                Intent intent = new Intent(v.getContext(), StartActivity.class);
-                holder.imgbtnIcon.getContext().startActivity(intent);
             }
         });
     }

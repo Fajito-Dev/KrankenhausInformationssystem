@@ -25,7 +25,7 @@ public class AdministrationHomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_administration_home);
         addPatient = findViewById(R.id.AdministrationHomeButtonAddPatient);
         logout = findViewById(R.id.AdministrationHomeButtonLogout);
-         recyclerViewD = findViewById(R.id.AdministrationHomeRecyclerView);
+        recyclerViewD = findViewById(R.id.AdministrationHomeRecyclerView);
         svSearchBar = findViewById(R.id.AdministrationHomeSearchView);
 
         dataBaseHelper = new DatabaseHelper(AdministrationHomeActivity.this);
