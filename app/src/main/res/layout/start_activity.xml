@@ -4,42 +4,81 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/foregroundelementbackground"
+    android:background="@color/background"
     tools:context=".Activities.StartActivity">
 
-    <TextView
-        android:id="@+id/LoginTitel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="50dp"
-        android:textAlignment="center"
-        android:textSize="30dp"
-        android:text="Login"
-        />
-    
-    <Button
-        android:id="@+id/ButtonArztHome"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/LoginTitel"
-        android:layout_marginHorizontal="100dp"
-        android:layout_marginTop="150dp"
-        android:text="Arzt" />
 
-    <Button
-        android:id="@+id/ButtonLabor"
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="wrap_content"
+        android:layout_height="155dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="26dp"
+        android:background="@drawable/icon" />
+
+    <RelativeLayout
+        android:id="@+id/element"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/ButtonArztHome"
-        android:layout_marginHorizontal="100dp"
-        android:text="Labor" />
-    <Button
-        android:id="@+id/ButtonVerwaltung"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="100dp"
-        android:text="Verwaltung"
-        android:layout_below="@id/ButtonLabor"
-        />
+        android:layout_below="@id/icon"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="1dp"
+        android:background="@drawable/startbackground"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/LoginTitel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="50dp"
+            android:text="WILLKOMMEN"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textAlignment="center"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/ButtonArztHome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/LoginTitel"
+            android:layout_marginHorizontal="50dp"
+            android:layout_marginTop="53dp"
+            android:backgroundTint="@color/button"
+            android:text="Arzt"
+            android:textSize="20sp"/>
+
+        <Button
+            android:id="@+id/ButtonLabor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ButtonArztHome"
+            android:layout_marginHorizontal="50dp"
+            android:layout_marginTop="50dp"
+            android:backgroundTint="@color/button"
+            android:text="Labor"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/ButtonVerwaltung"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ButtonLabor"
+            android:layout_marginHorizontal="50dp"
+            android:layout_marginTop="50dp"
+            android:backgroundTint="@color/button"
+            android:text="Verwaltung"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
+
+
 </RelativeLayout>

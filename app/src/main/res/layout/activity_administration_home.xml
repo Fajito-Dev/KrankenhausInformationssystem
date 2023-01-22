@@ -2,21 +2,30 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/foregroundelementbackground"
+    android:background="@drawable/homebackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activities.AdministrationHomeActivity">
 
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Administration"
+        android:textSize="20sp"
+        android:layout_marginTop="3dp"
+        android:textColor="@color/KarteiText"
+        android:layout_marginStart="20dp"/>
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/AdministrationHomeHeader1"
-        android:text="@string/DE_TEXT_AdministrationTitel"
+        android:text="Patienten"
         android:textSize="30sp"
         android:textColor="@color/black"
         android:textStyle="bold"
         android:textAlignment="center"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="40dp"
         android:layout_marginHorizontal="20dp"/>
 
     <TextView
@@ -89,7 +98,4 @@
         android:layout_marginHorizontal="20dp"
         android:layout_marginBottom="40dp"
         android:text="@string/DE_BUTTON_Logout" />
-
-
-
 </RelativeLayout>
