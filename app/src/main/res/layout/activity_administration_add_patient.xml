@@ -4,35 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/foregroundelementbackground"
+    android:background="@drawable/detailsbackground"
     tools:context=".Activities.AdministrationAddPatientActivity">
 
-    <ImageButton
-        android:id="@+id/AdministrationAddPatientBackButton"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="20dp"
-        android:background="@drawable/backarrow" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Administration"
+        android:textSize="20sp"
+        android:layout_marginTop="2dp"
+        android:textColor="@color/KarteiText"
+        android:textStyle="normal"
+        android:layout_marginStart="20dp"/>
 
     <TextView
-        android:id="@+id/AdministrationAddPatientTitel"
-        android:layout_width="315dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
-        android:layout_toEndOf="@id/AdministrationAddPatientBackButton"
-        android:text="@string/DE_BUTTON_Add_Patient"
-        android:textSize="25sp" />
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:text="Patient Hinzufügen"
+        android:textColor="@color/KarteiText"
+        android:textSize="20sp"
+        android:textStyle="normal" />
 
     <TextView
         android:id="@+id/AdministrationAddPatientInsuranceNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/AdministrationAddPatientTitel"
+        android:layout_marginTop="80dp"
         android:layout_marginHorizontal="20dp"
         android:text="VersichertenNummer"
         />
@@ -105,23 +104,24 @@
         android:id="@+id/AdministrationAddPatientButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/AdministrationAddPatientGeburtstaginput"
+        android:layout_above="@+id/AdministrationAddPatientAbort"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
         android:layout_marginEnd="20dp"
+        android:layout_marginBottom="40dp"
         android:backgroundTint="@color/save_button"
-        android:textColor="@color/black"
-        android:text="Speichern" />
+        android:text="Speichern"
+        android:textColor="@color/black" />
+
     <Button
         android:id="@+id/AdministrationAddPatientAbort"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/AdministrationAddPatientButton"
+        android:layout_alignParentBottom="true"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
+        android:layout_marginBottom="40dp"
         android:backgroundTint="@color/abort_delete_logout_button"
-        android:textColor="@color/black"
-        android:text="Verwerfen" />
+        android:text="Verwerfen"
+        android:textColor="@color/black" />
 
 </RelativeLayout>

@@ -7,7 +7,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,13 +28,12 @@ import java.util.Date;
 public class ArztPatientDetailsActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     RecyclerView recyclerView;
     Spinner condition;
-    CheckBox mrt, blodtest, visit;
+    CheckBox mrt, blodtest;
     TextView name,age, bednr;
     DatabaseHelper databaseHelper;
     TextInputEditText note;
     Button btnSafe,btnBack;
     String textSpinner;
-    ImageButton backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,22 +43,13 @@ public class ArztPatientDetailsActivity extends AppCompatActivity implements Ada
         condition = findViewById(R.id.ArztNotesSpinnerZustand);
         mrt = findViewById(R.id.ArztNotesCheckBoxMRT);
         blodtest = findViewById(R.id.ArztNotesCheckBoxBlutErgebnis);
-        visit = findViewById(R.id.ArztNotesCheckBoxVisiteDone);
         name = findViewById(R.id.ArztNotesPatientName);
         age = findViewById(R.id.ArztNotesGeburtstag);
         bednr = findViewById(R.id.ArztNotesBettNr);
         note = findViewById(R.id.Notes);
         btnSafe = findViewById(R.id.ArztNotesSaveButton);
         btnBack = findViewById(R.id.ArztNotesButtonVerwerfen);
-        backButton = findViewById(R.id.ArztNotesBackButton);
 
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent (getApplicationContext(), ArztVisiteActivity.class);
-                startActivity(intent);
-            }
-        });
 
         ArrayAdapter<CharSequence> adapterB = ArrayAdapter.createFromResource(this, R.array.zustand, android.R.layout.simple_spinner_item);
         adapterB.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -94,9 +83,6 @@ public class ArztPatientDetailsActivity extends AppCompatActivity implements Ada
                 try {
                     // bei condition kommt condition.toString() rein aber erst wenn Spinner gesetzt ist
                     int visitNr = 0;
-                    if(visit.isChecked()==true){
-                        visitNr = 1;
-                    }
                     if(textSpinner.equals("gesund")){
                         entryModel = new EntryModel(0,patientIdDetails,date,0,visitNr,textSpinner,mrt.isChecked(), blodtest.isChecked(),note.getText().toString(),0,0,0,"");
                     }else{
