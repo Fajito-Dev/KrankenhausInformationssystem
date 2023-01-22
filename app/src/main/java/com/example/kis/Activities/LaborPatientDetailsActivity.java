@@ -96,6 +96,7 @@ public class LaborPatientDetailsActivity extends AppCompatActivity {
         tvEntryId.setText("#" + strEntryId);
         tvNote.setText(databaseHelper.getSpecificEntryModelEntryId(entryId).getNote());
         tvDocument.setText(documentEntry);
+        DatabaseHelper dataBaseHelper = new DatabaseHelper(LaborPatientDetailsActivity.this);
 
         btnSafe.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,15 +104,15 @@ public class LaborPatientDetailsActivity extends AppCompatActivity {
                 EntryModel entryModel = databaseHelper.getSpecificEntryModelEntryId(entryId);
                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
                 String date = sdf.format(new Date());
+                EntryModel entryModelNew = new EntryModel();
                 try {
                     // bei condition kommt condition.toString() rein aber erst wenn Spinner gesetzt ist
-                   entryModel = new EntryModel(0,entryModel.getPatientIde(),date,entryModel.getBedNr(),0,"kein Zustand",false, false,"Auftrag bearbeitet",Integer.parseInt(tiedtLeukoNL.getText().toString()),Integer.parseInt(tiedtLymphoPercent.getText().toString()),Integer.parseInt(tiedtLypmhoAbsolut.getText().toString()), "mrt1§");
+                    entryModelNew = new EntryModel(0,entryModel.getPatientIde(),date,entryModel.getBedNr(),0,"kein Zustand",false, false,"Auftrag bearbeitet",Integer.parseInt(tiedtLeukoNL.getText().toString()),Integer.parseInt(tiedtLymphoPercent.getText().toString()),Integer.parseInt(tiedtLypmhoAbsolut.getText().toString()), "mrt1§");
                     Toast.makeText(LaborPatientDetailsActivity.this, entryModel.toString(), Toast.LENGTH_SHORT).show();
                 } catch (Exception e) { //dat is schwachsinn :O
                     Toast.makeText(LaborPatientDetailsActivity.this, "error creating customer", Toast.LENGTH_SHORT).show();
                 }
-                DatabaseHelper dataBaseHelper = new DatabaseHelper(LaborPatientDetailsActivity.this);
-                boolean success = dataBaseHelper.addEntry(entryModel);
+                boolean success = dataBaseHelper.addEntry(entryModelNew);
                 Toast.makeText(LaborPatientDetailsActivity.this, "Success=" + success, Toast.LENGTH_SHORT).show();
 
                 EntryModel entryModel2 = databaseHelper.getSpecificEntryModelEntryId(entryId);
