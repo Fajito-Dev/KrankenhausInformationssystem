@@ -7,11 +7,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
-import com.example.kis.Adapters.AdminstrationPatientAdapter;
 import com.example.kis.Models.PatientModel;
 import com.example.kis.Models.EntryModel;
 
-import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -523,5 +521,46 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         db.close();
         return returnList;
+    }
+
+    public String getImage(int entryIdDetails){
+        String image ="";
+        EntryModel newEntry = null;
+        //get data from the database
+        String queryString = "SELECT * FROM "+ ENTRY_TABLE;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(queryString,null);
+
+        if(cursor.moveToFirst()){
+            //loop thru the cursor(result set) and creat a new customer object put them in the return List
+            do{
+                int eintragId = cursor.getInt(0);
+                int patientIDE = cursor.getInt(1);
+                String date = cursor.getString(2);
+                int bedNr = cursor.getInt(3);
+                int visited = cursor.getInt(4);
+                String condition = cursor.getString(5);
+                boolean mrt = cursor.getInt(6) == 1 ? true: false;
+                boolean bloodtest = cursor.getInt(7) == 1 ? true: false;
+                String note = cursor.getString(8);
+                float leukoNl = cursor.getFloat(9);
+                float lymphoProzent = cursor.getFloat(10);
+                float lymphoAbsolut = cursor.getFloat(11);
+                image = cursor.getString(12);
+
+                if(eintragId==entryIdDetails) {
+                    newEntry = new EntryModel(eintragId, patientIDE, date, bedNr, visited, condition, mrt, bloodtest, note, leukoNl, lymphoProzent, lymphoAbsolut,image);
+                    cursor.close();
+                    db.close();
+                    return image;
+                }
+            }while(cursor.moveToNext());
+        }else{
+            //failure do not add anything to the List
+        }
+        //close both cursor and database
+        cursor.close();
+        db.close();
+        return image;
     }
 }
