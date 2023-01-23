@@ -63,7 +63,7 @@ public class AdminstrationPatientAdapter extends RecyclerView.Adapter<Adminstrat
             }
         }
         holder.tvName.setText(patientModelList.get(position).getPreName()+" "+patientModelList.get(position).getName());
-        holder.tvBirthday.setText(patientModelList.get(position).getBirthDate()+" " + patientModelList.get(position).getAge());
+        holder.tvBirthday.setText(patientModelList.get(position).getBirthDate()+" " + "("+patientModelList.get(position).getAge()+")");
         if(bedNRnull == 0){
             holder.tvBedNr.setText("Patient ausgewiesen");
             holder.imgbtnIcon.setImageResource(R.drawable.img2);
