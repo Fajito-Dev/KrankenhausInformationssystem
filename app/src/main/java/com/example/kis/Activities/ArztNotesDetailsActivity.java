@@ -14,7 +14,7 @@ import com.example.kis.Database.DatabaseHelper;
 import com.example.kis.R;
 
 public class ArztNotesDetailsActivity extends AppCompatActivity {
-    TextView tvEntryDate,tvEntryId,tvEntryNote,tvEntryLeukoNl,tvEntryLymphoPercent,tvEntryLymphoAbsolut;
+    TextView tvEntryDate, tvEntryId, tvEntryNote, tvEntryLeukoNl, tvEntryLymphoPercent, tvEntryLymphoAbsolut;
     ImageView imgvEntryMrt;
     DatabaseHelper databaseHelper;
     Button btnBack;
@@ -43,8 +43,7 @@ public class ArztNotesDetailsActivity extends AppCompatActivity {
         });
 
         Intent intent = getIntent();
-        int entryId = intent.getIntExtra(ArztNotesAdapter.EXTRA_NUMBER2,0);
-
+        int entryId = intent.getIntExtra(ArztNotesAdapter.EXTRA_NUMBER2, 0);
 
 
         String enryIdTxt = Integer.toString(databaseHelper.getSpecificEntryModelEntryId(entryId).getEintragId());
@@ -56,7 +55,7 @@ public class ArztNotesDetailsActivity extends AppCompatActivity {
 
 
         tvEntryDate.setText(databaseHelper.getSpecificEntryModelEntryId(entryId).getDate());
-        tvEntryId.setText("#" + enryIdTxt + "v="+databaseHelper.getSpecificEntryModelEntryId(entryId).getVisited());
+        tvEntryId.setText("#" + enryIdTxt + "v=" + databaseHelper.getSpecificEntryModelEntryId(entryId).getVisited());
         tvEntryLeukoNl.setText(entryLeukoNl);
         tvEntryLymphoPercent.setText(entryLypmhoPercent);
         tvEntryLymphoAbsolut.setText(entryLymphoAbsolut);
