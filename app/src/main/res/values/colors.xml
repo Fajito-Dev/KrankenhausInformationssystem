@@ -10,6 +10,7 @@
     <color name="button">#FF6597CA</color>
     <color name="background">#FFF9F9F9</color>
     <color name="KarteiText">#FF828282</color>
+    <color name="Bakcbutton">#FF6597CA</color>
     <color name="foregroundelementbackground">#FFF9F9F9</color>
     <color name="save_button">#FFC5F69E</color>
     <color name="abort_delete_logout_button">#FFF99C9C</color>

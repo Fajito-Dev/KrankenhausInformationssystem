@@ -4,81 +4,110 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/foregroundelementbackground"
+    android:background="@drawable/arztnotesdetailsbackground"
     tools:context=".Activities.ArztNotesDetailsActivity">
 
-    <ImageButton
-        android:id="@+id/ArztNotesDetailsButtonBack"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="35dp"
-        tools:background="@drawable/backarrow" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ARZT"
+        android:textSize="20sp"
+        android:layout_marginTop="2dp"
+        android:textColor="@color/KarteiText"
+        android:textStyle="normal"
+        android:layout_marginStart="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:text="PATIENTENDETIALS"
+        android:textColor="@color/KarteiText"
+        android:textSize="20sp"
+        android:textStyle="normal" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="65dp"
+        android:text="NOTIZENDETAILS"
+        android:textColor="@color/KarteiText"
+        android:textSize="20sp"
+        android:textStyle="normal" />
+
+
 
     <TextView
         android:id="@+id/ArztNotesDetailsDate"
-        android:layout_width="91dp"
+        android:layout_width="181dp"
         android:layout_height="wrap_content"
+        android:textColor="@color/black"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="120dp"
         android:layout_marginEnd="20dp"
-        android:layout_toStartOf="@+id/ArztNotesDetailsEntryID"
-        android:layout_toEndOf="@+id/ArztNotesDetailsButtonBack"
         android:text="@string/DE_TEXT_Datum"
-        android:textSize="20sp"/>
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/ArztNotesDetailsEntryID"
-        android:layout_width="151dp"
+        android:layout_width="161dp"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
+        android:textColor="@color/black"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="120dp"
         android:layout_marginEnd="20dp"
-        android:textSize="20sp"
         android:text="EintragsID"
-        />
+        android:textSize="20sp" />
+
 
     <TextView
         android:id="@+id/ArztNotesDetailNotesLongText"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/ArztNotesDetailsLymphoLeukoRatioTitel"
-        android:layout_below="@id/ArztNotesDetailsDate"
+        android:layout_width="368dp"
+        android:layout_height="159dp"
+        android:layout_above="@+id/ArztNotesDetailsBackButton"
+        android:layout_below="@+id/ArztNotesDetailsLeukoTitel"
         android:layout_marginHorizontal="20dp"
         android:layout_marginVertical="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="30dp"
         android:hint="@string/DE_TEXT_No_Entry"
+        android:textColor="@color/black"
         android:textSize="13sp" />
-
 
     <TextView
         android:id="@+id/ArztNotesDetailsLymphoLeukoRatioTitel"
         android:layout_width="250dp"
+        android:textColor="@color/black"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/ArztNotesDetailsImageViewMRT"
         android:layout_alignParentStart="true"
-        android:layout_above="@id/ArztNotesDetailsLymphoAbsolutTitel"
         android:layout_marginStart="20dp"
-        android:layout_marginBottom="10dp"
-        android:textSize="13sp"
-        android:text="@string/DE_TEXT_LeukoLymphoRatioTitel" />
+        android:layout_marginTop="20dp"
+        android:text="@string/DE_TEXT_LeukoLymphoRatioTitel"
+        android:textSize="13sp" />
 
     <TextView
         android:id="@+id/ArztNotesDetailsLymphoAbsolutTitel"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_above="@id/ArztNotesDetailsLeukoTitel"
+        android:textColor="@color/black"
+        android:layout_below="@+id/ArztNotesDetailsLymphoLeukoRatioTitel"
         android:layout_alignParentStart="true"
         android:layout_marginHorizontal="20sp"
-        android:layout_marginStart="20dp"
-        android:textSize="13sp"
-        android:text="@string/DE_TEXT_LeukoLymphoAbsolutTitel" />
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="1dp"
+        android:text="@string/DE_TEXT_LeukoLymphoAbsolutTitel"
+        android:textSize="13sp" />
 
     <TextView
         android:id="@+id/ArztNotesDetailsLymphoAbsolutValue"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_above="@id/ArztNotesDetailsLeukoTitel"
+        android:layout_below="@+id/ArztNotesDetailsLymphoValue"
         android:layout_alignParentEnd="true"
+        android:layout_marginTop="2dp"
         android:layout_marginEnd="20dp"
         android:text="@string/DE_TEXT_LeukoLymphoAbsolutValue"
         android:textSize="13sp" />
@@ -87,44 +116,54 @@
         android:id="@+id/ArztNotesDetailsLymphoValue"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/ArztNotesDetailsLymphoAbsolutTitel"
+        android:layout_below="@+id/ArztNotesDetailsImageViewMRT"
         android:layout_alignParentEnd="true"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="10dp"
         android:text="@string/DE_TEXT_LeukoLymphoAbsolutValue"
         android:textSize="13sp" />
+
 
     <TextView
         android:id="@+id/ArztNotesDetailsLeukoTitel"
         android:layout_width="250dp"
+        android:textColor="@color/black"
+
         android:layout_height="wrap_content"
-        android:layout_above="@id/ArztNotesDetailsImageViewMRT"
-        android:layout_alignParentStart="true"
+        android:layout_below="@+id/ArztNotesDetailsLymphoAbsolutTitel"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginVertical="10dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="2dp"
         android:text="@string/DE_TEXT_LeukoTitel"
         android:textSize="13sp" />
 
     <TextView
         android:id="@+id/ArztNotesDetailsLeukoValue"
         android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/ArztNotesDetailsImageViewMRT"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="10dp"
-        android:textSize="13sp"
-        android:text="@string/DE_TEXT_LeukoValue" />
 
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ArztNotesDetailsLymphoAbsolutValue"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="19dp"
+        android:text="@string/DE_TEXT_LeukoValue"
+        android:textSize="13sp" />
 
     <ImageView
         android:id="@+id/ArztNotesDetailsImageViewMRT"
-        android:layout_width="391dp"
-        android:layout_height="252dp"
-        android:layout_alignParentBottom="true"
+        android:layout_width="373dp"
+        android:layout_height="267dp"
+        android:layout_below="@+id/ArztNotesDetailsDate"
         android:layout_marginHorizontal="20sp"
-        android:layout_marginBottom="150dp"
+        android:layout_marginTop="20dp"
         tools:srcCompat="@tools:sample/avatars[3]" />
+
+    <Button
+        android:id="@+id/ArztNotesDetailsBackButton"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="40dp"
+        android:backgroundTint="@color/Bakcbutton"
+        android:text="ZURÜCK" />
 </RelativeLayout>

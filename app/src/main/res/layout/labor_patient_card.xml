@@ -15,8 +15,8 @@
 
             <TextView
                 android:id="@+id/LaborPatientCardName"
-                android:layout_width="150dp"
-                android:layout_height="19dp"
+                android:layout_width="300dp"
+                android:layout_height="18dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="4dp"
                 android:text="@string/DE_TEXT_PersonalDataName"
@@ -26,8 +26,8 @@
 
             <TextView
                 android:id="@+id/LaborPatientCardNotes"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
+                android:layout_width="300dp"
+                android:layout_height="16dp"
                 android:layout_below="@id/LaborPatientCardName"
                 android:layout_marginStart="10dp"
                 android:text="@string/DE_TEXT_Notiz"
