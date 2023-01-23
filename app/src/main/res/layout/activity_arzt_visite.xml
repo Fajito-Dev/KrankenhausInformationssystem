@@ -64,7 +64,7 @@
         android:layout_below="@+id/search_bar"
         android:layout_marginHorizontal="20sp"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="30dp" />
+        android:layout_marginBottom="20dp" />
 
     <Button
         android:id="@+id/ArztVisiteButtonLogout"

@@ -33,6 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
         android:layout_marginHorizontal="20dp"
+        android:textColor="@color/black"
         android:text="VersichertenNummer"
         />
 
@@ -49,6 +50,7 @@
     <TextView
         android:id="@+id/AdministrationAddPatientVorname"
         android:layout_below="@id/AdministrationAddPatientInsuranceNumberInput"
+        android:textColor="@color/black"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
@@ -69,6 +71,7 @@
         android:layout_below="@id/AdministrationAddPatientVornameInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/black"
         android:layout_marginHorizontal="20dp"
         android:text="Name"
         />
@@ -87,6 +90,7 @@
         android:layout_below="@id/AdministrationAddPatientNameInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/black"
         android:layout_marginHorizontal="20dp"
         android:text="Geburtstag"
         />
@@ -108,7 +112,7 @@
         android:layout_above="@+id/AdministrationAddPatientAbort"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="20dp"
         android:backgroundTint="@color/save_button"
         android:text="Speichern"
         android:textColor="@color/black" />
