@@ -25,17 +25,15 @@ public class ArztNotesDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_arzt_notes_details);
         tvEntryDate = findViewById(R.id.ArztNotesDetailsDate);
         tvEntryId = findViewById(R.id.ArztNotesDetailsEntryID);
-        tvEntryNote = findViewById(R.id.ArztNotesDetailNotesLongText);
         tvEntryLeukoNl = findViewById(R.id.ArztNotesDetailsLeukoValue);
         tvEntryLymphoPercent = findViewById(R.id.ArztNotesDetailsLymphoValue);
         tvEntryLymphoAbsolut = findViewById(R.id.ArztNotesDetailsLymphoAbsolutValue);
         databaseHelper = new DatabaseHelper(this);
         btnBack = findViewById(R.id.ArztNotesDetailsBackButton);
-        //imgvEntryMrt.findViewById(R.id.ArztNotesDetailsImageViewMRT);
+        imgvEntryMrt = findViewById(R.id.ArztNotesDetailsImageViewMRT);
 
 
         //TODO: MUSS AUS DATENBANK GEGETTET WERDEN
-       // imgvEntryMrt.setImageResource(R.drawable.mrt1);
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,12 +52,15 @@ public class ArztNotesDetailsActivity extends AppCompatActivity {
         String entryLeukoNl = Float.toString(databaseHelper.getSpecificEntryModelEntryId(entryId).getLeukoNl());
         String entryLypmhoPercent = Float.toString(databaseHelper.getSpecificEntryModelEntryId(entryId).getLymphoProzent());
         String entryLymphoAbsolut = Float.toString(databaseHelper.getSpecificEntryModelEntryId(entryId).getLymphoAbsolut());
+        int resId = getResources().getIdentifier(databaseHelper.getImage(entryId), "drawable", getPackageName());
+
 
         tvEntryDate.setText(databaseHelper.getSpecificEntryModelEntryId(entryId).getDate());
         tvEntryId.setText("#" + enryIdTxt + "v="+databaseHelper.getSpecificEntryModelEntryId(entryId).getVisited());
-        tvEntryNote.setText(databaseHelper.getSpecificEntryModelEntryId(entryId).getNote());
         tvEntryLeukoNl.setText(entryLeukoNl);
         tvEntryLymphoPercent.setText(entryLypmhoPercent);
         tvEntryLymphoAbsolut.setText(entryLymphoAbsolut);
+        imgvEntryMrt.setImageResource(resId);
+
     }
 }
