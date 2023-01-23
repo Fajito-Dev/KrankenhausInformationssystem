@@ -107,9 +107,13 @@ public class LaborPatientDetailsActivity extends AppCompatActivity {
                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
                 String date = sdf.format(new Date());
                 EntryModel entryModelNew = new EntryModel();
+
                 try {
                     // bei condition kommt condition.toString() rein aber erst wenn Spinner gesetzt ist
-                    entryModelNew = new EntryModel(0,entryModel.getPatientIde(),date,entryModel.getBedNr(),0,"kein Zustand",false, false,"Auftrag bearbeitet",Integer.parseInt(tiedtLeukoNL.getText().toString()),Integer.parseInt(tiedtLymphoPercent.getText().toString()),Integer.parseInt(tiedtLypmhoAbsolut.getText().toString()), imageStr);
+                    if(tiedtLeukoNL.getText().toString().equals("")==true){
+                        entryModelNew = new EntryModel(0,entryModel.getPatientIde(),date,entryModel.getBedNr(),0,"kein Zustand",false, false,"Auftrag bearbeitet",0,0,0, imageStr);
+                    }
+                    entryModelNew = new EntryModel(0,entryModel.getPatientIde(),date,entryModel.getBedNr(),0,"kein Zustand",false, false,"Auftrag bearbeitet",Float.parseFloat(tiedtLeukoNL.getText().toString()),Float.parseFloat(tiedtLymphoPercent.getText().toString()),Float.parseFloat(tiedtLypmhoAbsolut.getText().toString()), imageStr);
                     Toast.makeText(LaborPatientDetailsActivity.this, entryModel.toString(), Toast.LENGTH_SHORT).show();
                 } catch (Exception e) { //dat is schwachsinn :O
                     Toast.makeText(LaborPatientDetailsActivity.this, "error creating customer", Toast.LENGTH_SHORT).show();
