@@ -3,7 +3,7 @@ package com.example.kis.Activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageButton;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,7 +17,8 @@ public class ArztNotesDetailsActivity extends AppCompatActivity {
     TextView tvEntryDate,tvEntryId,tvEntryNote,tvEntryLeukoNl,tvEntryLymphoPercent,tvEntryLymphoAbsolut;
     ImageView imgvEntryMrt;
     DatabaseHelper databaseHelper;
-    ImageButton btnBack;
+    Button btnBack;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,24 +29,25 @@ public class ArztNotesDetailsActivity extends AppCompatActivity {
         tvEntryLeukoNl = findViewById(R.id.ArztNotesDetailsLeukoValue);
         tvEntryLymphoPercent = findViewById(R.id.ArztNotesDetailsLymphoValue);
         tvEntryLymphoAbsolut = findViewById(R.id.ArztNotesDetailsLymphoAbsolutValue);
-        btnBack = findViewById(R.id.ArztNotesDetailsButtonBack);
         databaseHelper = new DatabaseHelper(this);
-
+        btnBack = findViewById(R.id.ArztNotesDetailsBackButton);
         //imgvEntryMrt.findViewById(R.id.ArztNotesDetailsImageViewMRT);
 
 
         //TODO: MUSS AUS DATENBANK GEGETTET WERDEN
-        //imgvEntryMrt.setImageResource();
+       // imgvEntryMrt.setImageResource(R.drawable.mrt1);
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         Intent intent = getIntent();
         int entryId = intent.getIntExtra(ArztNotesAdapter.EXTRA_NUMBER2,0);
 
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+
 
         String enryIdTxt = Integer.toString(databaseHelper.getSpecificEntryModelEntryId(entryId).getEintragId());
 
