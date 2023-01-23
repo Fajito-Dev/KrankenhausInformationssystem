@@ -29,6 +29,7 @@ public class LaborPatientDetailsActivity extends AppCompatActivity {
     DatabaseHelper databaseHelper;
     Button btnSafe,btnBack;
     String[] images = {"nopic", "mrt1", "mrt2"};
+    String imageStr = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,19 +47,20 @@ public class LaborPatientDetailsActivity extends AppCompatActivity {
         tiedtLypmhoAbsolut = findViewById(R.id.LaborPatientDetailsLymphoLeukoRatioValue);
         btnSafe = findViewById(R.id.LaborPatientDetailsButtonSubmit);
         btnBack = findViewById(R.id.LaborPatientDetailsAbort);
+        final ImageView imageView = findViewById(R.id.LaborPatientDetailsMRTPreview);
 
         databaseHelper = new DatabaseHelper(this);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, images);
         Spinner spinner = findViewById(R.id.LaborPatientDetailsSpinnerMRT);
         spinner.setAdapter(adapter);
-        final ImageView imageView = findViewById(R.id.LaborPatientDetailsMRTPreview);
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 // Get the selected image name
                 String imageName = images[position];
+                imageStr = imageName;
                 // Get the resource ID of the image
                 int resId = getResources().getIdentifier(imageName, "drawable", getPackageName());
                 // Set the image on the ImageView
@@ -107,7 +109,7 @@ public class LaborPatientDetailsActivity extends AppCompatActivity {
                 EntryModel entryModelNew = new EntryModel();
                 try {
                     // bei condition kommt condition.toString() rein aber erst wenn Spinner gesetzt ist
-                    entryModelNew = new EntryModel(0,entryModel.getPatientIde(),date,entryModel.getBedNr(),0,"kein Zustand",false, false,"Auftrag bearbeitet",Integer.parseInt(tiedtLeukoNL.getText().toString()),Integer.parseInt(tiedtLymphoPercent.getText().toString()),Integer.parseInt(tiedtLypmhoAbsolut.getText().toString()), "mrt1§");
+                    entryModelNew = new EntryModel(0,entryModel.getPatientIde(),date,entryModel.getBedNr(),0,"kein Zustand",false, false,"Auftrag bearbeitet",Integer.parseInt(tiedtLeukoNL.getText().toString()),Integer.parseInt(tiedtLymphoPercent.getText().toString()),Integer.parseInt(tiedtLypmhoAbsolut.getText().toString()), imageStr);
                     Toast.makeText(LaborPatientDetailsActivity.this, entryModel.toString(), Toast.LENGTH_SHORT).show();
                 } catch (Exception e) { //dat is schwachsinn :O
                     Toast.makeText(LaborPatientDetailsActivity.this, "error creating customer", Toast.LENGTH_SHORT).show();
