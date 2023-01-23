@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="30dp"
-        android:text="PATIENTENDETIALS"
+        android:text="PATIENTENDETAILS"
         android:textColor="@color/KarteiText"
         android:textSize="20sp"
         android:textStyle="normal" />
@@ -69,9 +69,7 @@
         android:layout_above="@+id/ArztNotesDetailsBackButton"
         android:layout_below="@+id/ArztNotesDetailsLeukoTitel"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginVertical="30dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginVertical="20dp"
         android:hint="@string/DE_TEXT_No_Entry"
         android:textColor="@color/black"
         android:textSize="13sp" />
@@ -155,7 +153,7 @@
         android:layout_below="@+id/ArztNotesDetailsDate"
         android:layout_marginHorizontal="20sp"
         android:layout_marginTop="20dp"
-        tools:srcCompat="@tools:sample/avatars[3]" />
+        tools:srcCompat="@tools:sample/avatars[9]" />
 
     <Button
         android:id="@+id/ArztNotesDetailsBackButton"
