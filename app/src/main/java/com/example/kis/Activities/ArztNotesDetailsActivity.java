@@ -14,7 +14,7 @@ import com.example.kis.Database.DatabaseHelper;
 import com.example.kis.R;
 
 public class ArztNotesDetailsActivity extends AppCompatActivity {
-    TextView tvEntryDate,tvEntryId,tvEntryNote,tvEntryLeukoNl,tvEntryLymphoPercent,tvEntryLymphoAbsolut;
+    TextView tvEntryDate, tvEntryId, tvEntryNote, tvEntryLeukoNl, tvEntryLymphoPercent, tvEntryLymphoAbsolut;
     ImageView imgvEntryMrt;
     DatabaseHelper databaseHelper;
     Button btnBack;
@@ -25,17 +25,15 @@ public class ArztNotesDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_arzt_notes_details);
         tvEntryDate = findViewById(R.id.ArztNotesDetailsDate);
         tvEntryId = findViewById(R.id.ArztNotesDetailsEntryID);
-        tvEntryNote = findViewById(R.id.ArztNotesDetailNotesLongText);
         tvEntryLeukoNl = findViewById(R.id.ArztNotesDetailsLeukoValue);
         tvEntryLymphoPercent = findViewById(R.id.ArztNotesDetailsLymphoValue);
         tvEntryLymphoAbsolut = findViewById(R.id.ArztNotesDetailsLymphoAbsolutValue);
         databaseHelper = new DatabaseHelper(this);
         btnBack = findViewById(R.id.ArztNotesDetailsBackButton);
-        //imgvEntryMrt.findViewById(R.id.ArztNotesDetailsImageViewMRT);
+        imgvEntryMrt = findViewById(R.id.ArztNotesDetailsImageViewMRT);
 
 
         //TODO: MUSS AUS DATENBANK GEGETTET WERDEN
-       // imgvEntryMrt.setImageResource(R.drawable.mrt1);
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,8 +43,7 @@ public class ArztNotesDetailsActivity extends AppCompatActivity {
         });
 
         Intent intent = getIntent();
-        int entryId = intent.getIntExtra(ArztNotesAdapter.EXTRA_NUMBER2,0);
-
+        int entryId = intent.getIntExtra(ArztNotesAdapter.EXTRA_NUMBER2, 0);
 
 
         String enryIdTxt = Integer.toString(databaseHelper.getSpecificEntryModelEntryId(entryId).getEintragId());
@@ -54,12 +51,15 @@ public class ArztNotesDetailsActivity extends AppCompatActivity {
         String entryLeukoNl = Float.toString(databaseHelper.getSpecificEntryModelEntryId(entryId).getLeukoNl());
         String entryLypmhoPercent = Float.toString(databaseHelper.getSpecificEntryModelEntryId(entryId).getLymphoProzent());
         String entryLymphoAbsolut = Float.toString(databaseHelper.getSpecificEntryModelEntryId(entryId).getLymphoAbsolut());
+        int resId = getResources().getIdentifier(databaseHelper.getImage(entryId), "drawable", getPackageName());
+
 
         tvEntryDate.setText(databaseHelper.getSpecificEntryModelEntryId(entryId).getDate());
-        tvEntryId.setText("#" + enryIdTxt + "v="+databaseHelper.getSpecificEntryModelEntryId(entryId).getVisited());
-        tvEntryNote.setText(databaseHelper.getSpecificEntryModelEntryId(entryId).getNote());
+        tvEntryId.setText("#" + enryIdTxt + "v=" + databaseHelper.getSpecificEntryModelEntryId(entryId).getVisited());
         tvEntryLeukoNl.setText(entryLeukoNl);
         tvEntryLymphoPercent.setText(entryLypmhoPercent);
         tvEntryLymphoAbsolut.setText(entryLymphoAbsolut);
+        imgvEntryMrt.setImageResource(resId);
+
     }
 }
