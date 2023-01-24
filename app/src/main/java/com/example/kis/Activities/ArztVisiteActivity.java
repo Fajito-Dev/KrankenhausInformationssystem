@@ -16,10 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kis.Adapters.ArztPatientAdapter;
 import com.example.kis.Database.DatabaseHelper;
-import com.example.kis.Models.PatientModel;
 import com.example.kis.R;
-
-import java.util.ArrayList;
 
 
 public class ArztVisiteActivity extends AppCompatActivity {
