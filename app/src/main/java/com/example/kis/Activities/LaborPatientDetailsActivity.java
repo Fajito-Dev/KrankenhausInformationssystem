@@ -95,7 +95,7 @@ public class LaborPatientDetailsActivity extends AppCompatActivity {
         tvAge.setText("Alter " + patientModel.getBirthDate()+" "+ "("+patientModel.getAge()+")");
         tvBed.setText("Bett " + strBed);
         tvDate.setText("Datum " + databaseHelper.getSpecificEntryModelEntryId(entryId).getDate());
-        tvEntryId.setText("#" + strEntryId);
+        tvEntryId.setText("Eintrag #" + strEntryId);
         tvNote.setText(databaseHelper.getSpecificEntryModelEntryId(entryId).getNote());
         tvDocument.setText(documentEntry);
         DatabaseHelper dataBaseHelper = new DatabaseHelper(LaborPatientDetailsActivity.this);
