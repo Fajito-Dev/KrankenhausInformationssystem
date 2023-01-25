@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.kis.Activities.ArztNotesDetailsActivity;
 import com.example.kis.Activities.LaborChecklistActivity;
 import com.example.kis.Activities.LaborPatientDetailsActivity;
+import com.example.kis.Database.DatabaseHelper;
 import com.example.kis.Models.EntryModel;
 import com.example.kis.Models.PatientModel;
 import com.example.kis.R;
@@ -123,8 +124,10 @@ public class LaborRequestsAdapter extends RecyclerView.Adapter<LaborRequestsAdap
 
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
+            DatabaseHelper databaseHelper = new DatabaseHelper(context);
             patientModelList.clear();
             patientModelList.addAll((ArrayList) results.values);
+            entryModelList = databaseHelper.getEntryLaborFilter(patientModelList);
             notifyDataSetChanged();
         }
     };

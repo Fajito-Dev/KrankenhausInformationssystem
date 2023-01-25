@@ -29,7 +29,7 @@ public class LaborPatientDetailsActivity extends AppCompatActivity {
     TextInputEditText tiedtLeukoNL,tiedtLymphoPercent,tiedtLypmhoAbsolut;
     DatabaseHelper databaseHelper;
     Button btnSafe,btnBack;
-    String[] images = {"kein bild", "mrt1", "mrt2"};
+    String[] images = {"kein Bild", "mrt1", "mrt2"};
     String imageStr = "";
 
     @Override
