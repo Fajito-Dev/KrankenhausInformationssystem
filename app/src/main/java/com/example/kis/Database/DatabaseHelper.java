@@ -419,6 +419,50 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
         return returnList2;
     }
+    public ArrayList<EntryModel> getEntryLaborFilter(ArrayList<PatientModel> patientModelList){
+        ArrayList<EntryModel> returnList2 = new ArrayList<>();
+        //get data from the database
+        String queryString = "SELECT * FROM "+ ENTRY_TABLE;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(queryString,null);
+
+        if(cursor.moveToFirst()){
+            //loop thru the cursor(result set) and creat a new customer object put them in the return List
+            do{
+                int eintragId = cursor.getInt(0);
+                int patientIDE = cursor.getInt(1);
+                String date = cursor.getString(2);
+                int bedNr = cursor.getInt(3);
+                int visited = cursor.getInt(4);
+                String condition = cursor.getString(5);
+                boolean mrt = cursor.getInt(6) == 1 ? true: false;
+                boolean bloodtest = cursor.getInt(7) == 1 ? true: false;
+                String note = cursor.getString(8);
+                float leukoNl = cursor.getFloat(9);
+                float lymphoProzent = cursor.getFloat(10);
+                float lymphoAbsolut = cursor.getFloat(11);
+                String image = cursor.getString(12);
+
+                if(visited != 2 == true){
+                    if(mrt||bloodtest == true) {
+                        for(int i = 0; i < patientModelList.size();i++){
+                            if(patientModelList.get(i).getPatientId()==patientIDE) {
+                                EntryModel newEntry = new EntryModel(eintragId, patientIDE, date, bedNr, visited, condition, mrt, bloodtest, note, leukoNl, lymphoProzent, lymphoAbsolut, image);
+                                returnList2.add(newEntry);
+                            }
+                        }
+
+                    }
+                }
+            }while(cursor.moveToNext());
+        }else{
+            //failure do not add anything to the List
+        }
+        //close both cursor and database
+        cursor.close();
+        db.close();
+        return returnList2;
+    }
 
     public ArrayList<PatientModel> getEveryPatientBed(ArrayList<EntryModel> entryModelList){
         ArrayList<PatientModel> returnList = new ArrayList<>();
