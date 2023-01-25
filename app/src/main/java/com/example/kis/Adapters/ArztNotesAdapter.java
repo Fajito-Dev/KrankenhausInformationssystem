@@ -41,7 +41,7 @@ public class ArztNotesAdapter extends RecyclerView.Adapter<ArztNotesAdapter.Arzt
 
     @Override
     public void onBindViewHolder(@NonNull ArztNotesViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        String documentEntry = "kein Dokument";
+        String documentEntry = "kein Auftrag";
 
         if(entryModelList.get(position).isMrt() & entryModelList.get(position).isBloodtest()==true){
             documentEntry = "MRT & Blutwerte";
