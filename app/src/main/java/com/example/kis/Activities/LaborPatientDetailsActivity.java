@@ -2,6 +2,7 @@ package com.example.kis.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -50,6 +51,8 @@ public class LaborPatientDetailsActivity extends AppCompatActivity {
         final ImageView imageView = findViewById(R.id.LaborPatientDetailsMRTPreview);
 
         databaseHelper = new DatabaseHelper(this);
+
+        tvNote.setMovementMethod(new ScrollingMovementMethod());
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, images);
         Spinner spinner = findViewById(R.id.LaborPatientDetailsSpinnerMRT);
