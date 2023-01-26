@@ -11,11 +11,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.kis.Adapters.LaborRequestsAdapter;
+import com.example.kis.Adapters.LaborEntryAdapter;
 import com.example.kis.Database.DatabaseHelper;
 import com.example.kis.R;
 
-public class LaborChecklistActivity extends AppCompatActivity {
+public class LaborHomeActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     Button btnLogout;
     DatabaseHelper databaseHelper;
@@ -32,7 +32,7 @@ public class LaborChecklistActivity extends AppCompatActivity {
 
 
         databaseHelper = new DatabaseHelper(this);
-        LaborRequestsAdapter adapter = new LaborRequestsAdapter(this,databaseHelper.getEveryPatient(),databaseHelper.getEntryLabor());
+        LaborEntryAdapter adapter = new LaborEntryAdapter(this,databaseHelper.getEveryPatient(),databaseHelper.getEntryLabor());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -52,7 +52,7 @@ public class LaborChecklistActivity extends AppCompatActivity {
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), StartActivity.class);
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(intent);
             }
         });

@@ -5,7 +5,7 @@
     android:background="@drawable/homebackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.AdministrationHomeActivity">
+    tools:context=".Activities.AdminHomeActivity">
 
     <TextView
         android:layout_width="wrap_content"

@@ -19,7 +19,7 @@ import com.example.kis.Database.DatabaseHelper;
 import com.example.kis.R;
 
 
-public class ArztVisiteActivity extends AppCompatActivity {
+public class ArztHomeActivity extends AppCompatActivity {
     DatabaseHelper dataBaseHelper;
     static RecyclerView recyclerViewA;
     Button buttonLogout,btnFilter;
@@ -38,7 +38,7 @@ public class ArztVisiteActivity extends AppCompatActivity {
 
         toggleButton = findViewById(R.id.ArztVisiteFilterButton);
 
-        dataBaseHelper = new DatabaseHelper(ArztVisiteActivity.this);
+        dataBaseHelper = new DatabaseHelper(ArztHomeActivity.this);
         ArztPatientAdapter adapter = new ArztPatientAdapter(this,dataBaseHelper.getEveryPatientBed(dataBaseHelper.getEveryEntry()),dataBaseHelper.getEveryEntry());
         recyclerViewA.setAdapter(adapter);
         recyclerViewA.setLayoutManager(new LinearLayoutManager(this));
@@ -63,16 +63,16 @@ public class ArztVisiteActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     // Update data and refresh recycler view
-                    ArztPatientAdapter adapter = new ArztPatientAdapter(ArztVisiteActivity.this,dataBaseHelper.getEveryPatientVIsit(dataBaseHelper.getEveryEntry()),dataBaseHelper.getEveryEntry());
+                    ArztPatientAdapter adapter = new ArztPatientAdapter(ArztHomeActivity.this,dataBaseHelper.getEveryPatientVIsit(dataBaseHelper.getEveryEntry()),dataBaseHelper.getEveryEntry());
                     adapter.notifyDataSetChanged();
                     recyclerViewA.setAdapter(adapter);
-                    recyclerViewA.setLayoutManager(new LinearLayoutManager(ArztVisiteActivity.this));
+                    recyclerViewA.setLayoutManager(new LinearLayoutManager(ArztHomeActivity.this));
                 } else {
                     // Update data and refresh recycler view
-                    ArztPatientAdapter adapter = new ArztPatientAdapter(ArztVisiteActivity.this,dataBaseHelper.getEveryPatientBed(dataBaseHelper.getEveryEntry()),dataBaseHelper.getEveryEntry());
+                    ArztPatientAdapter adapter = new ArztPatientAdapter(ArztHomeActivity.this,dataBaseHelper.getEveryPatientBed(dataBaseHelper.getEveryEntry()),dataBaseHelper.getEveryEntry());
                     adapter.notifyDataSetChanged();
                     recyclerViewA.setAdapter(adapter);
-                    recyclerViewA.setLayoutManager(new LinearLayoutManager(ArztVisiteActivity.this));
+                    recyclerViewA.setLayoutManager(new LinearLayoutManager(ArztHomeActivity.this));
                 }
             }
         });
@@ -80,7 +80,7 @@ public class ArztVisiteActivity extends AppCompatActivity {
         buttonLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), StartActivity.class);
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(intent);
             }
         });

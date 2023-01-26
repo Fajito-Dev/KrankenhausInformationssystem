@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.kis.Adapters.AdminstrationPatientAdapter;
+import com.example.kis.Adapters.AdminPatientAdapter;
 import com.example.kis.Database.DatabaseHelper;
 import com.example.kis.Models.EntryModel;
 import com.example.kis.Models.PatientModel;
@@ -24,7 +24,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class AdministrationAddPatientActivity extends AppCompatActivity {
+public class AdminPatientActivity extends AppCompatActivity {
     Button btnAddPatient, buttonAbort;
     DatabaseHelper dataBaseHelper;
     TextInputEditText edtPrename,edtName,edtPatientenId;
@@ -40,13 +40,13 @@ public class AdministrationAddPatientActivity extends AppCompatActivity {
         edtName = findViewById(R.id.AdministrationAddPatientNameInput);
         tvBday = findViewById(R.id.AdministrationAddPatientGeburtstaginput);
         edtPatientenId = findViewById(R.id.AdministrationAddPatientInsuranceNumberInput);
-        dataBaseHelper = new DatabaseHelper(AdministrationAddPatientActivity.this);
+        dataBaseHelper = new DatabaseHelper(AdminPatientActivity.this);
 
         buttonAbort = findViewById(R.id.AdministrationAddPatientAbort);
         buttonAbort.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent (getApplicationContext(), AdministrationHomeActivity.class);
+                Intent intent = new Intent (getApplicationContext(), AdminHomeActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -61,7 +61,7 @@ public class AdministrationAddPatientActivity extends AppCompatActivity {
                 final int month = calender.get(Calendar.MONTH);
                 final int day = calender.get(Calendar.DAY_OF_MONTH);
 
-                DatePickerDialog datePickerDialog = new DatePickerDialog(AdministrationAddPatientActivity.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth,setListener,year,month,day);
+                DatePickerDialog datePickerDialog = new DatePickerDialog(AdminPatientActivity.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth,setListener,year,month,day);
                 datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 datePickerDialog.show();
             }
@@ -84,23 +84,23 @@ public class AdministrationAddPatientActivity extends AppCompatActivity {
                 try {
                     patientModel = new PatientModel(Integer.parseInt(edtPatientenId.getText().toString()), edtPrename.getText().toString(), edtName.getText().toString(), tvBday.getText().toString());
                     entryModel = new EntryModel(0, Integer.parseInt(edtPatientenId.getText().toString()),date,dataBaseHelper.getFreeBed(),0,"ohneBefund",false, false,"Patient eingewiesen",0,0,0,"");
-                    Toast.makeText(AdministrationAddPatientActivity.this, patientModel.toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AdminPatientActivity.this, patientModel.toString(), Toast.LENGTH_SHORT).show();
                 } catch (Exception e) { //dat is schwachsinn :O
-                    Toast.makeText(AdministrationAddPatientActivity.this, "error creating customer", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AdminPatientActivity.this, "error creating customer", Toast.LENGTH_SHORT).show();
                     patientModel = new PatientModel(0, "error", null, "error");
                 }
 
-                DatabaseHelper dataBaseHelper = new DatabaseHelper(AdministrationAddPatientActivity.this);
+                DatabaseHelper dataBaseHelper = new DatabaseHelper(AdminPatientActivity.this);
                 boolean success = dataBaseHelper.addPatient(patientModel);
                 boolean success2 = dataBaseHelper.addEntry(entryModel);
-                Toast.makeText(AdministrationAddPatientActivity.this, "Success=" + success, Toast.LENGTH_SHORT).show();
+                Toast.makeText(AdminPatientActivity.this, "Success=" + success, Toast.LENGTH_SHORT).show();
 
-                AdminstrationPatientAdapter aPadapter = new AdminstrationPatientAdapter(AdministrationAddPatientActivity.this,dataBaseHelper.getEveryPatient(),dataBaseHelper.getEveryEntry(),dataBaseHelper);
-                AdministrationHomeActivity.recyclerViewD.setAdapter(aPadapter);
-                AdministrationHomeActivity.recyclerViewD.getAdapter().notifyDataSetChanged();
+                AdminPatientAdapter aPadapter = new AdminPatientAdapter(AdminPatientActivity.this,dataBaseHelper.getEveryPatient(),dataBaseHelper.getEveryEntry(),dataBaseHelper);
+                AdminHomeActivity.recyclerViewD.setAdapter(aPadapter);
+                AdminHomeActivity.recyclerViewD.getAdapter().notifyDataSetChanged();
 
                 //startet login wieder
-                Intent intent = new Intent(getApplicationContext(), AdministrationHomeActivity.class);
+                Intent intent = new Intent(getApplicationContext(), AdminHomeActivity.class);
                 startActivity(intent);
             }
         });

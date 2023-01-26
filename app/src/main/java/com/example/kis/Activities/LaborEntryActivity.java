@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.kis.Adapters.LaborRequestsAdapter;
+import com.example.kis.Adapters.LaborEntryAdapter;
 import com.example.kis.Database.DatabaseHelper;
 import com.example.kis.Models.EntryModel;
 import com.example.kis.Models.PatientModel;
@@ -24,7 +24,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class LaborPatientDetailsActivity extends AppCompatActivity {
+public class LaborEntryActivity extends AppCompatActivity {
     TextView tvName,tvAge,tvBed,tvDate,tvEntryId,tvDocument,tvNote;
     TextInputEditText tiedtLeukoNL,tiedtLymphoPercent,tiedtLypmhoAbsolut;
     DatabaseHelper databaseHelper;
@@ -77,7 +77,7 @@ public class LaborPatientDetailsActivity extends AppCompatActivity {
         });
 
         Intent intent = getIntent();
-        int entryId = intent.getIntExtra(LaborRequestsAdapter.EXTRA_NUMBER3,0);
+        int entryId = intent.getIntExtra(LaborEntryAdapter.EXTRA_NUMBER3,0);
 
         PatientModel patientModel = databaseHelper.getSpecificPatientModel(databaseHelper.getSpecificEntryModelEntryId(entryId).getPatientIde());
         EntryModel entryModel = databaseHelper.getSpecificEntryModelEntryId(entryId);
@@ -101,7 +101,7 @@ public class LaborPatientDetailsActivity extends AppCompatActivity {
         tvEntryId.setText("Eintrag #" + strEntryId);
         tvNote.setText(databaseHelper.getSpecificEntryModelEntryId(entryId).getNote());
         tvDocument.setText(documentEntry);
-        DatabaseHelper dataBaseHelper = new DatabaseHelper(LaborPatientDetailsActivity.this);
+        DatabaseHelper dataBaseHelper = new DatabaseHelper(LaborEntryActivity.this);
 
         btnSafe.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,18 +117,18 @@ public class LaborPatientDetailsActivity extends AppCompatActivity {
                         entryModelNew = new EntryModel(0,entryModel.getPatientIde(),date,entryModel.getBedNr(),0,"kein Zustand",false, false,"Auftrag bearbeitet",0,0,0, imageStr);
                     }
                     entryModelNew = new EntryModel(0,entryModel.getPatientIde(),date,entryModel.getBedNr(),0,"kein Zustand",false, false,"Auftrag bearbeitet",Float.parseFloat(tiedtLeukoNL.getText().toString()),Float.parseFloat(tiedtLymphoPercent.getText().toString()),Float.parseFloat(tiedtLypmhoAbsolut.getText().toString()), imageStr);
-                    Toast.makeText(LaborPatientDetailsActivity.this, entryModel.toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LaborEntryActivity.this, entryModel.toString(), Toast.LENGTH_SHORT).show();
                 } catch (Exception e) { //dat is schwachsinn :O
-                    Toast.makeText(LaborPatientDetailsActivity.this, "error creating customer", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LaborEntryActivity.this, "error creating customer", Toast.LENGTH_SHORT).show();
                 }
                 boolean success = dataBaseHelper.addEntry(entryModelNew);
-                Toast.makeText(LaborPatientDetailsActivity.this, "Success=" + success, Toast.LENGTH_SHORT).show();
+                Toast.makeText(LaborEntryActivity.this, "Success=" + success, Toast.LENGTH_SHORT).show();
 
                 EntryModel entryModel2 = databaseHelper.getSpecificEntryModelEntryId(entryId);
                 entryModel2.setVisited(2);
                 dataBaseHelper.updateEntry(entryModel2);
 
-                Intent intent = new Intent(getApplicationContext(), LaborChecklistActivity.class);
+                Intent intent = new Intent(getApplicationContext(), LaborHomeActivity.class);
                 startActivity(intent);
             }
         });

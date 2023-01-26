@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.kis.Adapters.ArztNotesAdapter;
+import com.example.kis.Adapters.ArztEntryAdapter;
 import com.example.kis.Adapters.ArztPatientAdapter;
 import com.example.kis.Database.DatabaseHelper;
 import com.example.kis.Models.EntryModel;
@@ -25,7 +25,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class ArztPatientDetailsActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class ArztPatientActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     RecyclerView recyclerView;
     Spinner condition;
     CheckBox mrt, blodtest;
@@ -59,7 +59,7 @@ public class ArztPatientDetailsActivity extends AppCompatActivity implements Ada
         Intent intent = getIntent();
         int patientIdDetails = intent.getIntExtra(ArztPatientAdapter.EXTRA_NUMBER,0);
         databaseHelper = new DatabaseHelper(this);
-        ArztNotesAdapter adapter = new ArztNotesAdapter(this,databaseHelper.getSpecificPatient(patientIdDetails),databaseHelper.getPatientEntry(patientIdDetails));
+        ArztEntryAdapter adapter = new ArztEntryAdapter(this,databaseHelper.getSpecificPatient(patientIdDetails),databaseHelper.getPatientEntry(patientIdDetails));
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -88,18 +88,18 @@ public class ArztPatientDetailsActivity extends AppCompatActivity implements Ada
                     }else{
                         entryModel = new EntryModel(0,patientIdDetails,date,bedNr,visitNr,textSpinner,mrt.isChecked(), blodtest.isChecked(),note.getText().toString(),0,0,0,"");
                     }
-                    Toast.makeText(ArztPatientDetailsActivity.this, entryModel.toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ArztPatientActivity.this, entryModel.toString(), Toast.LENGTH_SHORT).show();
                 } catch (Exception e) { //dat is schwachsinn :O
-                    Toast.makeText(ArztPatientDetailsActivity.this, "error creating customer", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ArztPatientActivity.this, "error creating customer", Toast.LENGTH_SHORT).show();
                 }
-                DatabaseHelper dataBaseHelper = new DatabaseHelper(ArztPatientDetailsActivity.this);
+                DatabaseHelper dataBaseHelper = new DatabaseHelper(ArztPatientActivity.this);
                 boolean success = dataBaseHelper.addEntry(entryModel);
                 //update recycler
-                ArztPatientAdapter aPadapter = new ArztPatientAdapter(ArztPatientDetailsActivity.this,databaseHelper.getEveryPatientBed(databaseHelper.getEveryEntry()),databaseHelper.getEveryEntry());
-                ArztVisiteActivity.recyclerViewA.setAdapter(aPadapter);
-                ArztVisiteActivity.recyclerViewA.getAdapter().notifyDataSetChanged();
+                ArztPatientAdapter aPadapter = new ArztPatientAdapter(ArztPatientActivity.this,databaseHelper.getEveryPatientBed(databaseHelper.getEveryEntry()),databaseHelper.getEveryEntry());
+                ArztHomeActivity.recyclerViewA.setAdapter(aPadapter);
+                ArztHomeActivity.recyclerViewA.getAdapter().notifyDataSetChanged();
 
-                Toast.makeText(ArztPatientDetailsActivity.this, "Success=" + success, Toast.LENGTH_SHORT).show();
+                Toast.makeText(ArztPatientActivity.this, "Success=" + success, Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
@@ -107,7 +107,7 @@ public class ArztPatientDetailsActivity extends AppCompatActivity implements Ada
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), ArztVisiteActivity.class);
+                Intent intent = new Intent(getApplicationContext(), ArztHomeActivity.class);
                 startActivity(intent);
             }
         });

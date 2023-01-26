@@ -14,8 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.kis.Activities.ArztPatientDetailsActivity;
-import com.example.kis.Activities.ArztNotesDetailsActivity;
+import com.example.kis.Activities.ArztPatientActivity;
 import com.example.kis.Models.EntryModel;
 import com.example.kis.Models.PatientModel;
 import com.example.kis.R;
@@ -64,7 +63,7 @@ public class ArztPatientAdapter extends RecyclerView.Adapter<ArztPatientAdapter.
             @Override
             public void onClick(View v) {
                 int patientIdDetails = patientModelList.get(position).getPatientId();
-                Intent intent = new Intent(v.getContext(), ArztPatientDetailsActivity.class);
+                Intent intent = new Intent(v.getContext(), ArztPatientActivity.class);
                 intent.putExtra(EXTRA_NUMBER,patientIdDetails);
                 holder.imgbtnIcon.getContext().startActivity(intent);
             }
