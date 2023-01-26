@@ -12,20 +12,20 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.kis.Activities.ArztNotesDetailsActivity;
+import com.example.kis.Activities.ArztEntryActivity;
 import com.example.kis.Models.EntryModel;
 import com.example.kis.Models.PatientModel;
 import com.example.kis.R;
 
 import java.util.ArrayList;
 
-public class ArztNotesAdapter extends RecyclerView.Adapter<ArztNotesAdapter.ArztNotesViewHolder> {
+public class ArztEntryAdapter extends RecyclerView.Adapter<ArztEntryAdapter.ArztNotesViewHolder> {
     public static final String EXTRA_NUMBER2 = "com.example.kis.Adapters.EXTRA_NUMBER2";
     Context context;
     ArrayList<PatientModel> patientModelList;
     ArrayList<EntryModel> entryModelList;
 
-    public ArztNotesAdapter(Context context, ArrayList<PatientModel> patientModelList,ArrayList<EntryModel> entryModelList) {
+    public ArztEntryAdapter(Context context, ArrayList<PatientModel> patientModelList, ArrayList<EntryModel> entryModelList) {
         this.context = context;
         this.patientModelList = patientModelList;
         this.entryModelList = entryModelList;
@@ -60,7 +60,7 @@ public class ArztNotesAdapter extends RecyclerView.Adapter<ArztNotesAdapter.Arzt
             @Override
             public void onClick(View v) {
                 int entryIdDetails = entryModelList.get(position).getEintragId();
-                Intent intent = new Intent(v.getContext(), ArztNotesDetailsActivity.class);
+                Intent intent = new Intent(v.getContext(), ArztEntryActivity.class);
                 intent.putExtra(EXTRA_NUMBER2,entryIdDetails);
                 holder.imgbtnIcon.getContext().startActivity(intent);
             }

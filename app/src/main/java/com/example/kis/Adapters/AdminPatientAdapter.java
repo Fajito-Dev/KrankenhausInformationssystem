@@ -2,7 +2,6 @@ package com.example.kis.Adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,9 +13,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.kis.Activities.AdministrationAddPatientActivity;
-import com.example.kis.Activities.AdministrationHomeActivity;
-import com.example.kis.Activities.StartActivity;
 import com.example.kis.Database.DatabaseHelper;
 import com.example.kis.Models.EntryModel;
 import com.example.kis.Models.PatientModel;
@@ -26,7 +22,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class AdminstrationPatientAdapter extends RecyclerView.Adapter<AdminstrationPatientAdapter.AdminstrationPatientViewHolder> implements Filterable {
+public class AdminPatientAdapter extends RecyclerView.Adapter<AdminPatientAdapter.AdminstrationPatientViewHolder> implements Filterable {
     Context context;
     ArrayList<PatientModel> patientModelList;
     ArrayList<EntryModel> entryModelList;
@@ -34,7 +30,7 @@ public class AdminstrationPatientAdapter extends RecyclerView.Adapter<Adminstrat
     ArrayList<PatientModel> patientModelListFull;
 
 
-    public AdminstrationPatientAdapter(Context context, ArrayList<PatientModel> patientModelList,ArrayList<EntryModel> entryModelList,DatabaseHelper databaseHelper){
+    public AdminPatientAdapter(Context context, ArrayList<PatientModel> patientModelList, ArrayList<EntryModel> entryModelList, DatabaseHelper databaseHelper){
         this.context = context;
         this.patientModelList = patientModelList;
         this.entryModelList = entryModelList;
@@ -47,12 +43,12 @@ public class AdminstrationPatientAdapter extends RecyclerView.Adapter<Adminstrat
     public AdminstrationPatientViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.admin_patint_card, parent, false);
-        return new AdminstrationPatientAdapter.AdminstrationPatientViewHolder(view);
+        return new AdminPatientAdapter.AdminstrationPatientViewHolder(view);
     }
 
     @SuppressLint("SetTextI18n")
     @Override
-    public void onBindViewHolder(@NonNull AdminstrationPatientAdapter.AdminstrationPatientViewHolder holder, @SuppressLint("RecyclerView") int position) {
+    public void onBindViewHolder(@NonNull AdminPatientAdapter.AdminstrationPatientViewHolder holder, @SuppressLint("RecyclerView") int position) {
         String insuranceNr = Integer.toString(patientModelList.get(position).getPatientId());
         String bedNrS = "";
         int bedNRnull = 0;

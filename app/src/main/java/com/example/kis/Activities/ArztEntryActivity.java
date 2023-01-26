@@ -9,11 +9,11 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.kis.Adapters.ArztNotesAdapter;
+import com.example.kis.Adapters.ArztEntryAdapter;
 import com.example.kis.Database.DatabaseHelper;
 import com.example.kis.R;
 
-public class ArztNotesDetailsActivity extends AppCompatActivity {
+public class ArztEntryActivity extends AppCompatActivity {
     TextView tvEntryDate, tvEntryId, tvEntryNote, tvEntryLeukoNl, tvEntryLymphoPercent, tvEntryLymphoAbsolut;
     ImageView imgvEntryMrt;
     DatabaseHelper databaseHelper;
@@ -43,7 +43,7 @@ public class ArztNotesDetailsActivity extends AppCompatActivity {
         });
 
         Intent intent = getIntent();
-        int entryId = intent.getIntExtra(ArztNotesAdapter.EXTRA_NUMBER2, 0);
+        int entryId = intent.getIntExtra(ArztEntryAdapter.EXTRA_NUMBER2, 0);
 
 
         String enryIdTxt = Integer.toString(databaseHelper.getSpecificEntryModelEntryId(entryId).getEintragId());

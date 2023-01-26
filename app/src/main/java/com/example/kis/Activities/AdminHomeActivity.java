@@ -9,11 +9,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.kis.Adapters.AdminstrationPatientAdapter;
+import com.example.kis.Adapters.AdminPatientAdapter;
 import com.example.kis.Database.DatabaseHelper;
 import com.example.kis.R;
 
-public class AdministrationHomeActivity extends AppCompatActivity {
+public class AdminHomeActivity extends AppCompatActivity {
     Button logout, addPatient;
     static RecyclerView recyclerViewD;
     DatabaseHelper dataBaseHelper;
@@ -28,8 +28,8 @@ public class AdministrationHomeActivity extends AppCompatActivity {
         recyclerViewD = findViewById(R.id.AdministrationHomeRecyclerView);
         svSearchBar = findViewById(R.id.AdministrationHomeSearchView);
 
-        dataBaseHelper = new DatabaseHelper(AdministrationHomeActivity.this);
-        AdminstrationPatientAdapter adapter = new AdminstrationPatientAdapter(this,dataBaseHelper.getEveryPatient(),dataBaseHelper.getEveryEntry(),dataBaseHelper);
+        dataBaseHelper = new DatabaseHelper(AdminHomeActivity.this);
+        AdminPatientAdapter adapter = new AdminPatientAdapter(this,dataBaseHelper.getEveryPatient(),dataBaseHelper.getEveryEntry(),dataBaseHelper);
         recyclerViewD.setAdapter(adapter);
         recyclerViewD.setLayoutManager(new LinearLayoutManager(this));
 
@@ -47,12 +47,12 @@ public class AdministrationHomeActivity extends AppCompatActivity {
         });
 
         logout.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), StartActivity.class);
+            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
             startActivity(intent);
             finish();
         });
         addPatient.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), AdministrationAddPatientActivity.class);
+            Intent intent = new Intent(getApplicationContext(), AdminPatientActivity.class);
             startActivity(intent);
             finish();
         });

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/homebackground"
-    tools:context=".Activities.ArztVisiteActivity">
+    tools:context=".Activities.ArztHomeActivity">
 
     <TextView
         android:layout_width="wrap_content"

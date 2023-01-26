@@ -14,9 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.kis.Activities.ArztNotesDetailsActivity;
-import com.example.kis.Activities.LaborChecklistActivity;
-import com.example.kis.Activities.LaborPatientDetailsActivity;
+import com.example.kis.Activities.LaborEntryActivity;
 import com.example.kis.Database.DatabaseHelper;
 import com.example.kis.Models.EntryModel;
 import com.example.kis.Models.PatientModel;
@@ -24,14 +22,14 @@ import com.example.kis.R;
 
 import java.util.ArrayList;
 
-public class LaborRequestsAdapter extends RecyclerView.Adapter<LaborRequestsAdapter.LaborRequestViewHolder> implements Filterable {
+public class LaborEntryAdapter extends RecyclerView.Adapter<LaborEntryAdapter.LaborRequestViewHolder> implements Filterable {
     public static final String EXTRA_NUMBER3 = "com.example.kis.Adapters.EXTRA_NUMBER3";
     Context context;
     ArrayList<PatientModel> patientModelList;
     ArrayList<EntryModel> entryModelList;
     ArrayList<PatientModel> patientModelListFull;
 
-    public LaborRequestsAdapter(Context context, ArrayList<PatientModel> patientModelList,ArrayList<EntryModel> entryModelList) {
+    public LaborEntryAdapter(Context context, ArrayList<PatientModel> patientModelList, ArrayList<EntryModel> entryModelList) {
         this.context = context;
         this.patientModelList = patientModelList;
         this.entryModelList = entryModelList;
@@ -40,7 +38,7 @@ public class LaborRequestsAdapter extends RecyclerView.Adapter<LaborRequestsAdap
 
     @NonNull
     @Override
-    public LaborRequestsAdapter.LaborRequestViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public LaborEntryAdapter.LaborRequestViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.labor_patient_card, parent, false);
         return new LaborRequestViewHolder(view);
@@ -48,7 +46,7 @@ public class LaborRequestsAdapter extends RecyclerView.Adapter<LaborRequestsAdap
     }
 
     @Override
-    public void onBindViewHolder(@NonNull LaborRequestsAdapter.LaborRequestViewHolder holder, @SuppressLint("RecyclerView") int position) {
+    public void onBindViewHolder(@NonNull LaborEntryAdapter.LaborRequestViewHolder holder, @SuppressLint("RecyclerView") int position) {
         String bedNr = Integer.toString(entryModelList.get(position).getBedNr());
         String documentEntry = "kein Dokument";
         int posNr = 0;
@@ -75,7 +73,7 @@ public class LaborRequestsAdapter extends RecyclerView.Adapter<LaborRequestsAdap
             @Override
             public void onClick(View v) {
                 int entryIdDetails = entryModelList.get(position).getEintragId();
-                Intent intent = new Intent(v.getContext(), LaborPatientDetailsActivity.class);
+                Intent intent = new Intent(v.getContext(), LaborEntryActivity.class);
                 intent.putExtra(EXTRA_NUMBER3,entryIdDetails);
                 holder.imageButton.getContext().startActivity(intent);
             }

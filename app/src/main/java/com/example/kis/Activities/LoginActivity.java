@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.kis.R;
 
-public class StartActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     Button buttonDoctor,buttonAdministration,buttonLaboratory;
 
@@ -26,21 +26,21 @@ public class StartActivity extends AppCompatActivity {
         buttonDoctor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), ArztVisiteActivity.class);
+                Intent intent = new Intent(getApplicationContext(), ArztHomeActivity.class);
                 startActivity(intent);
             }
         });
         buttonLaboratory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), LaborChecklistActivity.class);
+                Intent intent = new Intent(getApplicationContext(), LaborHomeActivity.class);
                 startActivity(intent);
             }
         });
         buttonAdministration.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), AdministrationHomeActivity.class);
+                Intent intent = new Intent(getApplicationContext(), AdminHomeActivity.class);
                 startActivity(intent);
             }
         });
