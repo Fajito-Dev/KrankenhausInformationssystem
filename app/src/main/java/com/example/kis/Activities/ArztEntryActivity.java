@@ -14,7 +14,7 @@ import com.example.kis.Database.DatabaseHelper;
 import com.example.kis.R;
 
 public class ArztEntryActivity extends AppCompatActivity {
-    TextView tvEntryDate, tvEntryId, tvEntryNote, tvEntryLeukoNl, tvEntryLymphoPercent, tvEntryLymphoAbsolut;
+    TextView tvEntryDate, tvEntryId, tvEntryLeukoNl, tvEntryLymphoPercent, tvEntryLymphoAbsolut;
     ImageView imgvEntryMrt;
     DatabaseHelper databaseHelper;
     Button btnBack;
@@ -32,9 +32,6 @@ public class ArztEntryActivity extends AppCompatActivity {
         btnBack = findViewById(R.id.ArztNotesDetailsBackButton);
         imgvEntryMrt = findViewById(R.id.ArztNotesDetailsImageViewMRT);
 
-
-        //TODO: MUSS AUS DATENBANK GEGETTET WERDEN
-
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,15 +41,11 @@ public class ArztEntryActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         int entryId = intent.getIntExtra(ArztEntryAdapter.EXTRA_NUMBER2, 0);
-
-
         String enryIdTxt = Integer.toString(databaseHelper.getSpecificEntryModelEntryId(entryId).getEintragId());
-
         String entryLeukoNl = Float.toString(databaseHelper.getSpecificEntryModelEntryId(entryId).getLeukoNl());
         String entryLypmhoPercent = Float.toString(databaseHelper.getSpecificEntryModelEntryId(entryId).getLymphoProzent());
         String entryLymphoAbsolut = Float.toString(databaseHelper.getSpecificEntryModelEntryId(entryId).getLymphoAbsolut());
         int resId = getResources().getIdentifier(databaseHelper.getImage(entryId), "drawable", getPackageName());
-
 
         tvEntryDate.setText(databaseHelper.getSpecificEntryModelEntryId(entryId).getDate());
         tvEntryId.setText("Eintrag #" + enryIdTxt);
@@ -60,6 +53,5 @@ public class ArztEntryActivity extends AppCompatActivity {
         tvEntryLymphoPercent.setText(entryLypmhoPercent);
         tvEntryLymphoAbsolut.setText(entryLymphoAbsolut);
         imgvEntryMrt.setImageResource(resId);
-
     }
 }

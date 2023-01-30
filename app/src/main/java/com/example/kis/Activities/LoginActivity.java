@@ -10,15 +10,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.kis.R;
 
 public class LoginActivity extends AppCompatActivity {
-
     Button buttonDoctor,buttonAdministration,buttonLaboratory;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start_activity);
-
         buttonDoctor = findViewById(R.id.ButtonArztHome);
         buttonLaboratory = findViewById(R.id.ButtonLabor);
         buttonAdministration = findViewById(R.id.ButtonVerwaltung);
@@ -30,6 +27,7 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         buttonLaboratory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -37,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         buttonAdministration.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

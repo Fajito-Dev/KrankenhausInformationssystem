@@ -42,7 +42,6 @@ public class LaborEntryAdapter extends RecyclerView.Adapter<LaborEntryAdapter.La
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.labor_patient_card, parent, false);
         return new LaborRequestViewHolder(view);
-
     }
 
     @Override
@@ -114,7 +113,6 @@ public class LaborEntryAdapter extends RecyclerView.Adapter<LaborEntryAdapter.La
                     }
                 }
             }
-
             FilterResults results = new FilterResults();
             results.values = filteredList;
             return results;

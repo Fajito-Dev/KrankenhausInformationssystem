@@ -30,7 +30,6 @@ public class LaborHomeActivity extends AppCompatActivity {
         btnLogout = findViewById(R.id.LaborChecklistButtonLogout);
         svSearchBar = findViewById(R.id.search_bar2);
 
-
         databaseHelper = new DatabaseHelper(this);
         LaborEntryAdapter adapter = new LaborEntryAdapter(this,databaseHelper.getEveryPatient(),databaseHelper.getEntryLabor());
         recyclerView.setAdapter(adapter);

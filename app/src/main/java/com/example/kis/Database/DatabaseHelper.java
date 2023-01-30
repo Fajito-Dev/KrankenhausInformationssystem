@@ -14,7 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-//neu
+
 public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String PATIENT_TABLE = "PATIENT_TABLE";
     public static final String COLUMN_PATIENT_PATIENTID = "PATIENT_PATIENTID";
@@ -41,7 +41,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         super(context, "Krankenakten.db", null, 1);
     }
 
-
     @Override
     public void onCreate(SQLiteDatabase db) {
         String createTableStatement1 = "CREATE TABLE " + PATIENT_TABLE + " (" + COLUMN_PATIENT_PATIENTID + " INTEGER PRIMARY KEY, " + COLUMN_PATIENT_PRENAME + " TEXT, " + COLUMN_PATIENT_NAME + " TEXT, " + COLUMN_PATIENT_BIRTHDATE + " TEXT)";
@@ -52,9 +51,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
-
-    }
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {}
 
     public boolean addPatient(PatientModel patientModel){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -75,13 +72,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public ArrayList<PatientModel> getEveryPatient(){
         ArrayList<PatientModel> returnList = new ArrayList<>();
-        //get data from the database
         String queryString = "SELECT * FROM "+ PATIENT_TABLE;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(queryString,null);
 
         if(cursor.moveToFirst()){
-            //loop thru the cursor(result set) and creat a new customer object put them in the return List
             do{
                 int patientID = cursor.getInt(0);
                 String patientPreName = cursor.getString(1);
@@ -92,9 +87,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 returnList.add(newPatient);
             }while(cursor.moveToNext());
         }else{
-            //failure do not add anything to the List
         }
-        //close both cursor and database
         cursor.close();
         db.close();
         return returnList;
@@ -514,31 +507,29 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public ArrayList<PatientModel> getEveryPatientVIsit(ArrayList<EntryModel> entryModelList){
         ArrayList<PatientModel> returnList = new ArrayList<>();
-        //get data from the database
         String queryString = "SELECT * FROM "+ PATIENT_TABLE;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(queryString,null);
-
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         String date = sdf.format(new Date());
 
         if(cursor.moveToFirst()){
-            //loop thru the cursor(result set) and creat a new customer object put them in the return List
             do{
                 int bedNrW = 0;
                 int dateNr = 0;
+
                 int patientID = cursor.getInt(0);
                 String patientPreName = cursor.getString(1);
                 String patientName = cursor.getString(2);
                 String patientBirthdate = cursor.getString(3);
-                String patientAusgewiesen = "Patient eingewiesen";
+
                 for(int i = 0;i<entryModelList.size();i++){
                     if(entryModelList.get(i).getPatientIde()==patientID){
                         String thisDate = entryModelList.get(i).getDate();
                         if(date.equals(thisDate)) {
                             dateNr = 1;
                         }
-                        if(entryModelList.get(i).getNote().equals(patientAusgewiesen)){
+                        if(entryModelList.get(i).getNote().equals("Patient eingewiesen") || entryModelList.get(i).getNote().equals("Auftrag bearbeitet")){
                             if(date.equals(thisDate)) {
                                 dateNr = 0;
                             }
@@ -556,12 +547,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                        returnList.add(newPatient);
                    }
                }
-
             }while(cursor.moveToNext());
-        }else{
-            //failure do not add anything to the List
-        }
-        //close both cursor and database
+        }else{ }
         cursor.close();
         db.close();
         return returnList;
