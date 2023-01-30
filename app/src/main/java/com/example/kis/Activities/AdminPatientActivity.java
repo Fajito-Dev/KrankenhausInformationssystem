@@ -84,22 +84,20 @@ public class AdminPatientActivity extends AppCompatActivity {
                 try {
                     patientModel = new PatientModel(Integer.parseInt(edtPatientenId.getText().toString()), edtPrename.getText().toString(), edtName.getText().toString(), tvBday.getText().toString());
                     entryModel = new EntryModel(0, Integer.parseInt(edtPatientenId.getText().toString()),date,dataBaseHelper.getFreeBed(),0,"ohneBefund",false, false,"Patient eingewiesen",0,0,0,"");
-                    Toast.makeText(AdminPatientActivity.this, patientModel.toString(), Toast.LENGTH_SHORT).show();
-                } catch (Exception e) { //dat is schwachsinn :O
+                    //Toast.makeText(AdminPatientActivity.this, patientModel.toString(), Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
                     Toast.makeText(AdminPatientActivity.this, "error creating customer", Toast.LENGTH_SHORT).show();
                     patientModel = new PatientModel(0, "error", null, "error");
                 }
 
                 DatabaseHelper dataBaseHelper = new DatabaseHelper(AdminPatientActivity.this);
-                boolean success = dataBaseHelper.addPatient(patientModel);
-                boolean success2 = dataBaseHelper.addEntry(entryModel);
-                Toast.makeText(AdminPatientActivity.this, "Success=" + success, Toast.LENGTH_SHORT).show();
+                dataBaseHelper.addPatient(patientModel);
+                dataBaseHelper.addEntry(entryModel);
 
-                AdminPatientAdapter aPadapter = new AdminPatientAdapter(AdminPatientActivity.this,dataBaseHelper.getEveryPatient(),dataBaseHelper.getEveryEntry(),dataBaseHelper);
-                AdminHomeActivity.recyclerViewD.setAdapter(aPadapter);
+                AdminPatientAdapter adapter = new AdminPatientAdapter(AdminPatientActivity.this,dataBaseHelper.getEveryPatient(),dataBaseHelper.getEveryEntry(),dataBaseHelper);
+                AdminHomeActivity.recyclerViewD.setAdapter(adapter);
                 AdminHomeActivity.recyclerViewD.getAdapter().notifyDataSetChanged();
 
-                //startet login wieder
                 Intent intent = new Intent(getApplicationContext(), AdminHomeActivity.class);
                 startActivity(intent);
             }

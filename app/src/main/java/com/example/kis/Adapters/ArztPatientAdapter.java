@@ -104,7 +104,6 @@ public class ArztPatientAdapter extends RecyclerView.Adapter<ArztPatientAdapter.
                     }
                 }
             }
-
             FilterResults results = new FilterResults();
             results.values = filteredList;
             return results;

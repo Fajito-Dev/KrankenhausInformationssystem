@@ -29,7 +29,6 @@ public class AdminPatientAdapter extends RecyclerView.Adapter<AdminPatientAdapte
     DatabaseHelper databaseHelper;
     ArrayList<PatientModel> patientModelListFull;
 
-
     public AdminPatientAdapter(Context context, ArrayList<PatientModel> patientModelList, ArrayList<EntryModel> entryModelList, DatabaseHelper databaseHelper){
         this.context = context;
         this.patientModelList = patientModelList;
@@ -58,8 +57,10 @@ public class AdminPatientAdapter extends RecyclerView.Adapter<AdminPatientAdapte
                 bedNRnull = entryModelList.get(i).getBedNr();
             }
         }
+
         holder.tvName.setText(patientModelList.get(position).getPreName()+" "+patientModelList.get(position).getName());
         holder.tvBirthday.setText(patientModelList.get(position).getBirthDate()+" " + "("+patientModelList.get(position).getAge()+")");
+
         if(bedNRnull == 0){
             holder.tvBedNr.setText("Patient ausgewiesen");
             holder.imgbtnIcon.setImageResource(R.drawable.img2);
@@ -70,17 +71,20 @@ public class AdminPatientAdapter extends RecyclerView.Adapter<AdminPatientAdapte
         holder.tvInsuranceNr.setText("VNr "+insuranceNr);
 
         int finalBedNRnull = bedNRnull;
+
         holder.imgbtnIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 EntryModel entryModel = null;
                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
                 String date = sdf.format(new Date());
+
                 if(finalBedNRnull == 0) {
                     try {
                         entryModel = new EntryModel(0, patientModelList.get(position).getPatientId(), date, databaseHelper.getFreeBed(), 0, "k.A", false, false, "Patient eingewiesen", 0, 0, 0, "");
                     } catch (Exception e) { //dat is schwachsinn :O
                     }
+
                     databaseHelper.addEntry(entryModel);
                     holder.imgbtnIcon.setImageResource(R.drawable.img);
                     entryModelList.add(entryModel);
@@ -127,7 +131,6 @@ public class AdminPatientAdapter extends RecyclerView.Adapter<AdminPatientAdapte
                     }
                 }
             }
-
             FilterResults results = new FilterResults();
             results.values = filteredList;
             return results;

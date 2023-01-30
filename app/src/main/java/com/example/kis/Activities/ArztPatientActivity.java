@@ -50,7 +50,6 @@ public class ArztPatientActivity extends AppCompatActivity implements AdapterVie
         btnSafe = findViewById(R.id.ArztNotesSaveButton);
         btnBack = findViewById(R.id.ArztNotesButtonVerwerfen);
 
-
         ArrayAdapter<CharSequence> adapterB = ArrayAdapter.createFromResource(this, R.array.zustand, android.R.layout.simple_spinner_item);
         adapterB.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         condition.setAdapter(adapterB);
@@ -70,18 +69,14 @@ public class ArztPatientActivity extends AppCompatActivity implements AdapterVie
         age.setText(databaseHelper.getSpecificPatientModel(patientIdDetails).getBirthDate()+" "+ "("+databaseHelper.getSpecificPatientModel(patientIdDetails).getAge()+")");
         bednr.setText("Bett " + bedNrS);
 
-        // Mit Button Safe Eintrag erstellen
         btnSafe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 EntryModel entryModel = null;
-
                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
                 String date = sdf.format(new Date());
-                String strGesund = "gesund";
-                String strTextSpinner = textSpinner;
+
                 try {
-                    // bei condition kommt condition.toString() rein aber erst wenn Spinner gesetzt ist
                     int visitNr = 0;
                     if(textSpinner.equals("gesund")){
                         entryModel = new EntryModel(0,patientIdDetails,date,0,visitNr,textSpinner,mrt.isChecked(), blodtest.isChecked(),note.getText().toString(),0,0,0,"");
@@ -89,17 +84,15 @@ public class ArztPatientActivity extends AppCompatActivity implements AdapterVie
                         entryModel = new EntryModel(0,patientIdDetails,date,bedNr,visitNr,textSpinner,mrt.isChecked(), blodtest.isChecked(),note.getText().toString(),0,0,0,"");
                     }
                     Toast.makeText(ArztPatientActivity.this, entryModel.toString(), Toast.LENGTH_SHORT).show();
-                } catch (Exception e) { //dat is schwachsinn :O
+                } catch (Exception e) {
                     Toast.makeText(ArztPatientActivity.this, "error creating customer", Toast.LENGTH_SHORT).show();
                 }
+
                 DatabaseHelper dataBaseHelper = new DatabaseHelper(ArztPatientActivity.this);
-                boolean success = dataBaseHelper.addEntry(entryModel);
-                //update recycler
+                dataBaseHelper.addEntry(entryModel);
                 ArztPatientAdapter aPadapter = new ArztPatientAdapter(ArztPatientActivity.this,databaseHelper.getEveryPatientBed(databaseHelper.getEveryEntry()),databaseHelper.getEveryEntry());
                 ArztHomeActivity.recyclerViewA.setAdapter(aPadapter);
                 ArztHomeActivity.recyclerViewA.getAdapter().notifyDataSetChanged();
-
-                Toast.makeText(ArztPatientActivity.this, "Success=" + success, Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
@@ -119,7 +112,5 @@ public class ArztPatientActivity extends AppCompatActivity implements AdapterVie
     }
 
     @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }
+    public void onNothingSelected(AdapterView<?> parent) {}
 }

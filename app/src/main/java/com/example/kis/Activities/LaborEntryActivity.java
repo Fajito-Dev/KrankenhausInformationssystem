@@ -72,16 +72,13 @@ public class LaborEntryActivity extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                // Do nothing
             }
         });
 
         Intent intent = getIntent();
         int entryId = intent.getIntExtra(LaborEntryAdapter.EXTRA_NUMBER3,0);
-
         PatientModel patientModel = databaseHelper.getSpecificPatientModel(databaseHelper.getSpecificEntryModelEntryId(entryId).getPatientIde());
         EntryModel entryModel = databaseHelper.getSpecificEntryModelEntryId(entryId);
-
         String strBed = Integer.toString(databaseHelper.getSpecificEntryModelEntryId(entryId).getBedNr());
         String strEntryId = Integer.toString(entryId);
 
@@ -93,13 +90,13 @@ public class LaborEntryActivity extends AppCompatActivity {
         }else if(databaseHelper.getSpecificEntryModelEntryId(entryId).isBloodtest()==true){
             documentEntry = "Auftrag Blutwerte";
         }
-        // kann jetzt ueberarbeitet werden wegen entry und patientModel
+
         tvName.setText(patientModel.getPreName() + " " + patientModel.getName());
         tvAge.setText("Alter " + patientModel.getBirthDate()+" "+ "("+patientModel.getAge()+")");
         tvBed.setText("Bett " + strBed);
-        tvDate.setText("Datum " + databaseHelper.getSpecificEntryModelEntryId(entryId).getDate());
+        tvDate.setText("Datum " + entryModel.getDate());
         tvEntryId.setText("Eintrag #" + strEntryId);
-        tvNote.setText(databaseHelper.getSpecificEntryModelEntryId(entryId).getNote());
+        tvNote.setText(entryModel.getNote());
         tvDocument.setText(documentEntry);
         DatabaseHelper dataBaseHelper = new DatabaseHelper(LaborEntryActivity.this);
 
@@ -112,13 +109,11 @@ public class LaborEntryActivity extends AppCompatActivity {
                 EntryModel entryModelNew = new EntryModel();
 
                 try {
-                    // bei condition kommt condition.toString() rein aber erst wenn Spinner gesetzt ist
                     if(tiedtLeukoNL.getText().toString().equals("")==true){
                         entryModelNew = new EntryModel(0,entryModel.getPatientIde(),date,entryModel.getBedNr(),0,"kein Zustand",false, false,"Auftrag bearbeitet",0,0,0, imageStr);
                     }
                     entryModelNew = new EntryModel(0,entryModel.getPatientIde(),date,entryModel.getBedNr(),0,"kein Zustand",false, false,"Auftrag bearbeitet",Float.parseFloat(tiedtLeukoNL.getText().toString()),Float.parseFloat(tiedtLymphoPercent.getText().toString()),Float.parseFloat(tiedtLypmhoAbsolut.getText().toString()), imageStr);
-                    Toast.makeText(LaborEntryActivity.this, entryModel.toString(), Toast.LENGTH_SHORT).show();
-                } catch (Exception e) { //dat is schwachsinn :O
+                } catch (Exception e) {
                     Toast.makeText(LaborEntryActivity.this, "error creating customer", Toast.LENGTH_SHORT).show();
                 }
                 boolean success = dataBaseHelper.addEntry(entryModelNew);

@@ -22,8 +22,7 @@ import com.example.kis.R;
 public class ArztHomeActivity extends AppCompatActivity {
     DatabaseHelper dataBaseHelper;
     static RecyclerView recyclerViewA;
-    Button buttonLogout,btnFilter;
-    ImageButton buttonPatientDetails;
+    Button buttonLogout;
     SearchView svSearchBar;
     ToggleButton toggleButton;
 
@@ -35,15 +34,12 @@ public class ArztHomeActivity extends AppCompatActivity {
         recyclerViewA = findViewById(R.id.recyclerView);
         buttonLogout = findViewById(R.id.ArztVisiteButtonLogout);
         svSearchBar = findViewById(R.id.search_bar);
-
         toggleButton = findViewById(R.id.ArztVisiteFilterButton);
 
         dataBaseHelper = new DatabaseHelper(ArztHomeActivity.this);
         ArztPatientAdapter adapter = new ArztPatientAdapter(this,dataBaseHelper.getEveryPatientBed(dataBaseHelper.getEveryEntry()),dataBaseHelper.getEveryEntry());
         recyclerViewA.setAdapter(adapter);
         recyclerViewA.setLayoutManager(new LinearLayoutManager(this));
-
-
 
         svSearchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -62,13 +58,11 @@ public class ArztHomeActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    // Update data and refresh recycler view
                     ArztPatientAdapter adapter = new ArztPatientAdapter(ArztHomeActivity.this,dataBaseHelper.getEveryPatientVIsit(dataBaseHelper.getEveryEntry()),dataBaseHelper.getEveryEntry());
                     adapter.notifyDataSetChanged();
                     recyclerViewA.setAdapter(adapter);
                     recyclerViewA.setLayoutManager(new LinearLayoutManager(ArztHomeActivity.this));
                 } else {
-                    // Update data and refresh recycler view
                     ArztPatientAdapter adapter = new ArztPatientAdapter(ArztHomeActivity.this,dataBaseHelper.getEveryPatientBed(dataBaseHelper.getEveryEntry()),dataBaseHelper.getEveryEntry());
                     adapter.notifyDataSetChanged();
                     recyclerViewA.setAdapter(adapter);
